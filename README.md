@@ -1,5 +1,6 @@
-#OVERVIEW
-#RasaNusa 
+OVERVIEW
+
+# RasaNusa 
 Kami ingin membuat project capstone tentang aplikasi yang mengenalkan kepada masyarakat luas tentang beragamnya makanan yang ada di indonesia . Kita mundur ke masa lalu indonesia di jajah oleh para penjajah yang mengincar salah satunya adalah bumbu masakan yang ada di indonesia pastinya kita sebagai anak muda di indonesia sangat wajib untuk melestarikan bumbu dan juga masakan khas yang ada di indonesia . Aplikasi ini memiliki fitur untuk menampilkan makanan khas yang ada di indonesia , selain itu juga user bisa scan makanan dan di deteksi itu jenis makanan apa , selain itu juga user bisa mengupload makanan khas yang ada di
 indonesia beserta foto dan deskipsinya , user juga bisa memberikan testimoni tentang rasa makanan tersebut 
 
