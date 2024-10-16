@@ -1,5 +1,3 @@
-OVERVIEW
-
 # RasaNusa 
 We want to create a capstone project about an application that introduces the wider community to the diversity of food in Indonesia. Looking back, Indonesia was colonized by invaders who coveted, among other things, the spices used in Indonesian cuisine. As young Indonesians, we have a duty to preserve these spices and the unique dishes of Indonesia. This application will have features to display Indonesian specialties, allow users to scan food and identify its type, enable users to upload Indonesian dishes along with photos and descriptions, and allow users to provide testimonials about the taste of the food.
 
