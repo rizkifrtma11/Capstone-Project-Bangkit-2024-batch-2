@@ -1,36 +1,46 @@
-| Nama Makanan       | Daerah Asal       | Bahan Utama   | Bahan Masakan                                                                              | Deskripsi                                                                                 | Sejarah                                                                                   |
-|--------------------|-------------------|---------------|--------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| Rendang            | Sumatera Barat     | Daging Sapi   | Daging sapi, santan, cabai, bawang merah, bawang putih, jahe, lengkuas, daun kunyit         | Daging sapi yang dimasak dengan santan dan rempah-rempah hingga empuk dan berwarna hitam.  | Rendang berasal dari Minangkabau, Sumatera Barat, dan awalnya dimasak sebagai sajian pesta.|
-| Sate Ayam          | Jawa               | Daging Ayam   | Daging ayam, tusuk sate, bumbu kacang, kecap manis, bawang merah, cabai                    | Daging ayam yang ditusuk dan dipanggang, disajikan dengan bumbu kacang.                    | Sate diperkenalkan di Jawa pada abad ke-19, dipengaruhi oleh pedagang dari Timur Tengah.   |
-| Gado-gado          | Jakarta            | Sayuran       | Kacang panjang, kentang, tauge, kangkung, bumbu kacang, lontong                            | Aneka sayuran rebus yang disajikan dengan bumbu kacang dan lontong.                        | Gado-gado merupakan makanan khas Betawi dan populer sejak abad ke-19 di Jakarta.           |
-| Pempek             | Sumatera Selatan   | Ikan          | Ikan tenggiri, tepung sagu, bawang putih, telur, cuka, gula merah                          | Adonan ikan yang direbus atau digoreng, disajikan dengan kuah cuko.                        | Pempek berasal dari Palembang dan diciptakan oleh seorang warga keturunan Tionghoa di abad ke-16.|
-| Soto Ayam          | Jawa Tengah        | Daging Ayam   | Daging ayam, kunyit, jahe, lengkuas, serai, santan, bawang merah                           | Sup ayam dengan kuah berwarna kuning, disajikan dengan nasi atau lontong.                  | Soto Ayam mulai dikenal pada abad ke-19 sebagai makanan rakyat di berbagai daerah di Jawa. |
-| Nasi Goreng Kampung| Jawa Tengah        | Nasi          | Nasi, bawang putih, kecap manis, telur, ayam, udang                                        | Nasi yang digoreng dengan bumbu-bumbu dan tambahan bahan seperti telur, ayam, atau udang.  | Nasi Goreng dipengaruhi oleh budaya Tionghoa dan telah ada sejak abad ke-10 di Indonesia.  |
-| Bakso Malang       | Jawa Timur         | Daging Sapi   | Daging sapi, tepung sagu, bawang putih, garam, lada, kaldu sapi, mie                       | Bola daging yang disajikan dengan kuah kaldu sapi dan mie.                                 | Bakso dipengaruhi oleh budaya Tionghoa yang dibawa ke Indonesia pada masa kolonial.        |
-| Gudeg              | Yogyakarta         | Nangka Muda   | Nangka muda, santan, daun salam, lengkuas, gula kelapa, bawang merah, telur rebus          | Sayur nangka muda yang dimasak dengan santan dan rempah-rempah, disajikan dengan nasi.      | Gudeg berasal dari Yogyakarta dan dikenal sebagai makanan kerajaan pada abad ke-18.        |
-| Rawon              | Jawa Timur         | Daging Sapi   | Daging sapi, keluak, bawang merah, bawang putih, jahe, serai                               | Sup daging sapi dengan kuah berwarna hitam, disajikan dengan nasi dan tauge.               | Rawon sudah dikenal sejak zaman Kerajaan Majapahit dan merupakan masakan khas Jawa Timur.  |
-| Mie Aceh           | Aceh               | Mie           | Mie kuning, daging sapi atau kambing, cabai, bawang putih, rempah-rempah, kecap manis       | Mie yang digoreng dengan bumbu-bumbu dan tambahan bahan seperti telur, ayam, atau udang.   | Mie Aceh dipengaruhi oleh budaya India dan Arab, yang masuk ke Aceh pada abad ke-17.       |
+| Nama Makanan       | Daerah Asal       | Gizi (Kalori, Lemak, Karbo, Protein)          | Deskripsi                                                                                | Sejarah                                                                                  | Fun Fact                                                                                     |
+|--------------------|-------------------|-----------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| Lumpia             | Jawa Tengah       | 65 kalori, 2.61g lemak, 7.12g karbo, 3.03g protein | Lumpia adalah makanan ringan berisi rebung, ayam, atau udang yang digulung dengan kulit tepung dan digoreng. | Lumpia berasal dari pengaruh Tionghoa di Semarang, dipopulerkan oleh pasangan Tionghoa-Jawa. | Nama "lumpia" berasal dari dialek Hokkian "lun pia," yang artinya "kue lunak".              |
+| Pempek             | Palembang         | 39 kalori, 1.04g lemak, 4.72g karbo, 2.52g protein | Pempek adalah makanan khas Palembang berbahan ikan dan sagu yang biasanya disajikan dengan kuah cuko asam pedas. | Diciptakan oleh pedagang Tionghoa pada abad ke-16, pempek menjadi makanan tradisional khas Palembang. | Setiap tanggal 7 Juli diperingati sebagai Hari Pempek Nasional di Indonesia.                  |
+| Papeda             | Papua             | 58 kalori, 0.01g lemak, 14.03g karbo, 0.04g protein | Papeda adalah bubur sagu bertekstur lengket yang biasanya dimakan dengan kuah ikan kuning khas Papua. | Makanan pokok bagi masyarakat Papua dan Maluku, yang memanfaatkan sagu sebagai sumber karbohidrat utama. | Papeda dimakan dengan teknik "digulung" menggunakan sumpit karena teksturnya yang lengket.    |
+| Bika Ambon         | Medan             | 185 kalori, 3.11g lemak, 37.34g karbo, 2.18g protein | Kue berongga dengan rasa manis dan harum dari santan dan daun pandan, bertekstur kenyal dan lembut. | Meskipun bernama Ambon, kue ini berasal dari Medan dan populer di Sumatra Utara.            | Proses pembuatan Bika Ambon bisa memakan waktu hingga 8 jam untuk fermentasi yang tepat.      |
+| Rendang            | Padang            | 195 kalori, 11.07g lemak, 4.49g karbo, 19.68g protein | Daging sapi dimasak lama dengan santan dan rempah-rempah hingga kering. Rasanya gurih, pedas, dan kaya rempah. | Rendang merupakan masakan khas Minangkabau yang awalnya disajikan dalam acara adat sebagai simbol kehormatan. | Rendang pernah dinobatkan sebagai makanan terenak di dunia oleh CNN.                          |
+| Es Pisang Ijo      | Makassar          | 301 kalori, 13.27g lemak, 47g karbo, 2.84g protein | Pisang yang dibalut adonan hijau dari tepung beras dan disajikan dengan saus santan manis dan es serut. | Minuman ini adalah camilan tradisional dari Makassar yang populer sebagai takjil berbuka puasa. | Sirup merah yang digunakan biasanya adalah sirup DHT, khas Makassar dengan rasa markisa.       |
+| Kerak Telor        | Jakarta           | 452 kalori, 15.81g lemak, 55.58g karbo, 20.11g protein | Telur bebek dicampur beras ketan dan kelapa parut, dimasak hingga garing di atas wajan. | Kerak telor adalah makanan khas Betawi yang biasanya ditemukan di acara-acara tradisional Jakarta. | Kerak telor hanya ditemukan di Jakarta dan sering disajikan dalam acara-acara besar Betawi.   |
+| Soto Banjar        | Kalimantan Selatan| 436 kalori, 29.18g lemak, 23.02g karbo, 20.27g protein | Soto ayam khas Banjar dengan kuah bening berempah dan tambahan perkedel kentang dan telur rebus. | Soto Banjar berasal dari Kalimantan Selatan dan sering disajikan dalam acara adat dan perayaan keluarga. | Kuah Soto Banjar unik karena menggunakan rempah-rempah seperti kayu manis dan kapulaga.       |
+| Sate Lilit         | Bali              | 103 kalori, 7.23g lemak, 1.43g karbo, 7.83g protein | Sate khas Bali dengan daging ikan atau ayam cincang yang dililitkan pada batang sereh dan dibakar. | Sate lilit adalah bagian dari tradisi kuliner Bali yang sering disajikan dalam upacara keagamaan. | Menggunakan batang sereh sebagai tusukan, yang memberi aroma khas saat dibakar.               |
+| Mie Aceh           | Aceh              | 238 kalori, 7.34g lemak, 36.81g karbo, 6.85g protein | Mi kuning dengan kuah kental penuh rempah, disajikan dengan daging sapi, kambing, atau seafood. | Mie Aceh mendapat pengaruh dari kuliner India dan Arab yang masuk melalui jalur perdagangan di masa lalu. | Mie Aceh biasanya disajikan dalam tiga varian: goreng, tumis (basah), dan kuah.               |
+| Tahu Sumedang      | Sumedang          | 282 kalori, 19.35g lemak, 10.41g karbo, 16.96g protein | Tahu goreng renyah khas Sumedang yang lembut di dalam, sering disajikan dengan cabai rawit. | Tahu Sumedang diciptakan oleh keturunan Tionghoa di Sumedang dan menjadi ikon kuliner daerah tersebut. | Salah satu merek tahu Sumedang paling legendaris adalah "Tahu Bungkeng" yang sudah ada sejak 1917. |
 
-Tesimoni
-Rendang : "Rendang adalah salah satu hidangan terenak yang pernah saya coba! Dagingnya sangat empuk dan bumbu rempahnya begitu meresap hingga ke dalam, membuat setiap suapan penuh dengan cita rasa yang kaya dan menggugah selera. Perpaduan rasa gurih, pedas, dan aroma khas rempah membuat rendang benar-benar istimewa. Teksturnya yang lembut berpadu sempurna dengan saus santan yang kental dan sedikit berminyak, memberikan sensasi yang sulit dilupakan. Ini adalah makanan yang cocok untuk dinikmati kapan saja, dan selalu membuat saya ingin tambah lagi. 
-Sate Ayam : "Sate ayamnya benar-benar lezat! Potongan ayamnya empuk dan beraroma, dipanggang dengan sempurna hingga sedikit renyah di luar. Saus kacangnya gurih, manis, dan pedas, memberikan perpaduan rasa yang luar biasa. Cocok dinikmati dengan lontong atau nasi hangat."
-Gado-gado : "Rasa gado-gado ini luar biasa segar dan nikmat! Sayurannya masih renyah, berpadu dengan bumbu kacang yang kental dan gurih. Rasanya seimbang antara manis, asin, dan sedikit pedas, membuatnya menjadi salad tradisional yang menggugah selera. Setiap suapnya bikin ketagihan!"
-Pempek : "Pempeknya kenyal dan memiliki rasa ikan yang pas, disajikan dengan kuah cuko yang asam, manis, dan pedas. Kuahnya memberikan sentuhan khas yang unik, sempurna untuk dinikmati dengan irisan timun dan mie kuning. Ini adalah sajian yang selalu bikin saya kangen Palembang!"
-Soto Ayam : "Soto ayamnya begitu segar dan lezat, dengan kuah kaldu yang kaya rempah. Potongan daging ayamnya lembut, berpadu dengan bihun, tauge, dan perasan jeruk nipis yang membuatnya semakin segar. Benar-benar comfort food yang selalu bikin hangat!"
-Nasi Goreng Kampung : "Nasi goreng kampungnya punya rasa otentik yang gurih dan sedikit pedas. Nasi yang digoreng dengan bumbu tradisional, dilengkapi dengan potongan telur dan ayam suwir, rasanya sangat memuaskan. Tambahan kerupuknya memberikan sensasi renyah yang pas. Ini nasi goreng yang selalu bikin ingin nambah lagi!"
-Bakso Malang "Baksonya benar-benar empuk dan juicy, dengan kuah kaldu yang gurih dan hangat. Bakso daging sapi ini memiliki cita rasa yang kaya, apalagi dengan tambahan mie, tahu, dan sambal. Sungguh pilihan yang sempurna untuk menghangatkan hari!"
-Gudeg : "Gudegnya manis dan legit, dengan rasa nangka yang empuk serta aroma khas yang sangat menggoda. Perpaduan gudeg dengan ayam, telur, dan sambal krecek memberikan rasa yang begitu kompleks dan lezat. Ini adalah makanan khas Jogja yang selalu bikin rindu!"
-Rawon : "Kuah rawonnya begitu kaya rasa dengan aroma khas kluwek yang unik. Daging sapinya empuk, dan kaldu hitamnya memberikan rasa gurih yang mendalam. Menikmati rawon dengan nasi putih dan sambal benar-benar memuaskan. Cita rasanya benar-benar menggugah selera!"
-Mie Aceh : "Mie Acehnya pedas dan kaya rempah, dengan tekstur mie yang kenyal dan sedikit tebal. Rasa kuahnya benar-benar lezat, dengan bumbu yang menyatu sempurna. Potongan daging atau seafoodnya menambah kenikmatan, apalagi jika dinikmati panas-panas. Benar-benar masakan Aceh yang penuh kejutan rasa!"
+1. Lumpia (Jawa Tengah)  
+   "Wah, lumpia Semarang ini enak banget! Kulitnya renyah, isiannya gurih, dan sangat cocok dinikmati hangat-hangat. Apalagi kalau dicocol saus sambalnya, makin mantap!"
 
-Link Gambar 
-Rendang : https://indonesiakaya.com/wp-content/uploads/2023/04/ren_Artboard_4.jpg
-Sate Ayam : https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/07/14053934/Mudah-Dibuat-di-Rumah-Ini-Resep-Sate-Ayam-Bumbu-Kacang-yang-Lezat-.jpg
-Gado-Gado : https://asset-a.grid.id/crop/0x0:0x0/x/photo/2019/08/29/1093597743.jpg
-Pempek : https://rakyatsulsel.fajar.co.id/wp-content/uploads/2024/02/pempek-palembang.jpg
-Soto Ayam : https://asset.kompas.com/crops/MBYmEcQu31rxhp5tvBBdaYwgdRs=/0x0:1000x667/750x500/data/photo/2024/01/16/65a5db1f6671b.jpg
-Nasi Goreng Kampung : https://asset.kompas.com/crops/XIoqE7PfvAM4uFqp6cZJErhH22U=/0x0:1000x667/750x500/data/photo/2020/11/22/5fba747cef43d.jpg
-Bakso Malang : https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/08/02034124/ini-resep-bakso-malang-lezat-yang-menggugah-selera-halodoc.jpg.webp
-Gudeg : https://cdn-1.timesmedia.co.id/images/2022/12/21/gudeg-2.jpg
-Rawon : https://ik.imagekit.io/tvlk/blog/2022/05/Resep-Rawon-Asli-Traveloka-Mart-1.jpg?tr=dpr-2,w-675
-Mie Aceh : https://img-global.cpcdn.com/recipes/9504cf67ccdb2eee/680x482cq70/mie-aceh-devina-hermawan-foto-resep-utama.jpg
+2. Pempek (Palembang)  
+   "Pempek dengan kuah cukonya memang luar biasa! Rasa asam, pedas, dan gurihnya bikin segar dan cocok banget buat camilan sore hari. Pempek kapal selam dengan isian telur benar-benar favorit!"
+
+3. Papeda (Papua)  
+   *"Papeda ini unik banget! Teksturnya lengket dan kenyal, tapi rasanya luar biasa kalau disantap dengan kuah ikan kuning. Makan papeda bikin pengalaman makan jadi beda dari biasanya."
+
+4. Bika Ambon (Medan)  
+   *"Kue Bika Ambon ini lembut, wangi, dan manisnya pas. Cocok banget buat teman ngopi atau teh di sore hari. Proses pembuatannya yang lama bikin teksturnya benar-benar beda dan khas!"
+
+5. Rendang (Padang)  
+   "Rendang ini dagingnya empuk dan penuh dengan bumbu rempah yang kaya. Rasanya gurih, pedas, dan enak banget! Cocok buat makan siang bareng nasi hangat, benar-benar makanan terenak di dunia!"
+
+6. Es Pisang Ijo (Makassar)  
+   "Es Pisang Ijo ini seger banget! Pisangnya lembut, adonan hijaunya kenyal, ditambah saus santan dan es serut bikin tenggorokan adem. Pas banget buat berbuka puasa atau cuaca panas!"
+
+7. Kerak Telor (Jakarta)  
+   "Kerak Telor ini enak dan gurih banget. Renyah di luar, lembut di dalam, dan aroma kelapa bakarnya khas. Makan ini berasa lagi di festival budaya Jakarta!"
+
+8. Soto Banjar (Kalimantan Selatan)  
+   "Soto Banjar dengan kuah beningnya yang penuh rempah bikin hangat di badan. Tambahan perkedel dan telur rebus bikin sotonya makin lezat. Cocok banget buat sarapan!"
+
+9. Sate Lilit (Bali)  
+   "Sate Lilit ini aromanya enak banget karena dibakar pakai batang sereh. Rasa daging ikannya gurih dan sedikit pedas, jadi pas banget buat makan siang atau teman makan nasi!"
+
+10. Mie Aceh (Aceh)  
+    "Mie Aceh ini cocok banget dimakan pas lagi hujan! Kuahnya yang kental penuh rempah bikin badan jadi hangat. Apalagi kalau pedasnya mantap, bikin lidah bersemangat!"
+
+11. Tahu Sumedang (Sumedang)
+    "Tahu Sumedang ini renyah di luar, lembut di dalam. Pas banget kalau dimakan bareng cabai rawit! Camilan ringan yang bikin ketagihan, apalagi kalau lagi hangat."
