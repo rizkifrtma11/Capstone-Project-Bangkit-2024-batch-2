@@ -1,5 +1,5 @@
 # RasaNusa
-![Logo RasaNusa](RasaNusa.png)\\
+![Logo RasaNusa](RasaNusa.png)\
 RasaNusa is software that we developed to introduce culinary delights in Indonesia and is also useful for people who want to know the nutritional content levels in these foods.
 
 | Bangkit ID      | Name                     | Learning Path       | University                        | Contact                                                                 |
