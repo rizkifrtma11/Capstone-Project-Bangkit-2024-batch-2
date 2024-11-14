@@ -1,15 +1,21 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 from flask import Flask, jsonify, request
+from google.cloud import storage
 import bcrypt
 import os
 
-# Inisialisasi Firebase Admin SDK
-cred = credentials.Certificate('rasanusa.json')  # Ganti dengan path ke file credential Anda
-firebase_admin.initialize_app(cred)
+# Inisialisasi Firebase Admin SDK dengan firebase_admin.json
+firebase_cred = credentials.Certificate('firebase.json')  # Ganti dengan path ke file firebase_admin.json Anda
+firebase_admin.initialize_app(firebase_cred)
 
 # Inisialisasi Firestore
 db = firestore.client()
+
+# Inisialisasi Google Cloud Storage Client dengan gcs_service_account.json
+gcs_cred_path = 'bucket.json'  # Ganti dengan path ke file gcs_service_account.json Anda
+storage_client = storage.Client.from_service_account_json(gcs_cred_path)
+bucket_name = 'nyobain_capstone'  # Ganti dengan nama bucket Anda
 
 app = Flask(__name__)
 
@@ -18,13 +24,10 @@ def get_data_from_firestore(document_name):
     """
     Fungsi untuk mengambil data dari Firestore berdasarkan nama dokumen dalam koleksi 'makanan'.
     """
-    if not document_name:
-        return {"error": "Harap berikan parameter 'document_name'"}
     doc_ref = db.collection('makanan').document(document_name)
     doc = doc_ref.get()
     if doc.exists:
-        data = doc.to_dict()
-        return data
+        return doc.to_dict()
     else:
         return {"error": "Dokumen tidak ditemukan"}
 
@@ -108,52 +111,26 @@ def login():
     else:
         return jsonify({"error": "Password salah"}), 401
 
-# Endpoint untuk mendapatkan username berdasarkan email
-@app.route('/get_username', methods=['GET'])
-def get_username():
-    """
-    Endpoint untuk mendapatkan username berdasarkan email.
-    """
-    email = request.args.get('email')
-    if not email:
-        return jsonify({"error": "Harap berikan parameter 'email'"}), 400
-    
-    # Cari user berdasarkan email
-    users_ref = db.collection('user')
-    query = users_ref.where('email', '==', email).get()
+# Fungsi untuk mengunggah gambar ke Google Cloud Storage
+def upload_to_bucket(file, bucket_name):
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(file.filename)
+    blob.upload_from_file(file)
+    # URL publik tanpa menggunakan make_public atau mengakses ACL
+    return f"https://storage.googleapis.com/{bucket_name}/{file.filename}"
 
-    if not query:
-        return jsonify({"error": "User tidak ditemukan"}), 404
-
-    # Ambil field 'username' dari user yang cocok
-    user_data = query[0].to_dict()
-    username = user_data.get('username')
-    return jsonify({"username": username})
-
-# Endpoint untuk mengizinkan akses kamera dan memproses data pemindaian
-@app.route('/allow_camera', methods=['POST'])
-def allow_camera():
-    try:
-        data = request.json
-        scan_data = data.get('scan_data')
-        if not scan_data:
-            return jsonify({"error": "Data scan tidak diberikan"}), 400
-        return jsonify({"message": "Data scan dari kamera diterima", "scan_data": scan_data}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-# Endpoint untuk mengizinkan akses galeri dan upload foto
+# Endpoint untuk mengizinkan akses galeri dan upload foto ke GCS
 @app.route('/allow_gallery', methods=['POST'])
 def allow_gallery():
     try:
         if 'image' not in request.files:
             return jsonify({"error": "Tidak ada file gambar yang diberikan"}), 400
         image = request.files['image']
-        upload_dir = 'uploads'
-        os.makedirs(upload_dir, exist_ok=True)
-        image_path = os.path.join(upload_dir, image.filename)
-        image.save(image_path)
-        return jsonify({"message": "Gambar berhasil diunggah", "file_path": image_path}), 200
+
+        # Upload gambar ke Google Cloud Storage
+        public_url = upload_to_bucket(image, bucket_name)
+
+        return jsonify({"message": "Gambar berhasil diunggah", "file_url": public_url}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
