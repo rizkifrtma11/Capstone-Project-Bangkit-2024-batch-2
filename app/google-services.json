@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "258173407570",
+    "project_id": "rasanusa-37889",
+    "storage_bucket": "rasanusa-37889.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258173407570:android:a98280d326977f8dee2a8b",
+        "android_client_info": {
+          "package_name": "com.dicoding.asclepius"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNx1Q0PDGPmRNapctGUochJBSv84zhyyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258173407570:android:48022a696d78ff67ee2a8b",
+        "android_client_info": {
+          "package_name": "com.example.rasanusa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNx1Q0PDGPmRNapctGUochJBSv84zhyyY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

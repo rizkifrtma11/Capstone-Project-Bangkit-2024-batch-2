@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="8dp">
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_food"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            android:scaleType="centerCrop"
+            android:layout_margin="8dp" />
+
+        <!-- Opacitynya jangan lupa -->
+<!--        <TextView-->
+<!--            android:id="@+id/category"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="4dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:background="@color/cream"-->
+<!--            android:text="@string/category"-->
+<!--            android:textSize="12sp"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_gravity="top|start" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_gravity="bottom">
+
+            <TextView
+                android:id="@+id/txt_food_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/food_name"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txt_asal_daerah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/asal_daerah"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

@@ -3,8 +3,149 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_scan">Scan</string>
+
+    <!-- general -->
+    <string name="food_name">Food Name</string>
+    <string name="asal_daerah">Asal Daerah</string>
+    <string name="food_prompt">Food Short Description</string>
+    <string name="unknown">-</string>
+
+    <!-- Register & Login -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="hint_email">Your email</string>
+    <string name="username">Username</string>
+    <string name="uid">username id</string>
+    <string name="hint_username">Your username</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Your password</string>
+    <string name="welcome">Welcome to RasaNusa!</string>
+    <string name="to_register">Register here.</string>
+    <string name="to_login">Login here.</string>
+    <string name="dont_have_account">Don\'t have account?</string>
+    <string name="haveAccount">Already have an account?</string>
+
+    <!-- main -->
+    <string name="search">Search here...</string>
+    <string name="filter">filter</string>
+
+    <!-- home -->
+    <string name="explore">Makanan Indonesia apa yang ingin kamu ketahui hari ini?</string>
+    <string name="jelajahi">Jelajahi Makanan Indonesia</string>
+    <string name="welcome_title">Halo,</string>
+    <string name="welcome_name">username</string>
+    <string name="selamat_datang">Selamat datang di RasaNusa!</string>
+
+
+
+    <!-- detail -->
+    <string name="food_description">Food Description</string>
+    <string name="bahan_utama">Bahan Utama</string>
+    <string name="food_history">Sejarah Singkat</string>
+    <string name="food_nutrition">Keterangan Gizi</string>
+    <string name="kandungan">Kandungan</string>
+    <string name="nutrisi">Nutrisi</string>
+    <string name="calories">Kalori</string>
+    <string name="carbo">Karbohidrat</string>
+    <string name="jml_carbo">0g</string>
+    <string name="jml_cal">0g</string>
+    <string name="jml_fat">0g</string>
+    <string name="jml_protein">0g</string>
+    <string name="protein">Protein</string>
+    <string name="fat">Lemak</string>
+    <string name="serving_size">Ukuran per porsi</string>
+    <string name="default_size">0g</string>
+    <string name="funfact">Funfact</string>
+    <string name="category">Kategori</string>
+
+
+    <!-- camera -->
+    <string name="capture_image">Capture Image</string>
+    <string name="close">close</string>
+    <string name="photo_picker">Photo Picker</string>
+
+    <!-- profile -->
+    <string name="profile">Profile</string>
+    <string name="setting_button">setting button</string>
+    <string name="rincian">Rincian</string>
+
+
+    <!--    <string name="contoh_deskripsi">"Rendang adalah salah satu hidangan terenak yang pernah saya coba! Dagingnya sangat empuk dan bumbu rempahnya begitu meresap hingga ke dalam, membuat setiap suapan penuh dengan cita rasa yang kaya dan menggugah selera. Perpaduan rasa gurih, pedas, dan aroma khas rempah membuat rendang benar-benar istimewa. Teksturnya yang lembut berpadu sempurna dengan saus santan yang kental dan sedikit berminyak, memberikan sensasi yang sulit dilupakan. Ini adalah makanan yang cocok untuk dinikmati kapan saja, dan selalu membuat saya ingin tambah lagi.</string>-->
+
+    <!--string-array soon delete-->
+    <string-array name="data_name">
+        <item>Nasi Goreng</item>
+        <item>Kerak Telor</item>
+        <item>Lumpia</item>
+        <item>Papeda</item>
+        <item>Bika Ambon</item>
+        <item>Rendang</item>
+        <item>Es Pisang Ijo</item>
+        <item>Soto Banjar</item>
+        <item>Sate Lilit</item>
+        <item>Mie Aceh</item>
+        <item>Tahu Sumedang</item>
+    </string-array>
+
+    <string-array name="data_asal_daerah">
+        <item>Indonesia</item>
+        <item>Jakarta</item>
+        <item>Semarang</item>
+        <item>Papua</item>
+        <item>Medan</item>
+        <item>Padang</item>
+        <item>Makassar</item>
+        <item>Kalimantan Selatan</item>
+        <item>Bali</item>
+        <item>Aceh</item>
+        <item>Sumedang</item>
+    </string-array>
+
+    <string-array name="deskripsi_makanan">
+        <item>ya nasi goreng pada umumnya lah</item>
+        <item>Telur dan ketan yang dimasak dalam wajan kecil dan disajikan dengan serundeng</item>
+        <item>Lumpia yang diisi dengan rebung dan daging, disajikan dengan saus manis	</item>
+        <item>Makanan pokok berupa bubur sagu yang disajikan dengan ikan kuah kuningMakanan pokok berupa bubur sagu yang disajikan dengan ikan kuah kuning</item>
+        <item>Kue berbentuk serabi dengan tekstur kenyal dan berongga</item>
+        <item>Daging sapi dimasak dengan santan dan rempah-rempah</item>
+        <item>Pisang yang dibalut dengan adonan tepung beras berwarna hijau, disajikan dengan sirup merah</item>
+        <item>Soto dengan kuah bening berisi daging ayam dan perkedel</item>
+        <item>Sate dari ikan cincang yang dibungkus dengan batang serai	</item>
+        <item>Mie kuning tebal yang dimasak dengan bumbu kari dan daging</item>
+        <item>Tahu goreng khas Sumedang yang garing di luar, lembut di dalam</item>
+    </string-array>
+
+
+    <integer-array name="food_photo">
+        <item>@drawable/img_nasgor</item>
+        <item>@drawable/img_kerak_telor3</item>
+        <item>@drawable/img_lumpia_7</item>
+        <item>@drawable/img_papeda</item>
+        <item>@drawable/bika_ambon</item>
+        <item>@drawable/img_rendang_1</item>
+        <item>@drawable/img_es_pisang_ijo</item>
+        <item>@drawable/img_soto_banjar3</item>
+        <item>@drawable/img_satelilit_2</item>
+        <item>@drawable/img_mie_aceh</item>
+        <item>@drawable/img_tahu_sumedang</item>
+    </integer-array>
+
+    <!-- Lumpia (Jateng)
+    Pempek (Palembang)
+    Papeda (Papua)
+    Bika Ambon (Medan)
+    Rendang (Padang)
+    Es Pisang Ijo (Makassar)
+    Keraktelor (Jakarta)
+    Soto Banjar (Kalimantan)
+    Sate Lilit (Bali)
+    Mie Aceh (Aceh)
+    Tahu Sumedang (Sumedang ) -->
+
 
 </resources>
