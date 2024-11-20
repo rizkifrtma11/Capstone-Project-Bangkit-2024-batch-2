@@ -1,138 +1,154 @@
+import os
+from flask import Flask, request, jsonify
+from tensorflow.keras.models import load_model
+import numpy as np
+from PIL import Image
+import io
 import firebase_admin
 from firebase_admin import credentials, firestore
-from flask import Flask, jsonify, request
-from google.cloud import storage
-import bcrypt
-import os
+from google.cloud import storage  # Import Google Cloud Storage
 
-# Inisialisasi Firebase Admin SDK dengan firebase_admin.json
-firebase_cred = credentials.Certificate('firebase.json')  # Ganti dengan path ke file firebase_admin.json Anda
-firebase_admin.initialize_app(firebase_cred)
-
-# Inisialisasi Firestore
-db = firestore.client()
-
-# Inisialisasi Google Cloud Storage Client dengan gcs_service_account.json
-gcs_cred_path = 'bucket.json'  # Ganti dengan path ke file gcs_service_account.json Anda
-storage_client = storage.Client.from_service_account_json(gcs_cred_path)
-bucket_name = 'nyobain_capstone'  # Ganti dengan nama bucket Anda
-
+# Inisialisasi Flask
 app = Flask(__name__)
 
-# Fungsi untuk mengambil data dari Firestore berdasarkan nama dokumen di koleksi 'makanan'
-def get_data_from_firestore(document_name):
+# Inisialisasi Firebase
+cred = credentials.Certificate('firebase.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
+# Konfigurasi Google Cloud Storage Bucket
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "bucket.json"
+BUCKET_NAME = "rasanusa"
+
+# Konfigurasi model dan path
+IMAGE_SIZE = (224, 224)  # Ukuran gambar untuk model
+classification_model = load_model('predick.keras')
+
+# Simpan hasil prediksi global
+predicted_result = {}
+
+# Default route
+@app.route('/', methods=['GET'])
+def index():
     """
-    Fungsi untuk mengambil data dari Firestore berdasarkan nama dokumen dalam koleksi 'makanan'.
+    Root endpoint memberikan deskripsi layanan.
     """
-    doc_ref = db.collection('makanan').document(document_name)
+    response = {
+        "message": "RasaNusa api is running..."
+    }
+    return jsonify(response), 200
+
+# Fungsi untuk memproses gambar yang diunggah
+def load_and_preprocess_image(uploaded_image):
+    img = Image.open(io.BytesIO(uploaded_image.read()))
+    img = img.convert('RGB')
+    img = img.resize(IMAGE_SIZE)
+    img = np.array(img)
+    img = img.astype('float32') / 255.0
+    img = np.expand_dims(img, axis=0)
+    return img
+
+# Fungsi untuk prediksi gambar
+def predict_image(uploaded_image):
+    img = load_and_preprocess_image(uploaded_image)
+    predictions = classification_model.predict(img)
+    predicted_class_index = np.argmax(predictions, axis=1)
+    class_labels = ['kerak_telor', 'mie_aceh', 'papeda', 'pempek', 'soto_banjar', 'tahu_sumedang', 'bika_ambon', 'rendang', 'sate_lilit', 'es_pisang_ijo', 'lumpia']
+    predicted_class_name = class_labels[predicted_class_index[0]]
+    return predicted_class_name
+
+# Fungsi untuk mengambil data dari Firestore
+def get_document_data(predicted_class):
+    doc_ref = db.collection('makanan').document(predicted_class)
     doc = doc_ref.get()
     if doc.exists:
         return doc.to_dict()
     else:
-        return {"error": "Dokumen tidak ditemukan"}
+        return {"error": f"No document found for class: {predicted_class}"}
 
-# Endpoint untuk mengambil data dari Firestore berdasarkan nama dokumen di koleksi 'makanan'
-@app.route('/get_document', methods=['GET'])
-def get_document():
-    document_name = request.args.get('document_name')
-    if not document_name:
-        return jsonify({"error": "Harap berikan parameter 'document_name'"}), 400
-    
-    data = get_data_from_firestore(document_name)
-    return jsonify(data)
-
-# Endpoint untuk mendaftarkan user baru
-@app.route('/register', methods=['POST'])
-def register():
+# Fungsi untuk mengunggah file ke Google Cloud Storage
+def upload_to_bucket(bucket_name, file_content, destination_blob_name):
     """
-    Endpoint untuk mendaftarkan user baru.
-    Data harus dikirim dalam format JSON dengan kunci 'email', 'name', 'username', dan 'password'.
+    Mengunggah file ke Google Cloud Storage bucket.
     """
-    data = request.json
-    email = data.get('email')
-    name = data.get('name')
-    username = data.get('username')
-    password = data.get('password')
-
-    if not email or not name or not username or not password:
-        return jsonify({"error": "Harap berikan email, name, username, dan password"}), 400
-    
-    # Periksa apakah user dengan email yang sama sudah terdaftar
-    users_ref = db.collection('user')
-    query = users_ref.where('email', '==', email).get()
-
-    if query:
-        return jsonify({"error": "User dengan email ini sudah terdaftar"}), 400
-
-    # Hash password sebelum disimpan
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-
-    # Tambahkan data ke Firestore
-    new_user = {
-        "email": email,
-        "name": name,
-        "username": username,
-        "password": hashed_password
-    }
-    db.collection('user').document().set(new_user)
-    return jsonify({"message": "Registrasi berhasil"}), 201
-
-# Endpoint untuk login user
-@app.route('/login', methods=['GET'])
-def login():
-    """
-    Endpoint untuk login user.
-    Data harus dikirimkan melalui parameter URL (?email=...) dan ?password=...
-    """
-    email = request.args.get('email')
-    password = request.args.get('password')
-
-    if not email or not password:
-        return jsonify({"error": "Harap berikan parameter 'email' dan 'password'"}), 400
-    
-    # Cari user berdasarkan email
-    users_ref = db.collection('user')
-    query = users_ref.where('email', '==', email).get()
-
-    if not query:
-        return jsonify({"error": "User tidak ditemukan"}), 404
-
-    # Ambil data user pertama yang cocok
-    user_data = query[0].to_dict()
-    stored_password = user_data.get('password')
-
-    # Verifikasi password
-    if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
-        return jsonify({"message": "Login berhasil", "user_data": {
-            "email": user_data["email"],
-            "name": user_data["name"],
-            "username": user_data["username"]
-        }})
-    else:
-        return jsonify({"error": "Password salah"}), 401
-
-# Fungsi untuk mengunggah gambar ke Google Cloud Storage
-def upload_to_bucket(file, bucket_name):
+    storage_client = storage.Client()  # Client menggunakan kredensial JSON
     bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(file.filename)
-    blob.upload_from_file(file)
-    # URL publik tanpa menggunakan make_public atau mengakses ACL
-    return f"https://storage.googleapis.com/{bucket_name}/{file.filename}"
+    blob = bucket.blob(destination_blob_name)
+    blob.upload_from_string(file_content, content_type='image/jpeg')
+    return f"gs://{bucket_name}/{destination_blob_name}"
 
-# Endpoint untuk mengizinkan akses galeri dan upload foto ke GCS
-@app.route('/allow_gallery', methods=['POST'])
-def allow_gallery():
-    try:
-        if 'image' not in request.files:
-            return jsonify({"error": "Tidak ada file gambar yang diberikan"}), 400
-        image = request.files['image']
+@app.route('/predict', methods=['POST'])
+def predict():
+    """
+    Endpoint untuk prediksi gambar dan menyimpan hasil ke bucket.
+    """
+    global predicted_result
+    if 'image' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    uploaded_image = request.files['image']
+    if uploaded_image.filename == '':
+        return jsonify({"error": "No selected file"}), 400
 
-        # Upload gambar ke Google Cloud Storage
-        public_url = upload_to_bucket(image, bucket_name)
+    # Prediksi kelas
+    predicted_class = predict_image(uploaded_image)
 
-        return jsonify({"message": "Gambar berhasil diunggah", "file_url": public_url}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    # Simpan gambar ke bucket
+    uploaded_image.seek(0)  # Reset stream ke awal sebelum membaca konten
+    image_content = uploaded_image.read()  # Baca konten file gambar
+    destination_blob_name = f"predictions/{predicted_class}/{uploaded_image.filename}"  # Struktur path di bucket
+    bucket_url = upload_to_bucket(BUCKET_NAME, image_content, destination_blob_name)
+
+    # Ambil data dari Firestore
+    document_data = get_document_data(predicted_class)
+
+    # Gabungkan hasil prediksi, data Firestore, dan URL bucket
+    predicted_result = {
+        "predicted_class": predicted_class,
+        "document_data": document_data,
+        "image_url": bucket_url
+    }
+    return jsonify(predicted_result), 201
+
+@app.route('/result/<field>', methods=['GET'])
+def get_field(field):
+    """
+    Endpoint untuk mengambil data berdasarkan field tertentu dari hasil prediksi terakhir.
+    """
+    if field in predicted_result:
+        return jsonify({field: predicted_result[field]}), 200
+    elif field in predicted_result.get('document_data', {}):
+        return jsonify({field: predicted_result['document_data'][field]}), 200
+    else:
+        return jsonify({"error": f"Field '{field}' not found"}), 404
+
+@app.route('/get_document/<doc_id>/<field>', methods=['GET'])
+def get_document(doc_id, field):
+    """
+    Endpoint untuk mengambil data dari Firestore berdasarkan dokumen dan field tertentu.
+    """
+    doc_ref = db.collection('makanan').document(doc_id)
+    doc = doc_ref.get()
+    if not doc.exists:
+        return jsonify({"error": f"Document with id '{doc_id}' not found"}), 404
+
+    document_data = doc.to_dict()
+    if field in document_data:
+        return jsonify({field: document_data[field]}), 200
+    else:
+        return jsonify({"error": f"Field '{field}' not found in document '{doc_id}'"}), 404
+
+@app.route('/get_document/<doc_id>', methods=['GET'])
+def get_full_document(doc_id):
+    """
+    Endpoint untuk mengambil semua data dari dokumen Firestore berdasarkan ID.
+    """
+    doc_ref = db.collection('makanan').document(doc_id)
+    doc = doc_ref.get()
+    if not doc.exists:
+        return jsonify({"error": f"Document with id '{doc_id}' not found"}), 404
+
+    return jsonify(doc.to_dict()), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
