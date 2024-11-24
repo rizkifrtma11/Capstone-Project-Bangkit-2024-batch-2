@@ -2,7 +2,7 @@ absl-py==2.1.0
 annotated-types==0.7.0
 astunparse==1.6.3
 bcrypt==4.2.0
-blinker==1.8.2
+blinker==1.9.0
 CacheControl==0.14.1
 cachetools==5.5.0
 certifi==2024.8.30
@@ -12,7 +12,7 @@ click==8.1.7
 colorama==0.4.6
 cryptography==43.0.3
 firebase-admin==6.6.0
-Flask==3.0.3
+Flask==3.1.0
 Flask-Cors==5.0.0
 Flask-MySQLdb==2.0.0
 flatbuffers==24.3.25
