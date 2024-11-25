@@ -4,6 +4,8 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_profile">Profile</string>
+    <string name="title_back">Back</string>
+    <string name="title_next">Next</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_scan">Scan</string>
@@ -42,7 +44,6 @@
     <string name="selamat_datang">Selamat datang di RasaNusa!</string>
 
 
-
     <!-- detail -->
     <string name="food_description">Food Description</string>
     <string name="bahan_utama">Bahan Utama</string>
@@ -73,6 +74,7 @@
     <string name="profile">Profile</string>
     <string name="setting_button">setting button</string>
     <string name="rincian">Rincian</string>
+    <string name="go_to_camera">Go to camera</string>
 
 
     <!--    <string name="contoh_deskripsi">"Rendang adalah salah satu hidangan terenak yang pernah saya coba! Dagingnya sangat empuk dan bumbu rempahnya begitu meresap hingga ke dalam, membuat setiap suapan penuh dengan cita rasa yang kaya dan menggugah selera. Perpaduan rasa gurih, pedas, dan aroma khas rempah membuat rendang benar-benar istimewa. Teksturnya yang lembut berpadu sempurna dengan saus santan yang kental dan sedikit berminyak, memberikan sensasi yang sulit dilupakan. Ini adalah makanan yang cocok untuk dinikmati kapan saja, dan selalu membuat saya ingin tambah lagi.</string>-->
@@ -134,6 +136,10 @@
         <item>@drawable/img_mie_aceh</item>
         <item>@drawable/img_tahu_sumedang</item>
     </integer-array>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="input_username_title">Isi username dulu, ya!</string>
 
     <!-- Lumpia (Jateng)
     Pempek (Palembang)

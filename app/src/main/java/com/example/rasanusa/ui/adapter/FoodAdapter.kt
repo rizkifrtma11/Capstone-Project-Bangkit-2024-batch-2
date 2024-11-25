@@ -1,4 +1,4 @@
-package com.example.rasanusa
+package com.example.rasanusa.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.rasanusa.Food
+import com.example.rasanusa.R
 
 class FoodAdapter(private val listFood: ArrayList<Food>): RecyclerView.Adapter<FoodAdapter.ListViewHolder>() {
 

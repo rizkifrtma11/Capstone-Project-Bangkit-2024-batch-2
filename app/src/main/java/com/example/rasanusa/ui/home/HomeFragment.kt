@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rasanusa.Food
-import com.example.rasanusa.FoodAdapter
+import com.example.rasanusa.ui.adapter.FoodAdapter
 import com.example.rasanusa.R
 import com.example.rasanusa.databinding.FragmentHomeBinding
 

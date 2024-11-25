@@ -41,8 +41,6 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.firebase.auth)
     val camerax_version = "1.2.0-alpha04"
 
     implementation(libs.androidx.core.ktx)
@@ -60,14 +58,14 @@ dependencies {
 
     //camera
     implementation(libs.androidx.camera.core)
-
     implementation ("androidx.camera:camera-core:${camerax_version}")
     implementation ("androidx.camera:camera-camera2:${camerax_version}")
     implementation ("androidx.camera:camera-lifecycle:${camerax_version}")
     implementation ("androidx.camera:camera-video:${camerax_version}")
-
     implementation ("androidx.camera:camera-view:${camerax_version}")
     implementation ("androidx.camera:camera-extensions:${camerax_version}")
 
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    implementation(libs.firebase.auth)
 }
