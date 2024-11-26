@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "optimal-brace-442206-s9",
+  "private_key_id": "7869eaa804f609f95615a2c1a3e2a77cf85d9635",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDFzUQNKM3zjMjC\nE1mTRjyqQ+ayXn3TeCNXpGB0iTpwIIjIkEVtikBwUYcv8l16vAJfRkNV/mNyrlnl\ne/GchVUfVJ7yUqN/LqzFmIEMhdF+xZM4LNtqGX7z8ZgHlL90OK4bVmRxsBcd06nn\niFmP0GY3MCcROzHCW8DtHyFAknhyKKriG/GjifdgqSz516Jx82XZHUvLgbQQHU5Y\nWliBV/33iO2tXzmckrF+UJ5FstF1IbHCvCLL/1zko6dzeWpNtpCXefM5gvW2sUO5\nfgP+auzB0UBwrCm9m1kNUjYRYe5vfNza+BhlPvkcHQjBUfvqcQgWCF6RowmiIGFH\nd57WpN3RAgMBAAECggEAPSOaUjr3lb1BXIOgn14JaFN+nkmIuPGccv2S9tJn5rqX\nrO6zFw2xp0X79D0E2ef9D7fnHlB4Kr1refxajRfFXN7KFnqmoKwrqRPfZ6CBRZ8K\nR0XOODhTPlHBvS4kE2dloXuNpnpYWtbO4IsLq+EthwdyO+hBFCNKOcDyhUQAyL/v\nw2kPZ/LNtcPCNDcsHEiQmgV0gTtcN10EAIJU1ctR1StNq7yzipmgw70UYUAkY/zK\nsSbTXo66v0E63L37UQgPEw0wPY+nodRv3SuZKbh8vteGac24EDgeutK6IT6S3t3k\nm3i+g8/5gtjMCD5LFg/gbeGqV/R9yhrJRkt38QTtNQKBgQDxnf+eA4LQQ63nmXc3\nxst4Mku6IV+0QhB1UO9zM/kaOEWJHeNqHVM1HQNRZii5CD2PyeWaJOjMX6nIW7Pp\nHSwU0rkF+yNImSDkdShAfD6EAHdf+AXPMaZC6fP4sBWbJC2ljD5SC/J4px8wrqFP\ni/IpYLg3rXsKdU61cUwGeQABkwKBgQDRk5DFmoPqYeA22y8jdmkjy98Sa6Q8m5+K\nXao+YhTtKylSzduwRAapnjrV0qE9SaFCL52RzCcqn2OSJ8xHFOxMFeI8W7T6RktJ\nRRMljAkEnFhBiV4hpynwBhs14uaKZrX0LAS0Dh/JLRErIHlA1Mv0AXQXJkp5s6ev\nLz5O+RnRiwKBgFDhJNoOLtHsdeBbHO9M2nuHypWp6lF68+txhlY4BaDjSVOW77Nr\n0Zir95pd6i/WNFVXrkYlKNCRDVKGb/kOzNzDlTANW0hIChyvoyPC82JYjZ1QdxFe\ne1tW2VZcCz99otIR2iK44RfGSciQDGuGWy/CsqfgqJldn1VZcauRAZGFAoGBAIzI\nC+Axw5uW0/8FjczMpiQdt2OwW0s7XxibgtkVGemXrNKq5oCpsbAPUoaATz/UTjcf\ntUFTWpwPJdvwUBEPxQv3R1o0YIYe4kP92rbGMuid/ctIc6s3l7xc3bp9CVC/Xkr/\npsktE70YQQgvcERUrgzjTRCf8DeAr4vGuJxkSSuxAoGAKFjv634n4r4mdOoUPPWO\nJwM0AWHCHF9OIltWO4YbOMKlKdtwIwer3E/Aj1S8wS/YcQfNOHJyZg5B6U/Ybcz+\nV03KoE01/jCnUTmYjIREWQqPV+QrxJHkkqGkyuaqbo1Owp2rK26knQpdEqRqV8Vg\n0HQf1bNS5vehpZ3YDyhxgQY=\n-----END PRIVATE KEY-----\n",
+  "client_email": "bucket-rasanusa@optimal-brace-442206-s9.iam.gserviceaccount.com",
+  "client_id": "104681104314819132516",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bucket-rasanusa%40optimal-brace-442206-s9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
