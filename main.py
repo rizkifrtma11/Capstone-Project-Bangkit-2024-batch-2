@@ -14,19 +14,19 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Inisialisasi Firebase
-cred = credentials.Certificate('firebase.json')
+cred = credentials.Certificate('firebase.json')  # Pastikan file firebase.json ada di direktori yang sama
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # Konfigurasi Google Cloud Storage Bucket
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "bucket.json"
-BUCKET_NAME = "rasanusa"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "bucket.json"  # Pastikan file bucket.json ada di direktori yang sama
+BUCKET_NAME = "rasanusa"  # Ganti dengan nama bucket kamu
 
 # Konfigurasi model dan path
 IMAGE_SIZE = (224, 224)  # Ukuran gambar untuk model
-MODEL_URL = "https://storage.googleapis.com/rasanusa/models/classification_model.h5"
-H5_MODEL_PATH = "classification_model.h5"
-TFLITE_MODEL_PATH = "classification_model.tflite"
+MODEL_URL = "https://storage.googleapis.com/rasanusa/models/classification_model.h5"  # URL model di Google Cloud Storage
+H5_MODEL_PATH = "classification_model.h5"  # Path untuk menyimpan model .h5
+TFLITE_MODEL_PATH = "classification_model.tflite"  # Path untuk menyimpan model .tflite
 
 # Simpan hasil prediksi global
 predicted_result = {}
@@ -60,14 +60,6 @@ def convert_to_tflite(h5_model_path, tflite_model_path):
     else:
         print(f"TFLite model already exists at {tflite_model_path}.")
 
-# Muat dan konversi model jika diperlukan
-download_model(MODEL_URL, H5_MODEL_PATH)
-convert_to_tflite(H5_MODEL_PATH, TFLITE_MODEL_PATH)
-
-# Muat model TFLite
-interpreter = tf.lite.Interpreter(model_path=TFLITE_MODEL_PATH)
-interpreter.allocate_tensors()
-
 # Fungsi untuk memproses gambar yang diunggah
 def load_and_preprocess_image(uploaded_image):
     img = Image.open(io.BytesIO(uploaded_image.read()))
@@ -78,21 +70,16 @@ def load_and_preprocess_image(uploaded_image):
     img = np.expand_dims(img, axis=0)
     return img
 
-# Fungsi untuk prediksi gambar menggunakan model TFLite
+# Fungsi untuk prediksi gambar menggunakan model .h5
 def predict_image(uploaded_image):
     img = load_and_preprocess_image(uploaded_image)
-    input_index = interpreter.get_input_details()[0]['index']
-    output_index = interpreter.get_output_details()[0]['index']
-    
-    interpreter.set_tensor(input_index, img)
-    interpreter.invoke()
 
-    predictions = interpreter.get_tensor(output_index)
+    predictions = model.predict(img)  # Gunakan model.predict untuk prediksi
     predicted_class_index = np.argmax(predictions, axis=1)
-    
+
     class_labels = ['kerak_telor', 'mie_aceh', 'papeda', 'pempek', 'soto_banjar', 'tahu_sumedang', 'bika_ambon', 'rendang', 'sate_lilit', 'es_pisang_ijo', 'lumpia']
     predicted_class_name = class_labels[predicted_class_index[0]]
-    
+
     return predicted_class_name
 
 # Fungsi untuk mengambil data dari Firestore
@@ -142,7 +129,7 @@ def register():
             email=email,
             password=password
         )
-        
+
         # Simpan data pengguna (username) ke Firestore
         user_ref = db.collection('users').document(user.uid)
         user_ref.set({
@@ -150,7 +137,7 @@ def register():
             'email': email,
             'created_at': firestore.SERVER_TIMESTAMP
         })
-        
+
         return jsonify({
             "message": "User registered successfully",
             "uid": user.uid,
@@ -189,13 +176,13 @@ def predict():
         'image_url': bucket_url,
         'timestamp': firestore.SERVER_TIMESTAMP  # Menyimpan waktu prediksi
     })
-    
+
     predicted_result = {
         "predicted_class": predicted_class,
         "document_data": document_data,
         "image_url": bucket_url
     }
-    
+
     return jsonify(predicted_result), 201
 
 @app.route('/history', methods=['GET'])
@@ -208,7 +195,7 @@ def get_history():
         history = []
         for doc in docs:
             history.append(doc.to_dict())  # Menambahkan data dari setiap dokumen ke dalam list
-        
+
         return jsonify(history), 200
 
     except Exception as e:
@@ -244,6 +231,28 @@ def get_full_document(doc_id):
         return jsonify(doc.to_dict()), 200
     else:
         return jsonify({"error": "Document not found"}), 404
+
+# --- Endpoint baru untuk mengunduh model ---
+@app.route('/downloadModel', methods=['GET'])
+def download_model_endpoint():
+    try:
+        download_model(MODEL_URL, H5_MODEL_PATH)
+        return jsonify({"message": f"Model downloaded to {H5_MODEL_PATH}"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# --- Endpoint baru untuk mengonversi model ---
+@app.route('/convertModel', methods=['GET'])
+def convert_model_endpoint():
+    try:
+        convert_to_tflite(H5_MODEL_PATH, TFLITE_MODEL_PATH)
+        return jsonify({"message": f"Model converted to {TFLITE_MODEL_PATH}"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# --- Muat model .h5 setelah server berjalan --- 
+download_model(MODEL_URL, H5_MODEL_PATH)  # Unduh model saat aplikasi dimulai
+model = tf.keras.models.load_model(H5_MODEL_PATH)
 
 # Jalankan Flask App
 if __name__ == '__main__':
