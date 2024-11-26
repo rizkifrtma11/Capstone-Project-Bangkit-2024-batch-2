@@ -2,7 +2,7 @@
 
 ![Logo RasaNusa](RasaNusa.png)
 
-RasaNusa is a software that we developed to introduce culinary delights in Indonesia and is also useful for people who want to know the nutritional content levels in these foods.
+RasaNusa is an application that we developed to introduce culinary delights in Indonesia and is also useful for people who want to know the nutritional content levels in these foods.
 
 | Bangkit ID       | Name                     | Learning Path      | University                        | Contact                                                                                       |
 |-----------------|--------------------------|---------------------|-----------------------------------|------------------------------------------------------------------------------------------------|
