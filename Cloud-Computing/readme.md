@@ -10,7 +10,8 @@
 7. [Dokumen Makanan Lengkap](#6-dokumen-makanan-lengkap)
 
 # **URL**
-<ul>http://servername</ul>
+<ul>RasaNusa API</ul>
+<ul>https://rasanusa-api-555896629878.asia-southeast2.run.app</ul>
 
 ---
 
