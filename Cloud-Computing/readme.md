@@ -12,7 +12,7 @@
 
 ## **URL**
 * RasaNusa API Base URL
-* `[https://rasanusa-api-555896629878.asia-southeast2.run.app](https://rasanusa-api-555896629878.asia-southeast2.run.app)`
+* `https://rasanusa-api-555896629878.asia-southeast2.run.app`
 
 ---
 
