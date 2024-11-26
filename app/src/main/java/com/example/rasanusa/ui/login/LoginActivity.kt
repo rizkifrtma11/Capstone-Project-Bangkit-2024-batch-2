@@ -10,7 +10,6 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.MainActivity
 import com.example.rasanusa.R
@@ -20,7 +19,6 @@ import com.example.rasanusa.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
-
     lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var passwordEditText: EditPasswordCustom
@@ -31,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        passwordEditText = findViewById(R.id.et_login_password)
+        passwordEditText = binding.etLoginPassword
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
@@ -46,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        binding.progressBar.visibility = View.VISIBLE
         checkLogin()
         setupView()
         setupLogin()
@@ -65,18 +62,15 @@ class LoginActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
 
-        binding.btnLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.txtToRegister.setOnClickListener {
+            showLoading(true)
             val intentToRegister = Intent(this, RegisterActivity::class.java)
             startActivity(intentToRegister)
         }
     }
 
-    fun setupLogin() {
+    private fun setupLogin() {
+        showLoading(false)
         binding.btnLogin.setOnClickListener {
             val email = binding.etLoginEmail.text.toString()
             val password = binding.etLoginPassword.text.toString()
@@ -84,10 +78,12 @@ class LoginActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        showLoading(true)
                         val intent = Intent(this, MainActivity::class.java)
                         Toast.makeText(this, "Berhasil masuk.", Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     } else {
+                        showLoading(false)
                         Toast.makeText(
                             this,
                             "Akun belum terdaftar. Daftar sekarang!",
@@ -116,6 +112,10 @@ class LoginActivity : AppCompatActivity() {
     private fun setMyButtonEnable() {
         val result = passwordEditText.text
         binding.btnLogin.isEnabled = (result != null) && result.toString().isNotEmpty()
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
 

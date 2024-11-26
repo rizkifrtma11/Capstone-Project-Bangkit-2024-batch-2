@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.RasaNusa" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="android:windowBackground">@color/dark_cream</item>
+        <item name="android:windowBackground">@color/white</item>
         <item name="colorPrimary">@color/light_brown</item>
         <item name="colorPrimaryVariant">@color/dark_brown</item>
         <item name="colorOnPrimary">@color/yellow</item>
@@ -14,6 +14,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!--transition and animation -->
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/slide_bottom</item>
+        <item name="android:windowExitTransition">@android:transition/slide_top</item>
     </style>
 
     <style name="ThemeOverlay.RasaNusa.FullscreenContainer" parent="">

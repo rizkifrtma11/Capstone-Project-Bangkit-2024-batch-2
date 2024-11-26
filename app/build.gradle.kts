@@ -41,7 +41,10 @@ android {
 }
 
 dependencies {
-    val camerax_version = "1.2.0-alpha04"
+    val camerax_version = "1.5.0-alpha03"
+    val retrofitVersion = "2.9.0"
+    val lifecycleRuntimeKtx = "2.6.1"
+    val loggingInterceptor = "4.11.0"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -66,6 +69,13 @@ dependencies {
     implementation ("androidx.camera:camera-extensions:${camerax_version}")
 
     implementation("androidx.core:core-splashscreen:1.0.0")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtx")
+    implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptor")
+
 
     implementation(libs.firebase.auth)
 }

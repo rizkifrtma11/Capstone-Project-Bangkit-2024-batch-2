@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -32,8 +33,6 @@ class RegisterActivity : AppCompatActivity() {
         setupView()
         setupRegister()
 
-
-
     }
 
     private fun setupView() {
@@ -48,18 +47,14 @@ class RegisterActivity : AppCompatActivity() {
         }
         supportActionBar?.hide()
 
-        binding.btnRegister.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.txtToLogin.setOnClickListener {
-            val intentToRegister = Intent(this, RegisterActivity::class.java)
+            showLoading(true)
+            val intentToRegister = Intent(this, LoginActivity::class.java)
             startActivity(intentToRegister)
         }
     }
 
-    fun setupRegister() {
+    private fun setupRegister() {
         auth = FirebaseAuth.getInstance()
         binding.btnRegister.setOnClickListener {
             val email = binding.etRegisterEmail.text.toString()
@@ -68,9 +63,11 @@ class RegisterActivity : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        showLoading(true)
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                     }else{
+                        showLoading(false)
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -87,7 +84,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        passwordEditText = findViewById(R.id.et_register_password)
+        passwordEditText = binding.etRegisterPassword
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
@@ -102,5 +99,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun setMyButtonEnable(){
         val result = passwordEditText.text
         binding.btnRegister.isEnabled = (result != null) && result.toString().isNotEmpty()
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

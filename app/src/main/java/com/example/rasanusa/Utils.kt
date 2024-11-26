@@ -1,6 +1,8 @@
 package com.example.rasanusa
 
 import android.content.Context
+import android.os.Environment
+import androidx.core.content.ContentProviderCompat.requireContext
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -15,6 +17,8 @@ private val timeStamp: String get() {
 }
 
 fun createCustomTempFile(context: Context): File {
-    val filesDir = context.externalCacheDir
-    return File.createTempFile(timeStamp, ".jpg", filesDir)
+    val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
+//    val filesDir = context.externalCacheDir
+//    return File.createTempFile(timeStamp, ".jpg", filesDir)
 }
