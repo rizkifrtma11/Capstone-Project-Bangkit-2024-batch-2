@@ -174,5 +174,5 @@
 
 ## **Additional Notes**
 - Semua data yang dikembalikan dari Firestore akan berbentuk JSON.
-- Timestamps dalam respons berupa format ISO (`YYYY-MM-DDTHH:MM:SS.sssZ`).
+- Timestamps dalam respons berupa (`YYYY-MM-DDTHH:MM:SS.sssZ`).
 - Gambar diunggah ke Google Cloud Storage dan URL gambar dikembalikan dalam respons.
