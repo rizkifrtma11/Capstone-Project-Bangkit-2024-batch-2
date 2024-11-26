@@ -29,8 +29,6 @@ This application is here to overcome these problems and provide a better culinar
 * **Food Scan:** Tourists can directly point their cellphone camera at food, and the application will recognize it and display detailed information about the food.
 * **Nutritional Information:** The application will display complete information about nutritional content, such as calories, protein, carbohydrates, fat, etc.
 * **Cultural Information:** The application will also provide information about the origin of the food, history, and how to serve it, so tourists can better understand Indonesian culture.
-* **Recommendations:** Based on preferences and scan history, the application will recommend other foods that tourists might like.
-* **Interactive Map:** The application will display a map of nearby Indonesian restaurants, complete with reviews and menus available.
 
 ## Benefits
 
