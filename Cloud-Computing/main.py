@@ -14,246 +14,163 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Inisialisasi Firebase
-cred = credentials.Certificate('firebase.json')  # Pastikan file firebase.json ada di direktori yang sama
+cred = credentials.Certificate('firebase.json')  # Pastikan file firebase.json ada
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-# Konfigurasi Google Cloud Storage Bucket
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "bucket.json"  # Pastikan file bucket.json ada di direktori yang sama
-BUCKET_NAME = "rasanusa"  # Ganti dengan nama bucket kamu
+# Konfigurasi Google Cloud Storage
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "bucket.json"
+BUCKET_NAME = "rasanusa"
 
-# Konfigurasi model dan path
-IMAGE_SIZE = (224, 224)  # Ukuran gambar untuk model
-MODEL_URL = "https://storage.googleapis.com/rasanusa/models/classification_model.h5"  # URL model di Google Cloud Storage
-H5_MODEL_PATH = "classification_model.h5"  # Path untuk menyimpan model .h5
-TFLITE_MODEL_PATH = "classification_model.tflite"  # Path untuk menyimpan model .tflite
+# Konfigurasi model dan ukuran gambar
+IMAGE_SIZE = (224, 224)
+MODEL_PATH = "classification_model.h5"  # Lokasi model lokal
 
-# Simpan hasil prediksi global
+# Variabel global untuk hasil prediksi
 predicted_result = {}
 
-# Fungsi untuk mengunduh model dari URL
-def download_model(url, local_path):
-    if not os.path.exists(local_path):
-        try:
-            print(f"Downloading model from {url}...")
-            response = requests.get(url, stream=True)
-            response.raise_for_status()
-            with open(local_path, "wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
-            print(f"Model downloaded and saved to {local_path}.")
-        except Exception as e:
-            print(f"Error downloading model: {e}")
-            raise
-
-# Fungsi untuk mengonversi model Keras ke TFLite
-def convert_to_tflite(h5_model_path, tflite_model_path):
-    if not os.path.exists(tflite_model_path):
-        print(f"Converting {h5_model_path} to {tflite_model_path}...")
-        model = tf.keras.models.load_model(h5_model_path)
-        converter = tf.lite.TFLiteConverter.from_keras_model(model)
-        tflite_model = converter.convert()
-        with open(tflite_model_path, "wb") as f:
-            f.write(tflite_model)
-        print(f"Model converted and saved to {tflite_model_path}.")
-    else:
-        print(f"TFLite model already exists at {tflite_model_path}.")
-
-# Fungsi untuk memproses gambar yang diunggah
+# Fungsi untuk memproses gambar
 def load_and_preprocess_image(uploaded_image):
     img = Image.open(io.BytesIO(uploaded_image.read()))
-    img = img.convert('RGB')
-    img = img.resize(IMAGE_SIZE)
-    img = np.array(img)
-    img = img.astype('float32') / 255.0
-    img = np.expand_dims(img, axis=0)
-    return img
+    img = img.convert('RGB').resize(IMAGE_SIZE)
+    img = np.array(img) / 255.0
+    return np.expand_dims(img, axis=0)
 
-# Fungsi untuk prediksi gambar menggunakan model .h5
+# Fungsi untuk prediksi
 def predict_image(uploaded_image):
     img = load_and_preprocess_image(uploaded_image)
-
-    predictions = model.predict(img)  # Gunakan model.predict untuk prediksi
-    predicted_class_index = np.argmax(predictions, axis=1)
-
-    class_labels = ['kerak_telor', 'mie_aceh', 'papeda', 'pempek', 'soto_banjar', 'tahu_sumedang', 'bika_ambon', 'rendang', 'sate_lilit', 'es_pisang_ijo', 'lumpia']
-    predicted_class_name = class_labels[predicted_class_index[0]]
-
-    return predicted_class_name
+    predictions = model.predict(img)
+    class_labels = ['kerak_telor', 'mie_aceh', 'papeda', 'pempek', 'soto_banjar', 'tahu_sumedang', 
+                    'bika_ambon', 'rendang', 'sate_lilit', 'es_pisang_ijo', 'lumpia']
+    return class_labels[np.argmax(predictions)]
 
 # Fungsi untuk mengambil data dari Firestore
-def makanan_data(predicted_class):
-    doc_ref = db.collection('makanan').document(predicted_class)
+def get_document_data(collection, doc_id):
+    doc_ref = db.collection(collection).document(doc_id)
     doc = doc_ref.get()
     if doc.exists:
-        return doc.to_dict()  # Pastikan kita mengonversi data menjadi dictionary yang bisa diserialisasi
-    else:
-        return {"error": f"No document found for class: {predicted_class}"}
+        return doc.to_dict()
+    return {"error": f"Document '{doc_id}' not found"}
 
-# Fungsi untuk mengunggah file ke Google Cloud Storage
-def upload_to_bucket(bucket_name, file_content, destination_blob_name):
-    storage_client = storage.Client()  # Client menggunakan kredensial JSON
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(destination_blob_name)
-    blob.upload_from_string(file_content, content_type='image/jpeg')
-    return f"gs://{bucket_name}/{destination_blob_name}"
-
-# Fungsi untuk menangani serialisasi tipe data yang tidak standar (misalnya datetime)
-def default_serializer(obj):
-    if isinstance(obj, datetime):
-        return obj.isoformat()  # Mengubah datetime menjadi string ISO
-    raise TypeError(f"Type {type(obj)} not serializable")
-
+# Endpoint Root
 @app.route('/', methods=['GET'])
 def index():
-    response = {"message": "RasaNusa api is running..."}
-    return jsonify(response), 200
+    return jsonify({"status": "success", "message": "RasaNusa API is running..."}), 200
 
+# Endpoint Register User
 @app.route('/register', methods=['POST'])
 def register():
-    """
-    Endpoint untuk mendaftar pengguna baru dan menyimpan data pengguna ke Firestore.
-    """
     try:
-        # Ambil data dari request
-        email = request.json.get('email')
-        password = request.json.get('password')
-        username = request.json.get('username')
+        data = request.get_json()
+        email = data.get('email')
+        password = data.get('password')
+        username = data.get('username')
 
-        if not email or not password or not username:
-            return jsonify({"error": "Email, password, and username are required"}), 400
+        if not all([email, password, username]):
+            return jsonify({"status": "fail", "message": "Email, password, and username are required"}), 400
 
-        # Buat akun pengguna menggunakan Firebase Authentication
-        user = auth.create_user(
-            email=email,
-            password=password
-        )
-
-        # Simpan data pengguna (username) ke Firestore
-        user_ref = db.collection('users').document(user.uid)
-        user_ref.set({
+        user = auth.create_user(email=email, password=password)
+        db.collection('users').document(user.uid).set({
             'username': username,
             'email': email,
             'created_at': firestore.SERVER_TIMESTAMP
         })
 
-        return jsonify({
-            "message": "User registered successfully",
-            "uid": user.uid,
-            "username": username
-        }), 201
-
+        return jsonify({"status": "success", "message": "User registered successfully", "uid": user.uid}), 201
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "fail", "message": str(e)}), 500
 
+# Endpoint Predict
 @app.route('/predict', methods=['POST'])
 def predict():
-    global predicted_result
     if 'image' not in request.files:
-        return jsonify({"error": "No file part"}), 400
+        return jsonify({"status": "fail", "message": "No image file found"}), 400
     uploaded_image = request.files['image']
-    if uploaded_image.filename == '':
-        return jsonify({"error": "No selected file"}), 400
 
-    # Prediksi kelas
-    predicted_class = predict_image(uploaded_image)
+    try:
+        predicted_class = predict_image(uploaded_image)
+        uploaded_image.seek(0)
+        image_content = uploaded_image.read()
+        destination_blob_name = f"predictions/{predicted_class}/{uploaded_image.filename}"
 
-    # Simpan gambar ke bucket
-    uploaded_image.seek(0)
-    image_content = uploaded_image.read()
-    destination_blob_name = f"predictions/{predicted_class}/{uploaded_image.filename}"
-    bucket_url = upload_to_bucket(BUCKET_NAME, image_content, destination_blob_name)
+        # Upload ke Google Cloud Storage
+        storage_client = storage.Client()
+        bucket = storage_client.bucket(BUCKET_NAME)
+        blob = bucket.blob(destination_blob_name)
+        blob.upload_from_string(image_content, content_type='image/jpeg')
 
-    # Ambil data dari Firestore
-    document_data = makanan_data(predicted_class)
+        # Ambil data dari Firestore
+        document_data = get_document_data('makanan', predicted_class)
 
-    # Menyimpan hasil prediksi ke dalam Firestore Scan History
-    history_ref = db.collection('scan_history').document()
-    history_ref.set({
-        'predicted_class': predicted_class,
-        'document_data': document_data,
-        'image_url': bucket_url,
-        'timestamp': firestore.SERVER_TIMESTAMP  # Menyimpan waktu prediksi
-    })
+        # Simpan hasil ke Firestore
+        db.collection('scan_history').add({
+            'predicted_class': predicted_class,
+            'image_url': f"gs://{BUCKET_NAME}/{destination_blob_name}",
+            'document_data': document_data,
+            'timestamp': firestore.SERVER_TIMESTAMP
+        })
 
-    predicted_result = {
-        "predicted_class": predicted_class,
-        "document_data": document_data,
-        "image_url": bucket_url
-    }
+        return jsonify({
+            "status": "success",
+            "predicted_class": predicted_class,
+            "image_url": f"gs://{BUCKET_NAME}/{destination_blob_name}",
+            "document_data": document_data
+        }), 201
+    except Exception as e:
+        return jsonify({"status": "fail", "message": str(e)}), 500
 
-    return jsonify(predicted_result), 201
-
+# Endpoint Get History
 @app.route('/history', methods=['GET'])
 def get_history():
     try:
-        # Ambil semua dokumen dari koleksi 'scan_history'
-        history_ref = db.collection('scan_history')
-        docs = history_ref.stream()
-
-        history = []
-        for doc in docs:
-            history.append(doc.to_dict())  # Menambahkan data dari setiap dokumen ke dalam list
-
-        return jsonify(history), 200
-
+        docs = db.collection('scan_history').stream()
+        history = [doc.to_dict() for doc in docs]
+        return jsonify({"status": "success", "history": history}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "fail", "message": str(e)}), 500
 
+# Endpoint Get Specific Field
 @app.route('/result/<field>', methods=['GET'])
 def get_field(field):
     if field in predicted_result:
-        return jsonify({field: predicted_result[field]}), 200
+        return jsonify({"status": "success", field: predicted_result[field]}), 200
     elif field in predicted_result.get('document_data', {}):
-        return jsonify({field: predicted_result['document_data'][field]}), 200
-    else:
-        return jsonify({"error": f"Field '{field}' not found"}), 404
+        return jsonify({"status": "success", field: predicted_result['document_data'][field]}), 200
+    return jsonify({"status": "fail", "message": f"Field '{field}' not found"}), 404
 
-@app.route('/makanan/<doc_id>/<field>', methods=['GET'])
-def makanan(doc_id, field):
-    doc_ref = db.collection('makanan').document(doc_id)
-    doc = doc_ref.get()
-    if not doc.exists:
-        return jsonify({"error": f"Document with id '{doc_id}' not found"}), 404
-
-    document_data = doc.to_dict()
-    if field in document_data:
-        return jsonify({field: document_data[field]}), 200
-    else:
-        return jsonify({"error": f"Field '{field}' not found in document '{doc_id}'"}), 404
-
+# Endpoint Get Full Document
 @app.route('/makanan/<doc_id>', methods=['GET'])
 def get_full_document(doc_id):
-    doc_ref = db.collection('makanan').document(doc_id)
-    doc = doc_ref.get()
-    if doc.exists:
-        return jsonify(doc.to_dict()), 200
-    else:
-        return jsonify({"error": "Document not found"}), 404
-
-# --- Endpoint baru untuk mengunduh model ---
-@app.route('/downloadModel', methods=['GET'])
-def download_model_endpoint():
     try:
-        download_model(MODEL_URL, H5_MODEL_PATH)
-        return jsonify({"message": f"Model downloaded to {H5_MODEL_PATH}"}), 200
+        document_data = get_document_data('makanan', doc_id)
+        if "error" in document_data:
+            return jsonify({"status": "fail", "message": document_data["error"]}), 404
+        return jsonify({"status": "success", "data": document_data}), 200
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "fail", "message": str(e)}), 500
 
-# --- Endpoint baru untuk mengonversi model ---
-@app.route('/convertModel', methods=['GET'])
-def convert_model_endpoint():
+@app.route('/makanan/<doc_id>/<field>', methods=['GET'])
+def get_document_field(doc_id, field):
     try:
-        convert_to_tflite(H5_MODEL_PATH, TFLITE_MODEL_PATH)
-        return jsonify({"message": f"Model converted to {TFLITE_MODEL_PATH}"}), 200
+        # Ambil dokumen dari Firestore
+        document_data = get_document_data('makanan', doc_id)
+
+        if "error" in document_data:
+            return jsonify({"status": "fail", "message": document_data["error"]}), 404
+
+        # Cek apakah field yang diminta ada dalam dokumen
+        if field in document_data:
+            return jsonify({"status": "success", field: document_data[field]}), 200
+
+        return jsonify({"status": "fail", "message": f"Field '{field}' not found in document '{doc_id}'"}), 404
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"status": "fail", "message": str(e)}), 500
 
-# --- Muat model .h5 setelah server berjalan --- 
-download_model(MODEL_URL, H5_MODEL_PATH)  # Unduh model saat aplikasi dimulai
-model = tf.keras.models.load_model(H5_MODEL_PATH)
+# --- Muat Model ---
+if not os.path.exists(MODEL_PATH):
+    raise FileNotFoundError(f"Model file '{MODEL_PATH}' not found. Ensure the file exists in the current directory.")
+model = tf.keras.models.load_model(MODEL_PATH)
 
-# Jalankan Flask App
+# Jalankan Aplikasi Flask
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
