@@ -1,6 +1,6 @@
 package com.example.rasanusa.data.api
 
-import retrofit2.http.POST
+
 
 interface ApiService {
 
