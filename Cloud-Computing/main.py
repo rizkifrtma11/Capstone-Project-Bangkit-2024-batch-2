@@ -36,13 +36,20 @@ def load_and_preprocess_image(uploaded_image):
     img = np.array(img) / 255.0
     return np.expand_dims(img, axis=0)
 
-# Fungsi untuk prediksi
+# Fungsi untuk prediksi dengan confidence threshold
 def predict_image(uploaded_image):
     img = load_and_preprocess_image(uploaded_image)
     predictions = model.predict(img)
+    predicted_class_index = np.argmax(predictions)
+    confidence = predictions[0][predicted_class_index]
+
     class_labels = ['kerak_telor', 'mie_aceh', 'papeda', 'pempek', 'soto_banjar', 'tahu_sumedang', 
                     'bika_ambon', 'rendang', 'sate_lilit', 'es_pisang_ijo', 'lumpia']
-    return class_labels[np.argmax(predictions)]
+
+    if confidence < 0.75:
+        return "unknown"  # Kembalikan "unknown" jika confidence < 75%
+    else:
+        return class_labels[predicted_class_index]
 
 # Fungsi untuk mengambil data dari Firestore
 def get_document_data(collection, doc_id):
@@ -83,12 +90,29 @@ def register():
 # Endpoint Predict
 @app.route('/predict', methods=['POST'])
 def predict():
+    global predicted_result  # Deklarasikan predicted_result sebagai global
+
+    # Periksa apakah file gambar disertakan dalam permintaan
     if 'image' not in request.files:
-        return jsonify({"status": "fail", "message": "No image file found"}), 400
+        return jsonify({
+            "status": "fail",
+            "message": "No image file found"
+        }), 400
+
     uploaded_image = request.files['image']
 
     try:
         predicted_class = predict_image(uploaded_image)
+
+        # Jika prediksi tidak dapat dikenali
+        if predicted_class == "unknown":
+            return jsonify({
+                "status": "fail",
+                "message": "Image not recognized. Please try with a clearer image.",
+                "predicted_class": predicted_class
+            }), 200
+
+        # Reset pointer file untuk upload ke GCS
         uploaded_image.seek(0)
         image_content = uploaded_image.read()
         destination_blob_name = f"predictions/{predicted_class}/{uploaded_image.filename}"
@@ -102,32 +126,25 @@ def predict():
         # Ambil data dari Firestore
         document_data = get_document_data('makanan', predicted_class)
 
-        # Simpan hasil ke Firestore
-        db.collection('scan_history').add({
-            'predicted_class': predicted_class,
-            'image_url': f"gs://{BUCKET_NAME}/{destination_blob_name}",
-            'document_data': document_data,
-            'timestamp': firestore.SERVER_TIMESTAMP
-        })
+        # Simpan hasil prediksi di memori
+        predicted_result = {
+            "predicted_class": predicted_class,
+            "image_url": f"gs://{BUCKET_NAME}/{destination_blob_name}",
+            "document_data": document_data
+        }
 
         return jsonify({
             "status": "success",
             "predicted_class": predicted_class,
+            "confidence": ">= 75%",
             "image_url": f"gs://{BUCKET_NAME}/{destination_blob_name}",
             "document_data": document_data
         }), 201
     except Exception as e:
-        return jsonify({"status": "fail", "message": str(e)}), 500
-
-# Endpoint Get History
-@app.route('/history', methods=['GET'])
-def get_history():
-    try:
-        docs = db.collection('scan_history').stream()
-        history = [doc.to_dict() for doc in docs]
-        return jsonify({"status": "success", "history": history}), 200
-    except Exception as e:
-        return jsonify({"status": "fail", "message": str(e)}), 500
+        return jsonify({
+            "status": "fail",
+            "message": str(e)
+        }), 500
 
 # Endpoint Get Specific Field
 @app.route('/result/<field>', methods=['GET'])
@@ -166,7 +183,7 @@ def get_document_field(doc_id, field):
     except Exception as e:
         return jsonify({"status": "fail", "message": str(e)}), 500
 
-# --- Muat Model ---
+# Muat Model
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model file '{MODEL_PATH}' not found. Ensure the file exists in the current directory.")
 model = tf.keras.models.load_model(MODEL_PATH)
