@@ -4,14 +4,15 @@
 1. [Root Endpoint](#root-endpoint)
 2. [Register](#1-register)
 3. [Predict](#2-predict)
-4. [History](#3-history)
-5. [Result Field](#4-result-field)
-6. [Data Makanan Spesifik](#5-data-makanan-spesifik)
-7. [Dokumen Makanan Lengkap](#6-dokumen-makanan-lengkap)
+4. [Result Field](#3-result-field)
+5. [Dokumen Makanan Lengkap](#4-dokumen-makanan-lengkap)
+6. [Field Spesifik dari Dokumen Makanan](#5-field-spesifik-dari-dokumen-makanan)
 
-# **URL**
-* RasaNusa API
-* https://rasanusa-api-555896629878.asia-southeast2.run.app
+---
+
+## **URL**
+* RasaNusa API Base URL
+* `https://rasanusa-api-555896629878.asia-southeast2.run.app`
 
 ---
 
@@ -22,7 +23,8 @@
 - **Response:**
     ```json
     {
-        "message": "RasaNusa api is running..."
+        "status": "success",
+        "message": "RasaNusa API is running..."
     }
     ```
 
@@ -43,15 +45,16 @@
 - **Successful Response:**
     ```json
     {
+        "status": "success",
         "message": "User registered successfully",
-        "uid": "string",
-        "username": "string"
+        "uid": "string"
     }
     ```
 - **Error Response:**
     ```json
     {
-        "error": "string"
+        "status": "fail",
+        "message": "string"
     }
     ```
 
@@ -66,107 +69,100 @@
 - **Successful Response:**
     ```json
     {
+        "status": "success",
         "predicted_class": "string",
+        "confidence": ">= 75%",
+        "image_url": "gs://<bucket-name>/<path-to-image>",
         "document_data": {
             "key": "value"
-        },
-        "image_url": "string"
-    }
-    ```
-- **Error Response:**
-    ```json
-    {
-        "error": "No file part"
-    }
-    ```
-
----
-
-## **3. History**
-- **Endpoint:** `/history`
-- **Method:** `GET`
-- **Description:** Mendapatkan daftar riwayat prediksi.
-- **Successful Response:**
-    ```json
-    [
-        {
-            "predicted_class": "string",
-            "document_data": {
-                "key": "value"
-            },
-            "image_url": "string",
-            "timestamp": "string"
         }
-    ]
+    }
+    ```
+- **Response untuk Gambar Tidak Dikenali:**
+    ```json
+    {
+        "status": "fail",
+        "message": "Image not recognized. Please try with a clearer image.",
+        "predicted_class": "unknown"
+    }
     ```
 - **Error Response:**
     ```json
     {
-        "error": "string"
+        "status": "fail",
+        "message": "string"
     }
     ```
 
 ---
 
-## **4. Result Field**
+## **3. Result Field**
 - **Endpoint:** `/result/<field>`
 - **Method:** `GET`
 - **Description:** Mengambil detail spesifik dari hasil prediksi terakhir.
-- **Parameters:**
-    - `<field>` (*string*) - Nama field yang ingin diambil.
+- **Path Parameter:**
+    - `<field>` (*string*) - Nama field yang ingin diambil dari hasil prediksi.
 - **Successful Response:**
     ```json
     {
-        "field_name": "value"
+        "status": "success",
+        "<field>": "value"
     }
     ```
 - **Error Response:**
     ```json
     {
-        "error": "Field '<field>' not found"
+        "status": "fail",
+        "message": "Field '<field>' not found"
     }
     ```
 
 ---
 
-## **5. Data Makanan Spesifik**
-- **Endpoint:** `/makanan/<doc_id>/<field>`
-- **Method:** `GET`
-- **Description:** Mengambil field spesifik dari data makanan di Firestore.
-- **Parameters:**
-    - `<doc_id>` (*string*) - ID dokumen makanan.
-    - `<field>` (*string*) - Nama field yang ingin diambil.
-- **Successful Response:**
-    ```json
-    {
-        "field_name": "value"
-    }
-    ```
-- **Error Response:**
-    ```json
-    {
-        "error": "Field '<field>' not found in document '<doc_id>'"
-    }
-    ```
-
----
-
-## **6. Dokumen Makanan Lengkap**
+## **4. Dokumen Makanan Lengkap**
 - **Endpoint:** `/makanan/<doc_id>`
 - **Method:** `GET`
-- **Description:** Mengambil data lengkap dari dokumen makanan.
-- **Parameters:**
+- **Description:** Mengambil data lengkap dari dokumen makanan di Firestore.
+- **Path Parameter:**
     - `<doc_id>` (*string*) - ID dokumen makanan.
 - **Successful Response:**
     ```json
     {
-        "key": "value"
+        "status": "success",
+        "data": {
+            "key": "value"
+        }
     }
     ```
 - **Error Response:**
     ```json
     {
-        "error": "Document not found"
+        "status": "fail",
+        "message": "Document '<doc_id>' not found"
+    }
+    ```
+
+---
+
+## **5. Field Spesifik dari Dokumen Makanan**
+- **Endpoint:** `/makanan/<doc_id>/<field>`
+- **Method:** `GET`
+- **Description:** Mengambil field spesifik dari dokumen makanan di Firestore.
+- **Path Parameters:**
+    - `<doc_id>` (*string*) - ID dokumen makanan.
+    - `<field>` (*string*) - Nama field yang ingin diambil.
+- **Successful Response:**
+    ```json
+    {
+        "status": "success",
+        "<field>": "value"
+    }
+    ```
+- **Error Response:**
+    ```json
+    {
+        "status": "fail",
+        "message": "Field '<field>' not found in document '<doc_id>'"
     }
     ```
 
@@ -174,5 +170,5 @@
 
 ## **Additional Notes**
 - Semua data yang dikembalikan dari Firestore akan berbentuk JSON.
-- Timestamps dalam respons berupa (`YYYY-MM-DDTHH:MM:SS.sssZ`).
-- Gambar diunggah ke Google Cloud Storage dan URL gambar dikembalikan dalam respons.
+- Gambar yang diunggah akan disimpan di Google Cloud Storage dengan URL berbentuk `gs://<bucket-name>/<path>`.
+- Prediksi "unknown" diberikan jika confidence hasil prediksi kurang dari 75%.
