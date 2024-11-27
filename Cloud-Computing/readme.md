@@ -1,5 +1,5 @@
 # **Infrastructure Design**
-![Infrastructure Design](RasaNusa.png)
+![Infrastructure Design](infrastructure.png)
 
 # **RasaNusa API Documentation**
 
