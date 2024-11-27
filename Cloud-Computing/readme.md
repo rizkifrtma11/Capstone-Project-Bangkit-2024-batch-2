@@ -1,3 +1,6 @@
+# **Infrastructure Design**
+![Infrastructure Design](RasaNusa.png)
+
 # **RasaNusa API Documentation**
 
 ## **Table of Contents**
