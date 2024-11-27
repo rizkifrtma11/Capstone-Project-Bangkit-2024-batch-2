@@ -2,16 +2,6 @@
 
 # **RasaNusa API Documentation**
 
-## **Table of Contents**
-1. [Root Endpoint](#root-endpoint)
-2. [Register](#1-register)
-3. [Predict](#2-predict)
-4. [Result Field](#3-result-field)
-5. [Dokumen Makanan Lengkap](#4-dokumen-makanan-lengkap)
-6. [Field Spesifik dari Dokumen Makanan](#5-field-spesifik-dari-dokumen-makanan)
-
----
-
 ## **URL**
 * RasaNusa API Base URL
 * `https://rasanusa-api-555896629878.asia-southeast2.run.app`
@@ -121,10 +111,38 @@
 
 ---
 
-## **4. Dokumen Makanan Lengkap**
+## **4. Dapatkan semua dokumen makanan**
 - **Endpoint:** `/makanan/<doc_id>`
 - **Method:** `GET`
-- **Description:** Mengambil data lengkap dari dokumen makanan di Firestore.
+- **Description:** Mengambil data lengkap dari keseluruhan dokumen makanan di collection Firestore.
+**Successful Response:**
+  ```json
+  {
+    "status": "success",
+    "data": [
+      {
+        "nama": "Rendang",
+        "deskripsi": "...",
+        "asal_daerah": "Sumatera Barat",
+        // ... other fields
+      },
+      {
+        "nama": "Sate Lilit",
+        "deskripsi": "...",
+        "asal_daerah": "Bali",
+        // ... other fields
+      },
+      // ... other food documents
+    ]
+  }
+  ```
+
+---
+
+## **5. Dokumen Makanan Lengkap**
+- **Endpoint:** `/makanan/<doc_id>`
+- **Method:** `GET`
+- **Description:** Mengambil data lengkap dari satu dokumen makanan di Firestore.
 - **Path Parameter:**
     - `<doc_id>` (*string*) - ID dokumen makanan.
 - **Successful Response:**
@@ -146,7 +164,7 @@
 
 ---
 
-## **5. Field Spesifik dari Dokumen Makanan**
+## **6. Field Spesifik dari Dokumen Makanan**
 - **Endpoint:** `/makanan/<doc_id>/<field>`
 - **Method:** `GET`
 - **Description:** Mengambil field spesifik dari dokumen makanan di Firestore.

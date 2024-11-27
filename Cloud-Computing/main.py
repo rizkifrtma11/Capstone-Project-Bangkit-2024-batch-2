@@ -155,6 +155,16 @@ def get_field(field):
         return jsonify({"status": "success", field: predicted_result['document_data'][field]}), 200
     return jsonify({"status": "fail", "message": f"Field '{field}' not found"}), 404
 
+# Endpoint untuk mengambil semua data dari collection 'makanan'
+@app.route('/makanan', methods=['GET'])
+def get_all_makanan():
+    try:
+        makanan_ref = db.collection('makanan')
+        all_makanan = [doc.to_dict() for doc in makanan_ref.stream()]  # Mengambil semua data sekaligus
+        return jsonify({"status": "success", "data": all_makanan}), 200
+    except Exception as e:
+        return jsonify({"status": "fail", "message": str(e)}), 500
+
 # Endpoint Get Full Document
 @app.route('/makanan/<doc_id>', methods=['GET'])
 def get_full_document(doc_id):
