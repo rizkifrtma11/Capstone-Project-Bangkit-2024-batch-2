@@ -4,9 +4,9 @@
 
 ## **URL**
 * RasaNusa API Base URL
-```json
-https://rasanusa-api-555896629878.asia-southeast2.run.app
-```
+    ```json
+        https://rasanusa-api-555896629878.asia-southeast2.run.app
+    ```
 
 ---
 
@@ -98,10 +98,9 @@ https://rasanusa-api-555896629878.asia-southeast2.run.app
     ```json
     {
         "status": "success",
-        "data": [
+        "data":
         {
             "key": "value"
-            // ... other fields
         }
     }
     ```
