@@ -112,7 +112,7 @@
 ---
 
 ## **4. Dapatkan semua dokumen makanan**
-- **Endpoint:** `/makanan/<doc_id>`
+- **Endpoint:** `/makanan`
 - **Method:** `GET`
 - **Description:** Mengambil data lengkap dari keseluruhan dokumen makanan di collection Firestore.
 **Successful Response:**
