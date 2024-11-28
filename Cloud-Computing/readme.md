@@ -121,15 +121,11 @@
     "status": "success",
     "data": [
       {
-        "nama": "Rendang",
-        "deskripsi": "...",
-        "asal_daerah": "Sumatera Barat",
+        "key": "value"
         // ... other fields
       },
       {
-        "nama": "Sate Lilit",
-        "deskripsi": "...",
-        "asal_daerah": "Bali",
+        "key": "value"
         // ... other fields
       },
       // ... other food documents
