@@ -146,6 +146,15 @@ def predict():
             "message": str(e)
         }), 500
 
+@app.route('/result', methods=['GET'])
+def get_result():
+    global predicted_result 
+    
+    if not predicted_result:
+        return jsonify({"status": "fail", "message": "No prediction result found. Please perform a prediction first."}), 404
+    
+    return jsonify({"status": "success", "data": predicted_result}), 200
+
 # Endpoint Get Specific Field
 @app.route('/result/<field>', methods=['GET'])
 def get_field(field):

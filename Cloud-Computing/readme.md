@@ -24,7 +24,7 @@ https://rasanusa-api-555896629878.asia-southeast2.run.app
 
 ---
 
-## **1. Register**
+## **Register**
 - **Endpoint:** `/register`
 - **Method:** `POST`
 - **Description:** Mendaftarkan pengguna baru.
@@ -54,7 +54,7 @@ https://rasanusa-api-555896629878.asia-southeast2.run.app
 
 ---
 
-## **2. Predict**
+## **Predict**
 - **Endpoint:** `/predict`
 - **Method:** `POST`
 - **Description:** Mengunggah gambar dan mendapatkan prediksi makanan.
@@ -90,7 +90,32 @@ https://rasanusa-api-555896629878.asia-southeast2.run.app
 
 ---
 
-## **3. Result Field**
+## **Result**
+- **Endpoint:** `/result`
+- **Method:** `GET`
+- **Description:** Mengambil hasil prediksi terakhir.
+- **Successful Response:**
+    ```json
+    {
+        "status": "success",
+        "data": [
+        {
+            "key": "value"
+            // ... other fields
+        }
+    }
+    ```
+- **Error Response:**
+    ```json
+    {
+        "status": "fail",
+        "message": "No prediction result found. Please perform a prediction first.",
+    }
+    ```
+
+---
+
+## **Result Field**
 - **Endpoint:** `/result/<field>`
 - **Method:** `GET`
 - **Description:** Mengambil detail spesifik dari hasil prediksi terakhir.
