@@ -4,8 +4,8 @@
 
 ## **URL**
 * RasaNusa API Base URL
-    ```json
-        https://rasanusa-api-555896629878.asia-southeast2.run.app
+    ```
+    https://rasanusa-api-555896629878.asia-southeast2.run.app
     ```
 
 ---
@@ -148,13 +148,10 @@
     "data": [
       {
         "key": "value"
-        // ... other fields
       },
       {
         "key": "value"
-        // ... other fields
-      },
-      // ... other food documents
+      }
     ]
   }
   ```
