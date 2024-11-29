@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
             val foods = eventResponse?.data ?: emptyList()
             setupRecyclerView(foods)
         }
-        homeViewModel.listFood.observe(viewLifecycleOwner) { foodList ->
+        homeViewModel.listFood.observe(viewLifecycleOwner) { _ ->
             showLoading(false)
         }
         homeViewModel.getData()

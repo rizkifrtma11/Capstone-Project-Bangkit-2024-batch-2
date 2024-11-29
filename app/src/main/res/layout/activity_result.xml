@@ -27,6 +27,7 @@
         android:background="?attr/selectableItemBackground"
         android:contentDescription="@string/close"
         android:padding="8dp"
+        android:elevation="8dp"
         android:src="@drawable/ic_close"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,13 +37,15 @@
         android:id="@+id/imageResult"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:scaleType="fitCenter"
-        app:layout_constraintDimensionRatio="1:1"
         android:src="@drawable/ic_place_holder"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btnExit" />
 
     <TextView
         android:id="@+id/title_result"

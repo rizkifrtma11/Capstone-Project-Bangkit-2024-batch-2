@@ -39,7 +39,7 @@
                 android:id="@+id/iv_rasanusa"
                 android:layout_width="190dp"
                 android:layout_height="190dp"
-                android:src="@drawable/rasanusa"
+                android:src="@drawable/img_rasanusa"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txt_selamatDatang" />
 

@@ -7,12 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.rasanusa.MainActivity
-import com.example.rasanusa.R
 import com.example.rasanusa.data.api.ApiConfig
 import com.example.rasanusa.data.response.PredictResponse
 import com.example.rasanusa.databinding.ActivityImagePreviewBinding
@@ -93,6 +89,7 @@ class ImagePreviewActivity : AppCompatActivity() {
             putExtra(ResultActivity.IMAGE_URL, uri.toString())
             putExtra(ResultActivity.PREDICTED_CLASS, predictResponse.documentData?.name)
             putExtra(ResultActivity.CONFIDENCE_SCORE, predictResponse.confidence)
+            putExtra(ResultActivity.DOCUMENT_DATA, predictResponse.documentData)
         }
         startActivity(intent)
         finish()

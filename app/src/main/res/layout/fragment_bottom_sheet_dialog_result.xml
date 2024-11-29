@@ -1,50 +1,556 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/style_bottom_dialog_corner"
     android:orientation="vertical"
     tools:context=".ui.result.BottomSheetDialogResultFragment">
 
-    <LinearLayout
+    <View
+        android:layout_width="36dp"
+        android:layout_height="3dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/style_box_corner" />
+
+    <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
         android:padding="8dp"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btnExit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:contentDescription="@string/close"
-            android:src="@drawable/ic_close"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/detail_makanan"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"
-            style="@style/title"
-            android:layout_marginEnd="8dp" />
-    </LinearLayout>
+        android:text="@string/detail_makanan" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="3dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/orange"/>
+        android:background="@drawable/style_line_orange" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include
-            android:id="@+id/include_detail"
-            layout="@layout/activity_detail"/>
+        <!-- Detail -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_food"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/food_name"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <!-- food name -->
+            <LinearLayout
+                android:id="@+id/layout_title_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_food">
+
+                <TextView
+                    android:id="@+id/txt_title_food_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/food_name"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_food" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/title_bahan_dasar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bahan_dasar" />
+
+                    <TextView
+                        android:id="@+id/txt_bahan_dasar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="@string/bahan_utama" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- food category -->
+            <TableLayout
+                android:id="@+id/tl_categoryfood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layout_title_food">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/orange" />
+
+                    <TextView
+                        android:id="@+id/txt_title_asal_daerah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:text="@string/asal_daerah"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/orange" />
+
+                    <TextView
+                        android:id="@+id/txt_title_serving_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:text="@string/serving_size"
+                        android:textSize="12sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/orange" />
+
+                    <TextView
+                        android:id="@+id/txt_asal_daerah"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="@string/asal_daerah"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/orange" />
+
+                    <TextView
+                        android:id="@+id/txt_cal_per_serving"
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="2"
+                        android:maxLines="1"
+                        android:text="@string/default_size"
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <!-- food description -->
+            <LinearLayout
+                android:id="@+id/linear_fooddesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_categoryfood">
+
+                <TextView
+                    android:id="@+id/txt_title_food_desc"
+                    style="@style/title"
+                    android:text="@string/food_description" />
+
+                <TextView
+                    android:id="@+id/txt_food_desc"
+                    style="@style/txt_justify"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/food_description" />
+            </LinearLayout>
+
+            <!-- food history -->
+            <LinearLayout
+                android:id="@+id/linear_foodhistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear_fooddesc">
+
+                <TextView
+                    android:id="@+id/txt_title_food_history"
+                    style="@style/title"
+                    android:text="@string/food_history" />
+
+                <TextView
+                    android:id="@+id/txt_food_history"
+                    style="@style/txt_justify"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/food_history" />
+            </LinearLayout>
+
+            <!-- Informasi Gizi -->
+            <LinearLayout
+                android:id="@+id/linear_foodnutrition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear_foodhistory">
+
+                <TextView
+                    android:id="@+id/txt_title_food_nutrition"
+                    style="@style/title"
+                    android:text="@string/food_nutrition" />
+
+                <TableLayout
+                    android:id="@+id/tl_nutrition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- Baris Title -->
+                    <TableRow
+                        android:id="@+id/tr_nutrition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/style_rounded_top_corner">
+
+                        <TextView
+                            android:id="@+id/txt_nutrisi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/nutrisi"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            tools:ignore="TextContrastCheck" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_keterangan"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily=""
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/rincian"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            tools:ignore="TextContrastCheck" />
+                    </TableRow>
+
+                    <!-- Row kalori -->
+                    <TableRow
+                        android:id="@+id/tr_kalori"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_titleKalori"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/calories" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_jmlKalori"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/jml_cal" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+                    </TableRow>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:background="@color/red_brown" />
+
+                    <!-- Row karbohirat -->
+                    <TableRow
+                        android:id="@+id/tr_karbohidrat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_titleKarbohidrat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/carbo"
+                            tools:ignore="TextContrastCheck" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_jmlKarbohidrat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/jml_carbo" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+                    </TableRow>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:background="@color/red_brown" />
+
+                    <!-- Row lemak -->
+                    <TableRow
+                        android:id="@+id/tr_lemak"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_titleLemak"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/fat" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_jmlLemak"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/jml_fat" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+                    </TableRow>
+
+                    <!-- Row protein -->
+                    <TableRow
+                        android:id="@+id/tr_protein"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/style_corner_bottom">
+
+                        <TextView
+                            android:id="@+id/txt_titleProtein"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/protein" />
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/red_brown" />
+
+                        <TextView
+                            android:id="@+id/txt_jmlProtein"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:padding="10dp"
+                            android:text="@string/jml_protein" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </LinearLayout>
+
+            <!-- Funfact -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:outlineSpotShadowColor="@color/dark_red"
+                app:cardBackgroundColor="@color/orange"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linear_foodnutrition"
+                tools:targetApi="p">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="4sp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:id="@+id/iv_ligthbulb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription="@string/funfact"
+                            android:src="@drawable/ic_ligth_bulb" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/poetsen_one"
+                            android:text="@string/funfact"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_funfact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:justificationMode="inter_word"
+                        android:text="@string/funfact"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
