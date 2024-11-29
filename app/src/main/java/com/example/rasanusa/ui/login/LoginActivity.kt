@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.MainActivity
-import com.example.rasanusa.R
 import com.example.rasanusa.databinding.ActivityLoginBinding
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.register.RegisterActivity
@@ -44,9 +43,10 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        setupLogin()
         checkLogin()
         setupView()
-        setupLogin()
+
 
     }
 
@@ -76,24 +76,21 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.etLoginPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
+                showLoading(true)
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    showLoading(false)
                     if (it.isSuccessful) {
                         showLoading(true)
-                        val intent = Intent(this, MainActivity::class.java)
-                        Toast.makeText(this, "Berhasil masuk.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login berhasil. Anda akan diarahkan ke halaman utama.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     } else {
-                        showLoading(false)
-                        Toast.makeText(
-                            this,
-                            "Akun belum terdaftar. Daftar sekarang!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        val intentToSignup = Intent(this, RegisterActivity::class.java)
-                        startActivity(intentToSignup)
+                        Toast.makeText(this, "Login gagal: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
-                    Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -104,9 +101,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        } else {
-            setupLogin()
         }
+//        else {
+//            setupLogin()
+//        }
     }
 
     private fun setMyButtonEnable() {

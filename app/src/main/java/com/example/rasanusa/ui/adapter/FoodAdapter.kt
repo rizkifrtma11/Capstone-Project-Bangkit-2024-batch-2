@@ -6,29 +6,42 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rasanusa.Food
+import com.bumptech.glide.Glide
 import com.example.rasanusa.R
+import com.example.rasanusa.data.response.DataItem
 
-class FoodAdapter(private val listFood: ArrayList<Food>): RecyclerView.Adapter<FoodAdapter.ListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
-        return ListViewHolder(view)
+
+class FoodAdapter(
+    private var foodList: List<DataItem>, private val onItemClicked: (DataItem) -> Unit) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_food, parent, false)
+        return FoodViewHolder(view)
     }
 
-    override fun getItemCount(): Int = listFood.size
+    override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
+        val itemData = foodList[position]
+        Glide.with(holder.itemView.context)
+            .load(itemData.image)
+            .into(holder.imgPhoto)
+        holder.name.text = itemData.name
+        holder.asal.text = itemData.asal
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (name, asalDaerah, photo) = listFood[position]
-        holder.imgPhoto.setImageResource(photo)
-        holder.tvName.text = name
-        holder.txtAsalDaerah.text = asalDaerah
+        holder.itemView.setOnClickListener{
+            onItemClicked(itemData)
+
+        }
+
     }
 
-    class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemCount(): Int = foodList.size
+
+    class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imgPhoto: ImageView = itemView.findViewById(R.id.iv_food)
-        val tvName: TextView = itemView.findViewById(R.id.txt_food_name)
-        val txtAsalDaerah: TextView = itemView.findViewById(R.id.txt_asal_daerah)
+        val name: TextView = itemView. findViewById(R.id.txt_food_name)
+        val asal: TextView = itemView.findViewById(R.id.txt_asal_daerah)
+
     }
 }
 

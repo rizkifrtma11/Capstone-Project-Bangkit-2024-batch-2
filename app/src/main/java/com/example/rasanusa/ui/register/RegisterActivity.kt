@@ -12,8 +12,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.rasanusa.MainActivity
-import com.example.rasanusa.R
 import com.example.rasanusa.databinding.ActivityRegisterBinding
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.login.LoginActivity
@@ -61,26 +59,21 @@ class RegisterActivity : AppCompatActivity() {
             val password = binding.etRegisterPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                    if (it.isSuccessful) {
+                showLoading(true)
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    showLoading(false)
+                    if (task.isSuccessful) {
                         showLoading(true)
-                        val intent = Intent(this, LoginActivity::class.java)
+                        Toast.makeText(this, "Akun berhasil dibuat! Silakan login.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
-                    }else{
-                        showLoading(false)
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Gagal membuat akun: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-
-            AlertDialog.Builder(this).apply {
-                setTitle("Yeah!")
-                setMessage("Akun dengan $email sudah jadi nih. Yuk, login dulu.")
-//                setPositiveButton("Login") { _, _ ->
-//                    finish()
-//                }
-                create()
-                show()
+            } else {
+                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
 
