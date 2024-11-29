@@ -17,11 +17,11 @@
         android:label="scan"
         tools:layout="@layout/fragment_scan" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_profile"-->
-<!--        android:name="com.example.rasanusa.ui.p"-->
-<!--        android:label="@string/title_profile"-->
-<!--        tools:layout="@layout/activity_profile" />-->
+    <activity
+        android:id="@+id/navigation_profile"
+        android:name="com.example.rasanusa.ui.profile.ProfileActivity"
+        android:label="@string/title_profile"
+        tools:layout="@layout/activity_profile" />
 
 
 </navigation>

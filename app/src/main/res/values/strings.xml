@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">RasaNusa</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -33,7 +33,7 @@
     <string name="haveAccount">Already have an account?</string>
 
     <!-- main -->
-    <string name="search">Search here...</string>
+    <string name="search">Search here…</string>
     <string name="filter">filter</string>
 
     <!-- home -->
@@ -63,7 +63,7 @@
     <string name="default_size">0g</string>
     <string name="funfact">Funfact</string>
     <string name="category">Kategori</string>
-
+    <string name="bahan_dasar">Bahan dasar :</string>
 
     <!-- camera -->
     <string name="capture_image">Capture Image</string>
@@ -76,70 +76,23 @@
     <string name="rincian">Rincian</string>
     <string name="go_to_camera">Go to camera</string>
 
-
-    <!--    <string name="contoh_deskripsi">"Rendang adalah salah satu hidangan terenak yang pernah saya coba! Dagingnya sangat empuk dan bumbu rempahnya begitu meresap hingga ke dalam, membuat setiap suapan penuh dengan cita rasa yang kaya dan menggugah selera. Perpaduan rasa gurih, pedas, dan aroma khas rempah membuat rendang benar-benar istimewa. Teksturnya yang lembut berpadu sempurna dengan saus santan yang kental dan sedikit berminyak, memberikan sensasi yang sulit dilupakan. Ini adalah makanan yang cocok untuk dinikmati kapan saja, dan selalu membuat saya ingin tambah lagi.</string>-->
-
-    <!--string-array soon delete-->
-    <string-array name="data_name">
-        <item>Nasi Goreng</item>
-        <item>Kerak Telor</item>
-        <item>Lumpia</item>
-        <item>Papeda</item>
-        <item>Bika Ambon</item>
-        <item>Rendang</item>
-        <item>Es Pisang Ijo</item>
-        <item>Soto Banjar</item>
-        <item>Sate Lilit</item>
-        <item>Mie Aceh</item>
-        <item>Tahu Sumedang</item>
-    </string-array>
-
-    <string-array name="data_asal_daerah">
-        <item>Indonesia</item>
-        <item>Jakarta</item>
-        <item>Semarang</item>
-        <item>Papua</item>
-        <item>Medan</item>
-        <item>Padang</item>
-        <item>Makassar</item>
-        <item>Kalimantan Selatan</item>
-        <item>Bali</item>
-        <item>Aceh</item>
-        <item>Sumedang</item>
-    </string-array>
-
-    <string-array name="deskripsi_makanan">
-        <item>ya nasi goreng pada umumnya lah</item>
-        <item>Telur dan ketan yang dimasak dalam wajan kecil dan disajikan dengan serundeng</item>
-        <item>Lumpia yang diisi dengan rebung dan daging, disajikan dengan saus manis	</item>
-        <item>Makanan pokok berupa bubur sagu yang disajikan dengan ikan kuah kuningMakanan pokok berupa bubur sagu yang disajikan dengan ikan kuah kuning</item>
-        <item>Kue berbentuk serabi dengan tekstur kenyal dan berongga</item>
-        <item>Daging sapi dimasak dengan santan dan rempah-rempah</item>
-        <item>Pisang yang dibalut dengan adonan tepung beras berwarna hijau, disajikan dengan sirup merah</item>
-        <item>Soto dengan kuah bening berisi daging ayam dan perkedel</item>
-        <item>Sate dari ikan cincang yang dibungkus dengan batang serai	</item>
-        <item>Mie kuning tebal yang dimasak dengan bumbu kari dan daging</item>
-        <item>Tahu goreng khas Sumedang yang garing di luar, lembut di dalam</item>
-    </string-array>
-
-
-    <integer-array name="food_photo">
-        <item>@drawable/img_nasgor</item>
-        <item>@drawable/img_kerak_telor3</item>
-        <item>@drawable/img_lumpia_7</item>
-        <item>@drawable/img_papeda</item>
-        <item>@drawable/bika_ambon</item>
-        <item>@drawable/img_rendang_1</item>
-        <item>@drawable/img_es_pisang_ijo</item>
-        <item>@drawable/img_soto_banjar3</item>
-        <item>@drawable/img_satelilit_2</item>
-        <item>@drawable/img_mie_aceh</item>
-        <item>@drawable/img_tahu_sumedang</item>
-    </integer-array>
+    <!-- camera -->
     <string name="title_activity_camera">CameraActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="input_username_title">Isi username dulu, ya!</string>
+    <string name="analisis_makanan">analisis makanan</string>
+
+    <!-- result -->
+    <string name="result">Hasil Klasifikasi</string>
+    <string name="predicted_class">Kelas yang diprediksi :</string>
+    <string name="txt_predicted_class">Prediksi kelas</string>
+    <string name="lihat_informasi_makanan">Lihat informasi makanan</string>
+    <string name="success_predict">Makanan yang kamu cari adalah </string>
+    <string name="success_confidence">Makanan ini memiliki confidence score </string>
+    <string name="value_confidence">confidence score </string>
+    <string name="detail_makanan">Detail Makanan</string>
+
 
     <!-- Lumpia (Jateng)
     Pempek (Palembang)
@@ -151,7 +104,7 @@
     Soto Banjar (Kalimantan)
     Sate Lilit (Bali)
     Mie Aceh (Aceh)
-    Tahu Sumedang (Sumedang ) -->
+    Tahu Sumedang (Sumedang) -->
 
 
 </resources>

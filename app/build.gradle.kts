@@ -10,6 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        buildConfigField("String", "BASE_URL", "\"https://rasanusa-api-555896629878.asia-southeast2.run.app/\"")
         applicationId = "com.example.rasanusa"
         minSdk = 26
         targetSdk = 34
@@ -37,10 +38,13 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.fragment.ktx)
     val camerax_version = "1.5.0-alpha03"
     val retrofitVersion = "2.9.0"
     val lifecycleRuntimeKtx = "2.6.1"
@@ -61,20 +65,22 @@ dependencies {
 
     //camera
     implementation(libs.androidx.camera.core)
-    implementation ("androidx.camera:camera-core:${camerax_version}")
-    implementation ("androidx.camera:camera-camera2:${camerax_version}")
-    implementation ("androidx.camera:camera-lifecycle:${camerax_version}")
-    implementation ("androidx.camera:camera-video:${camerax_version}")
-    implementation ("androidx.camera:camera-view:${camerax_version}")
-    implementation ("androidx.camera:camera-extensions:${camerax_version}")
+    implementation (libs.androidx.camera.core.v150alpha03)
+    implementation (libs.camera.camera2)
+    implementation (libs.camera.lifecycle)
+    implementation (libs.camera.video)
+    implementation (libs.camera.view)
+    implementation (libs.androidx.camera.extensions)
 
-    implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation(libs.androidx.core.splashscreen)
 
     //retrofit
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleRuntimeKtx")
-    implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptor")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.logging.interceptor)
+
+    implementation(libs.glide)
 
 
     implementation(libs.firebase.auth)
