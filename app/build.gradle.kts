@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
     alias(libs.plugins.google.gms.google.services)
 }
 
@@ -30,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -45,10 +46,6 @@ android {
 dependencies {
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.fragment.ktx)
-    val camerax_version = "1.5.0-alpha03"
-    val retrofitVersion = "2.9.0"
-    val lifecycleRuntimeKtx = "2.6.1"
-    val loggingInterceptor = "4.11.0"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -81,6 +78,10 @@ dependencies {
     implementation(libs.logging.interceptor)
 
     implementation(libs.glide)
+
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 
 
     implementation(libs.firebase.auth)

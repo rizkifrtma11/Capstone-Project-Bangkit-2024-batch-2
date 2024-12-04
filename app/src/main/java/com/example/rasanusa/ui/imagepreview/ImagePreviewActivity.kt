@@ -10,9 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.MainActivity
 import com.example.rasanusa.data.api.ApiConfig
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryRoomDatabase
 import com.example.rasanusa.data.response.PredictResponse
 import com.example.rasanusa.databinding.ActivityImagePreviewBinding
 import com.example.rasanusa.ui.result.ResultActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -71,7 +77,20 @@ class ImagePreviewActivity : AppCompatActivity() {
                 showLoading(false)
                 if (response.isSuccessful && response.body() != null) {
                     val result = response.body()!!
-                    navigateToResult(result)
+                    val db = FoodHistoryRoomDatabase.getDatabase(applicationContext)
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        db.foodHistoryDao().insert(
+                            FoodHistory(
+                                imagePredict = uri,
+                                predictionResult = result,
+                                timestamp = System.currentTimeMillis()
+                            )
+                        )
+                        withContext(Dispatchers.Main){
+                            navigateToResult(result)
+                        }
+                    }
                 } else {
                     Toast.makeText(this@ImagePreviewActivity, "Gagal menganalisis gambar", Toast.LENGTH_SHORT).show()
                 }

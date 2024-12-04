@@ -17,11 +17,25 @@
         android:label="scan"
         tools:layout="@layout/fragment_scan" />
 
-    <activity
+    <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.rasanusa.ui.profile.ProfileActivity"
+        android:name="com.example.rasanusa.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/activity_profile" />
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.rasanusa.ui.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
+
+    <action
+        android:id="@+id/action_profile_to_history"
+        app:destination="@id/navigation_history"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"  />
 
 
 </navigation>

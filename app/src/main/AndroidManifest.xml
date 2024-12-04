@@ -20,7 +20,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.RasaNusa"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.history.HistoryActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.imagepreview.ImagePreviewActivity"
             android:exported="false" />
@@ -39,16 +42,13 @@
         <activity
             android:name=".ui.SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/Theme.RasaNusa.Splash" >
+            android:theme="@style/Theme.RasaNusa.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.profile.ProfileActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />

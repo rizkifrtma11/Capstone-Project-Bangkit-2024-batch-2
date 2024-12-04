@@ -16,10 +16,10 @@ interface ApiService {
     @GET("makanan")
     fun getAllFood(): Call<FoodResponse>
 
-    @GET("makanan/{name}")
-    fun getDetail(
-        @Path("name") name: String? = null,
-    ) : Call<FoodResponse>
+//    @GET("makanan/{name}")
+//    fun getDetail(
+//        @Path("name") name: String? = null,
+//    ) : Call<FoodResponse>
 
     @Multipart
     @POST("predict")
@@ -27,8 +27,8 @@ interface ApiService {
         @Part image: MultipartBody.Part
     ): Call<PredictResponse>
 
-    @GET("result")
-    fun getAllResult(): Call<ResultResponse>
+//    @GET("result")
+//    fun getAllResult(): Call<ResultResponse>
 
 
 }

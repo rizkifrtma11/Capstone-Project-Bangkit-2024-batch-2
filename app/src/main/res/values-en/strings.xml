@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_profile">Profile</string>
+    <string name="title_back">Back</string>
+    <string name="title_next">Next</string>
+    <string name="title_scan">Scan</string>
+
+    <!-- general -->
+    <string name="food_name">Food Name</string>
+    <string name="asal_daerah">Origin from</string>
+    <string name="food_prompt">Short description</string>
+    <string name="unknown">-</string>
+
+    <!-- Register & Login -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="hint_email">Your email</string>
+    <string name="username">Username</string>
+    <string name="uid">Username id</string>
+    <string name="hint_username">Your username</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Your password</string>
+    <string name="welcome">Welcome to RasaNusa!</string>
+    <string name="to_register">Regist here.</string>
+    <string name="to_login">Login here.</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="haveAccount">Already have account?</string>
+
+    <!-- main -->
+    <string name="search">Search here…</string>
+    <string name="filter">filter</string>
+
+    <!-- home -->
+    <string name="explore">What Indonesian food you want to know today?</string>
+    <string name="jelajahi">Explore Indonesian Food</string>
+    <string name="welcome_title">Hello,</string>
+    <string name="welcome_name">username</string>
+    <string name="selamat_datang">Welcome to RasaNusa!</string>
+
+    <!-- detail -->
+    <string name="food_description">Food Description</string>
+    <string name="bahan_utama">Main Ingredients</string>
+    <string name="food_history">Food History</string>
+    <string name="food_nutrition">Nutrition Description</string>
+    <string name="nutrisi">Nutrition</string>
+    <string name="calories">Calories</string>
+    <string name="carbo">Carbs</string>
+    <string name="jml_carbo">0g</string>
+    <string name="jml_cal">0g</string>
+    <string name="jml_fat">0g</string>
+    <string name="jml_protein">0g</string>
+    <string name="protein">Protein</string>
+    <string name="fat">Fat</string>
+    <string name="serving_size">Serving size</string>
+    <string name="default_size">0g</string>
+    <string name="funfact">Funfact</string>
+    <string name="category">Category</string>
+    <string name="bahan_dasar">Main Ingredients :</string>
+
+    <!-- camera -->
+    <string name="capture_image" translatable="false">Capture Image</string>
+    <string name="close">close</string>
+    <string name="photo_picker" translatable="false">Photo Picker</string>
+
+    <!-- profile -->
+    <string name="profile">Profile</string>
+    <string name="setting_button">setting button</string>
+    <string name="rincian">Details</string>
+    <string name="go_to_camera">Go to camera</string>
+
+    <!-- camera -->
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="input_username_title">Create a username first!</string>
+    <string name="analisis_makanan">Food analysis</string>
+
+    <!-- result -->
+    <string name="result">Classification Result</string>
+    <string name="predicted_class">Prediction class :</string>
+    <string name="txt_predicted_class">Prediction class</string>
+    <string name="lihat_informasi_makanan">View food information</string>
+    <string name="success_predict">The food you are looking for is </string>
+    <string name="success_confidence">This food has confidence score of </string>
+    <string name="value_confidence" translatable="false">confidence score</string>
+    <string name="detail_makanan">Food Details</string>
+    <string name="title_home">Home</string>
+
+    <!-- additional -->
+    <string name="email_dan_password">Change email and password</string>
+    <string name="ubah_email">Change email</string>
+    <string name="ubah_kata_sandi">Change password</string>
+    <string name="berlangganan">Membership</string>
+    <string name="beli_keanggotaan">Join membership</string>
+    <string name="keanggotaan">Keanggotaan</string>
+    <string name="history_scan">Scan history</string>
+    <string name="keluar">Logout</string>
+    <string name="lihat_semua">See all</string>
+    <string name="points">Points</string>
+    <string name="unknown_food">unknown food</string>
+    <string name="unknown_confidence">-</string>
+
+</resources>

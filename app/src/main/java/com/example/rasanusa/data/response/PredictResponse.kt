@@ -34,7 +34,7 @@ data class DocumentData(
 	val asal: String? = null,
 
 	@field:SerializedName("gizi")
-	val gizi: GiziPredict? = null,
+	val gizi: Gizi? = null,
 
 	@field:SerializedName("image")
 	val image: String? = null,
@@ -53,23 +53,4 @@ data class DocumentData(
 
 	@field:SerializedName("desc")
 	val desc: String? = null
-) : Parcelable
-
-@Parcelize
-data class GiziPredict(
-
-	@field:SerializedName("protein")
-	val protein: String? = null,
-
-	@field:SerializedName("serving_size")
-	val servingSize: String? = null,
-
-	@field:SerializedName("fat")
-	val fat: String? = null,
-
-	@field:SerializedName("calories")
-	val calories: String? = null,
-
-	@field:SerializedName("carbohidrate")
-	val carbohidrate: String? = null
 ) : Parcelable
