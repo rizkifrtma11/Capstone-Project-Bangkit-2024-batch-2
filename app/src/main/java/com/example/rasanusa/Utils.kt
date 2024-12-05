@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Environment
 import android.util.Log
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import java.io.File
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -22,17 +21,15 @@ private val timeStamp: String get() {
 fun createCustomTempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
-//    val filesDir = context.externalCacheDir
-//    return File.createTempFile(timeStamp, ".jpg", filesDir)
 }
 
 fun String.withCurrencyFormat(): String {
     val rupiahExchangeRate = 15898.69
     val usdExchangeRate = 0.000063
 
-    val priceOnDollar = this.toDoubleOrNull() ?: return "$0.00" // Mengembalikan $0.00 jika konversi gagal
+    val priceOnDollar = this.toDoubleOrNull() ?: return "$0.00"
 
-    var mCurrencyFormat = NumberFormat.getCurrencyInstance()
+    var mCurrencyFormat: NumberFormat
     val deviceLocale = Locale.getDefault().country
 
     when {

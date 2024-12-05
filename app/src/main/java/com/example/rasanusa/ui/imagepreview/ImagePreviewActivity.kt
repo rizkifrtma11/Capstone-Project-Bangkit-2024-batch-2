@@ -9,9 +9,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.rasanusa.MainActivity
 import com.example.rasanusa.R
 import com.example.rasanusa.data.api.ApiConfig

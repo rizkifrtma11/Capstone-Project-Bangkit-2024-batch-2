@@ -18,7 +18,8 @@
             android:layout_height="220dp"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
             android:scaleType="centerCrop"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"
+            tools:ignore="ContentDescription" />
 
         <LinearLayout
             android:layout_width="match_parent"
