@@ -75,6 +75,7 @@ class ResultActivity : AppCompatActivity() {
     private fun showResultDetail(imageUrl: String?, predictedClass: String, confidence: String?) {
         Glide.with(this@ResultActivity)
             .load(imageUrl)
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
             .into(binding.imageResult)
 
         binding.txtPredictedClass.text = predictedClass

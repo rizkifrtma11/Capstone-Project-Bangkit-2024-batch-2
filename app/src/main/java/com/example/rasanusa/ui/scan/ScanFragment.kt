@@ -164,6 +164,7 @@ class ScanFragment : Fragment() {
     ) { uri: Uri? ->
         if (uri != null) {
             currentImagerUri = uri
+            requireContext().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
             val intent = Intent(activity, ImagePreviewActivity::class.java)
             intent.putExtra("imageUri", uri.toString())
