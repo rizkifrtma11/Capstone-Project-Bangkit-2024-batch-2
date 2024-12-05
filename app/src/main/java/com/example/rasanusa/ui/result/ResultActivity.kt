@@ -7,7 +7,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.rasanusa.MainActivity
+import com.example.rasanusa.R
 import com.example.rasanusa.data.response.DocumentData
 import com.example.rasanusa.databinding.ActivityResultBinding
 
@@ -53,10 +57,15 @@ class ResultActivity : AppCompatActivity() {
 
         showLoading(true)
 
-        if (imageUrl != null && predictedClass != null && confidenceScore != null) {
+        if(imageUrl != null){
             showLoading(false)
-            showResultDetail(imageUrl, predictedClass, confidenceScore)
-        } else {
+
+            if (predictedClass.isNullOrEmpty() || confidenceScore.isNullOrEmpty()){
+                resultUnknown(imageUrl)
+            } else{
+                showResultDetail(imageUrl, predictedClass, confidenceScore)
+            }
+        }else{
             showLoading(false)
             showError()
             finish()
@@ -72,12 +81,22 @@ class ResultActivity : AppCompatActivity() {
         binding.txtConfidenceScore.text = confidence
     }
 
+    private fun resultUnknown(imageUrl: String?) {
+        Glide.with(this@ResultActivity)
+            .load(imageUrl)
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+            .into(binding.imageResult)
+
+        binding.txtPredictedClass.text = getString(R.string.unknown_food)
+        binding.txtConfidenceScore.text = getString(R.string.unknown_confidence)
+    }
+
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun showError() {
-        Toast.makeText(this, "Data makanan tidak ditemukan", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Data makanan tidak ditemukan!", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

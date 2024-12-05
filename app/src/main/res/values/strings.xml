@@ -1,36 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">RasaNusa</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_profile">Profile</string>
-    <string name="title_back">Back</string>
-    <string name="title_next">Next</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_scan">Scan</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_back">Kembali</string>
+    <string name="title_next">Lanjut</string>
+    <string name="title_scan">Pindai</string>
 
     <!-- general -->
-    <string name="food_name">Food Name</string>
+    <string name="food_name">Nama Makanan</string>
     <string name="asal_daerah">Asal Daerah</string>
-    <string name="food_prompt">Food Short Description</string>
+    <string name="food_prompt">Deskripsi singkat makanan</string>
     <string name="unknown">-</string>
 
     <!-- Register & Login -->
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="email">Email</string>
-    <string name="hint_email">Your email</string>
-    <string name="username">Username</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="hint_email">Email anda</string>
+    <string name="username">Nama user</string>
     <string name="uid">username id</string>
-    <string name="hint_username">Your username</string>
-    <string name="password">Password</string>
-    <string name="hint_password">Your password</string>
-    <string name="welcome">Welcome to RasaNusa!</string>
-    <string name="to_register">Register here.</string>
-    <string name="to_login">Login here.</string>
-    <string name="dont_have_account">Don\'t have account?</string>
-    <string name="haveAccount">Already have an account?</string>
+    <string name="hint_username">Nama user anda</string>
+    <string name="password">Sandi</string>
+    <string name="hint_password">Sandi anda</string>
+    <string name="welcome">Selamat datang di RasaNusa!</string>
+    <string name="to_register">Daftar disini.</string>
+    <string name="to_login">Masuk disini.</string>
+    <string name="dont_have_account">Belum punya akun?</string>
+    <string name="haveAccount">Sudah punya akun?</string>
 
     <!-- main -->
     <string name="search">Search here…</string>
@@ -39,17 +34,15 @@
     <!-- home -->
     <string name="explore">Makanan Indonesia apa yang ingin kamu ketahui hari ini?</string>
     <string name="jelajahi">Jelajahi Makanan Indonesia</string>
-    <string name="welcome_title">Halo,</string>
+    <string name="welcome_title">Halo, %s</string>
     <string name="welcome_name">username</string>
     <string name="selamat_datang">Selamat datang di RasaNusa!</string>
 
-
     <!-- detail -->
-    <string name="food_description">Food Description</string>
+    <string name="food_description">Deskripsi Makanan</string>
     <string name="bahan_utama">Bahan Utama</string>
     <string name="food_history">Sejarah Singkat</string>
     <string name="food_nutrition">Keterangan Gizi</string>
-    <string name="kandungan">Kandungan</string>
     <string name="nutrisi">Nutrisi</string>
     <string name="calories">Kalori</string>
     <string name="carbo">Karbohidrat</string>
@@ -61,25 +54,23 @@
     <string name="fat">Lemak</string>
     <string name="serving_size">Ukuran per porsi</string>
     <string name="default_size">0g</string>
-    <string name="funfact">Funfact</string>
+    <string name="funfact">Fakta Menarik</string>
     <string name="category">Kategori</string>
     <string name="bahan_dasar">Bahan dasar :</string>
 
     <!-- camera -->
-    <string name="capture_image">Capture Image</string>
+    <string name="capture_image" translatable="false">Capture Image</string>
     <string name="close">close</string>
-    <string name="photo_picker">Photo Picker</string>
+    <string name="photo_picker" translatable="false">Photo Picker</string>
 
     <!-- profile -->
-    <string name="profile">Profile</string>
+    <string name="profile">Profil</string>
     <string name="setting_button">setting button</string>
     <string name="rincian">Rincian</string>
-    <string name="go_to_camera">Go to camera</string>
+    <string name="go_to_camera" translatable="false">Go to camera</string>
 
     <!-- camera -->
-    <string name="title_activity_camera">CameraActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_camera" translatable="false">CameraActivity</string>
     <string name="input_username_title">Isi username dulu, ya!</string>
     <string name="analisis_makanan">analisis makanan</string>
 
@@ -90,8 +81,53 @@
     <string name="lihat_informasi_makanan">Lihat informasi makanan</string>
     <string name="success_predict">Makanan yang kamu cari adalah </string>
     <string name="success_confidence">Makanan ini memiliki confidence score </string>
-    <string name="value_confidence">confidence score </string>
+    <string name="value_confidence" translatable="false">confidence score </string>
     <string name="detail_makanan">Detail Makanan</string>
+    <string name="title_home">Beranda</string>
+
+
+    <string name="email_dan_password">Ubah email dan password</string>
+    <string name="ubah_email">Ubah email</string>
+    <string name="ubah_kata_sandi">Ubah kata sandi</string>
+    <string name="berlangganan">Berlangganan</string>
+    <string name="beli_keanggotaan">Gabung keanggotaan</string>
+    <string name="keanggotaan">Keanggotaan</string>
+    <string name="history_scan">Riwayat pencarian</string>
+    <string name="keluar">Keluar</string>
+    <string name="lihat_semua">Lihat semua</string>
+    <string name="points">Poin</string>
+    <string name="unknown_food">Makanan tidak ditemukan</string>
+    <string name="unknown_confidence">Confidence score : -</string>
+
+    <!-- history -->
+    <string name="title_history_food">Riwayat Makanan</string>
+    <string name="timestamp">timestamp</string>
+    <string name="delete_history">Hapus riwayat</string>
+    <string name="button_back">button back</string>
+    <string name="rasanusa_poin">RasaNusa Poin</string>
+    <string name="delete_all_history">Hapus semua riwayat makanan?</string>
+    <string name="setuju">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="history_deleted">Semua riwayat makanan telah terhapus</string>
+
+    <!-- Subscription -->
+    <string name="subscription">Ayo berlangganan!</string>
+    <string name="txt_choose_bundle">Pilih paket yang cocok untuk kamu</string>
+    <string name="only">Hanya</string>
+    <string name="per_tahun">/tahun</string>
+    <string name="per_bulan">/bulan</string>
+    <string name="per_minggu">/minggu</string>
+    <string name="new_user">Untuk pengguna baru hemat 90%</string>
+    <string name="new_user_weekly">Untuk pengguna baru bisa uji coba paket Weekly</string>
+    <string name="free">GRATIS</string>
+    <string name="annual">Tahunan</string>
+    <string name="monthly">Bulanan</string>
+    <string name="weekly">Mingguan</string>
+    <string name="buy_subscription">Beli langganan</string>
+    <string name="price">%s</string>
+    <string name="message_limit">Kamu sudah mencapai limit 3 kali scan. Silakan berlangganan untuk melanjutkan.</string>
+    <string name="title_limit">Batas Scan Tercapai!</string>
+    <string name="subscription_now_button">Subscribe</string>
 
 
     <!-- Lumpia (Jateng)

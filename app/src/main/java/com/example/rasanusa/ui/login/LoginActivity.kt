@@ -47,7 +47,6 @@ class LoginActivity : AppCompatActivity() {
         checkLogin()
         setupView()
 
-
     }
 
     private fun setupView() {
@@ -81,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
                     showLoading(false)
                     if (it.isSuccessful) {
                         showLoading(true)
-                        Toast.makeText(this, "Login berhasil. Anda akan diarahkan ke halaman utama.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -102,9 +101,9 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-//        else {
-//            setupLogin()
-//        }
+        else {
+            setupLogin()
+        }
     }
 
     private fun setMyButtonEnable() {

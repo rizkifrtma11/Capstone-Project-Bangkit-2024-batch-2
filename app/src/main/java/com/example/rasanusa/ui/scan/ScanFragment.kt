@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -25,8 +26,10 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.example.rasanusa.R
 import com.example.rasanusa.createCustomTempFile
 import com.example.rasanusa.databinding.FragmentScanBinding
+import com.example.rasanusa.helper.ScanPreferences
 import com.example.rasanusa.ui.imagepreview.ImagePreviewActivity
 
 class ScanFragment : Fragment() {
@@ -172,6 +175,7 @@ class ScanFragment : Fragment() {
             Log.d("Photo Picker", "No media selected")
         }
     }
+
 
     companion object {
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA

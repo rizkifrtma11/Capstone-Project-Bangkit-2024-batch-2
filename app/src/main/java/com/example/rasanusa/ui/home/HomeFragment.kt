@@ -50,13 +50,13 @@ class HomeFragment : Fragment() {
 
     private fun setupRecyclerView(foods: List<DataItem>) {
         foodAdapter = FoodAdapter(foods){ selectedFood ->
-            navuigateToDetail(selectedFood)
+            navigateToDetail(selectedFood)
         }
         binding.rvFood.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.rvFood.adapter = foodAdapter
     }
 
-    private fun navuigateToDetail(itemFood: DataItem){
+    private fun navigateToDetail(itemFood: DataItem){
         val intentDetail = Intent(requireContext(), DetailActivity::class.java).apply {
             putExtra(DetailActivity.FOOD_ITEM, itemFood)
         }

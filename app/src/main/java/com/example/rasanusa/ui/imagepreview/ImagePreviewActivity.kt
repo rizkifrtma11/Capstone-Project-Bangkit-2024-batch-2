@@ -7,12 +7,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.rasanusa.MainActivity
+import com.example.rasanusa.R
 import com.example.rasanusa.data.api.ApiConfig
+import com.example.rasanusa.data.localdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.FoodHistoryRoomDatabase
 import com.example.rasanusa.data.response.PredictResponse
 import com.example.rasanusa.databinding.ActivityImagePreviewBinding
+import com.example.rasanusa.helper.ScanPreferences
 import com.example.rasanusa.ui.result.ResultActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -41,8 +53,13 @@ class ImagePreviewActivity : AppCompatActivity() {
                 finish()
             }
             btnAnalyze.setOnClickListener {
-                uploadImage()
-                Toast.makeText(this@ImagePreviewActivity, "Makanan sedang dianalisis...", Toast.LENGTH_SHORT).show()
+                if (ScanPreferences.isScanLimitReached(this@ImagePreviewActivity)) {
+                    showSubscriptionPopup()
+                } else {
+                    handleScan()
+                    uploadImage()
+                    Toast.makeText(this@ImagePreviewActivity, "Makanan sedang dianalisis...", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -71,7 +88,20 @@ class ImagePreviewActivity : AppCompatActivity() {
                 showLoading(false)
                 if (response.isSuccessful && response.body() != null) {
                     val result = response.body()!!
-                    navigateToResult(result)
+                    val db = FoodHistoryRoomDatabase.getDatabase(applicationContext)
+
+                    CoroutineScope(Dispatchers.IO).launch {
+                        db.foodHistoryDao().insert(
+                            FoodHistory(
+                                imagePredict = uri,
+                                predictionResult = result,
+                                timestamp = System.currentTimeMillis()
+                            )
+                        )
+                        withContext(Dispatchers.Main){
+                            navigateToResult(result)
+                        }
+                    }
                 } else {
                     Toast.makeText(this@ImagePreviewActivity, "Gagal menganalisis gambar", Toast.LENGTH_SHORT).show()
                 }
@@ -110,6 +140,28 @@ class ImagePreviewActivity : AppCompatActivity() {
     private fun showImage(uri: Uri) {
         binding.imageResult.setImageURI(uri)
         Log.d("Image URI", "showImage: $uri")
+    }
+
+    private fun handleScan() {
+        if (ScanPreferences.isScanLimitReached(this)) {
+            showSubscriptionPopup()
+        } else {
+            ScanPreferences.incrementScanCount(this)
+        }
+    }
+
+    private fun showSubscriptionPopup() {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.title_limit))
+            .setMessage(getString(R.string.message_limit))
+            .setPositiveButton(getString(R.string.subscription_now_button)) { _, _ ->
+                val intent = Intent(this@ImagePreviewActivity, MainActivity::class.java)
+                intent.putExtra("navigate_to", "SubscriptionFragment")
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton(R.string.tidak, null)
+            .show()
     }
 
     private fun showLoading(isLoading: Boolean) {
