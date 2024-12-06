@@ -16,16 +16,20 @@
     <string name="register">Daftar</string>
     <string name="email" translatable="false">Email</string>
     <string name="hint_email">Email anda</string>
-    <string name="username">Nama user</string>
+    <string name="username">Username</string>
     <string name="uid">username id</string>
-    <string name="hint_username">Nama user anda</string>
-    <string name="password">Sandi</string>
-    <string name="hint_password">Sandi anda</string>
+    <string name="hint_username">Masukkan username anda</string>
+    <string name="password">Password</string>
+    <string name="hint_password">Password anda</string>
     <string name="welcome">Selamat datang di RasaNusa!</string>
+    <string name="title_register">Daftarkan akunmu dulu ya!</string>
     <string name="to_register">Daftar disini.</string>
     <string name="to_login">Masuk disini.</string>
     <string name="dont_have_account">Belum punya akun?</string>
     <string name="haveAccount">Sudah punya akun?</string>
+    <string name="invalid_username">Username tidak valid</string>
+    <string name="email_invalid">Email tidak valid</string>
+    <string name="error_password">Password tidak boleh kurang dari 8 karakter!</string>
 
     <!-- main -->
     <string name="search">Search here…</string>
@@ -34,9 +38,8 @@
     <!-- home -->
     <string name="explore">Makanan Indonesia apa yang ingin kamu ketahui hari ini?</string>
     <string name="jelajahi">Jelajahi Makanan Indonesia</string>
-    <string name="welcome_title">Halo, %s</string>
-    <string name="welcome_name">username</string>
-    <string name="selamat_datang">Selamat datang di RasaNusa!</string>
+    <string name="username_home">%1$s!</string>
+    <string name="selamat_datang">Selamat datang di RasaNusa,</string>
 
     <!-- detail -->
     <string name="food_description">Deskripsi Makanan</string>
@@ -85,12 +88,12 @@
     <string name="detail_makanan">Detail Makanan</string>
     <string name="title_home">Beranda</string>
 
-
+    <!-- profile -->
     <string name="email_dan_password">Ubah email dan password</string>
     <string name="ubah_email">Ubah email</string>
     <string name="ubah_kata_sandi">Ubah kata sandi</string>
     <string name="berlangganan">Berlangganan</string>
-    <string name="beli_keanggotaan">Gabung keanggotaan</string>
+    <string name="beli_keanggotaan">Subscribe</string>
     <string name="keanggotaan">Keanggotaan</string>
     <string name="history_scan">Riwayat pencarian</string>
     <string name="keluar">Keluar</string>
@@ -128,6 +131,7 @@
     <string name="message_limit">Kamu sudah mencapai limit 3 kali scan. Silakan berlangganan untuk melanjutkan.</string>
     <string name="title_limit">Batas Scan Tercapai!</string>
     <string name="subscription_now_button">Subscribe</string>
+    <string name="feature_not_available">Fitur ini belum tersedia</string>
 
 
     <!-- Lumpia (Jateng)

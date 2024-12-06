@@ -19,6 +19,8 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getDetail()
+
+        binding.btnExit.setOnClickListener { finish() }
     }
 
     private fun getDetail(){

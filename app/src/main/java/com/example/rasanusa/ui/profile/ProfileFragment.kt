@@ -1,5 +1,6 @@
 package com.example.rasanusa.ui.profile
 
+import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -33,6 +34,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fetchUsername()
+
         binding.apply {
             layoutProfile.setOnClickListener{ navigateToProfileSettings() }
             layoutBerlangganan.setOnClickListener{ navigateToMembership() }
@@ -41,8 +44,15 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun fetchUsername() {
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("USERNAME", "User")
+
+        binding.txtUsernameProfile.text = getString(R.string.username_home, username)
+    }
+
     private fun navigateToProfileSettings(){
-        Toast.makeText(requireContext(), "Fitur in ibelum tersedia", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToMembership(){

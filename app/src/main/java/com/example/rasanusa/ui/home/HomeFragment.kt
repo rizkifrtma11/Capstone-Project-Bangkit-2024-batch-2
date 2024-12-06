@@ -1,5 +1,6 @@
 package com.example.rasanusa.ui.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rasanusa.R
 import com.example.rasanusa.data.response.DataItem
 import com.example.rasanusa.ui.adapter.FoodAdapter
 import com.example.rasanusa.databinding.FragmentHomeBinding
@@ -32,6 +34,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         showLoading(true)
+
+        fetchUsername()
+
         homeViewModel.listFood.observe(viewLifecycleOwner) { eventResponse ->
             val foods = eventResponse?.data ?: emptyList()
             setupRecyclerView(foods)
@@ -41,6 +46,13 @@ class HomeFragment : Fragment() {
         }
         homeViewModel.getData()
 
+    }
+
+    private fun fetchUsername() {
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("USERNAME", "User")
+
+        binding.txtSelamatDatang.text = getString(R.string.username_home, username)
     }
 
     override fun onDestroyView() {

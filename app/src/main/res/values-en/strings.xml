@@ -16,17 +16,21 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="email" translatable="false">Email</string>
-    <string name="hint_email">Your email</string>
+    <string name="hint_email">Input your email</string>
+    <string name="hint_username">Input your username</string>
+    <string name="hint_password">Input your password</string>
     <string name="username">Username</string>
     <string name="uid">Username id</string>
-    <string name="hint_username">Your username</string>
     <string name="password">Password</string>
-    <string name="hint_password">Your password</string>
     <string name="welcome">Welcome to RasaNusa!</string>
     <string name="to_register">Regist here.</string>
     <string name="to_login">Login here.</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="haveAccount">Already have account?</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="email_invalid">Invalid email</string>
+    <string name="error_password">Password cannot be less than 8 characters!</string>
+    <string name="title_register">Register your account</string>
 
     <!-- main -->
     <string name="search">Search here…</string>
@@ -35,9 +39,8 @@
     <!-- home -->
     <string name="explore">What Indonesian food you want to know today?</string>
     <string name="jelajahi">Explore Indonesian Food</string>
-    <string name="welcome_title">Hello, %s</string>
-    <string name="welcome_name">username</string>
-    <string name="selamat_datang">Welcome to RasaNusa!</string>
+    <string name="username_home">%1$s</string>
+    <string name="selamat_datang">Welcome to RasaNusa,</string>
 
     <!-- detail -->
     <string name="food_description">Food Description</string>
@@ -129,6 +132,7 @@
     <string name="message_limit">You\'ve reached your 3 scan limit. Subscribe to continue!</string>
     <string name="title_limit">You\'ve hit the limit!</string>
     <string name="subscription_now_button">Subscribe</string>
+    <string name="feature_not_available">Feature not yet available</string>
 
 
 </resources>

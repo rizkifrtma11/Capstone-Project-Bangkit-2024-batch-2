@@ -1,5 +1,6 @@
 package com.example.rasanusa.ui.register
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -46,9 +47,12 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.txtToLogin.setOnClickListener {
             showLoading(true)
-            val intentToRegister = Intent(this, LoginActivity::class.java)
-            startActivity(intentToRegister)
+            val intentToLogin = Intent(this, LoginActivity::class.java)
+            intentToLogin.putExtra("fromRegister", true)
+            startActivity(intentToLogin)
+            finish()
         }
+
     }
 
     private fun setupRegister() {
@@ -56,23 +60,36 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnRegister.setOnClickListener {
             val email = binding.etRegisterEmail.text.toString()
             val password = binding.etRegisterPassword.text.toString()
+            val username = binding.etRegisterUsername.text.toString()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty()) {
                 showLoading(true)
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
                     if (task.isSuccessful) {
-                        showLoading(true)
+                        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("USERNAME", username)
+                        editor.apply()
+
                         Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, "Gagal membuat akun: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Gagal membuat akun: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Username, email, dan password tidak boleh kosong",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -80,20 +97,22 @@ class RegisterActivity : AppCompatActivity() {
         passwordEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 setMyButtonEnable()
             }
+
             override fun afterTextChanged(s: Editable) {
             }
         })
     }
 
-    private fun setMyButtonEnable(){
+    private fun setMyButtonEnable() {
         val result = passwordEditText.text
         binding.btnRegister.isEnabled = (result != null) && result.toString().isNotEmpty()
     }
 
-    private fun showLoading(isLoading: Boolean){
+    private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 }

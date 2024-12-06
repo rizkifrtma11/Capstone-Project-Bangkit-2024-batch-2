@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.rasanusa.R
 import com.example.rasanusa.databinding.FragmentSubscriptionBinding
 import com.example.rasanusa.setFormattedPrice
 import com.example.rasanusa.setStrikeThrough
@@ -36,7 +37,8 @@ class SubscriptionFragment : Fragment() {
                 findNavController().navigateUp()
             }
             btnBuy.setOnClickListener{
-                Toast.makeText(requireContext(), "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),
+                    getString(R.string.feature_not_available), Toast.LENGTH_SHORT).show()
             }
         }
     }

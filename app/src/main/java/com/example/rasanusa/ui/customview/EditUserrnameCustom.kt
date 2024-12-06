@@ -5,13 +5,14 @@ import android.graphics.Canvas
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Patterns
 import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import com.example.rasanusa.R
 
-class EditPasswordCustom @JvmOverloads constructor(
+class EditUserrnameCustom @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : AppCompatEditText(context, attrs) {
+
 
     init {
         addTextChangedListener(object : TextWatcher {
@@ -19,10 +20,8 @@ class EditPasswordCustom @JvmOverloads constructor(
                 // Do nothing.
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.toString().length < 8){
-                    setError("Password tidak boleh kurang dari 8 karakter!", null)
-                }else{
-                    error = null
+                if (s.isNotEmpty() && !isValidUsername(s.toString())) {
+                    setError(context.getString(R.string.invalid_username), null)
                 }
             }
             override fun afterTextChanged(s: Editable) {
@@ -33,8 +32,12 @@ class EditPasswordCustom @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        hint = "Masukkan password Anda"
+        hint = context.getString(R.string.hint_username)
         textAlignment = View.TEXT_ALIGNMENT_VIEW_START
+    }
+
+    private fun isValidUsername(username: String): Boolean {
+        return username.matches("^[a-zA-Z0-9_]{3,15}$".toRegex())
     }
 
 
