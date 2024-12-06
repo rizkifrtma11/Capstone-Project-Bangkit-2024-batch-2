@@ -33,7 +33,7 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/txt_email"
+                android:id="@+id/txt_username_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
