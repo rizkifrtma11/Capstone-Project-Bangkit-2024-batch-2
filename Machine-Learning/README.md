@@ -1,6 +1,6 @@
 # **RasaNusa: Fine-Tuned Deep Learning Architectures with ImageNetV2 for Image Classification, Attention Mechanism, and Residual Connections**
 <div align="center">
-  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/a3c85976ab9c8f3c0642e7d49b78130d39a1ea78/Machine-Learning/logo.jpg?raw=true" alt="Deskripsi gambar" width="400" height="400">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/c1f1ae548e1bf70ba2f719636131f849ded07071/Machine-Learning/image-assets/logo.jpg?raw=true" alt="Deskripsi gambar" width="400" height="400">
 </div>
 
 **RasaNusa** is an image classification project designed to classify various images into predefined categories. The model is built using advanced deep learning techniques, including **fine-tuning** of a pre-trained **MobileNetV2** model, to enhance the accuracy and performance of the classification process. Specifically, the project leverages an **Attention Mechanism** and **Residual Connections** integrated with MobileNetV2, allowing it to effectively extract features from images while addressing issues like overfitting and focusing on relevant visual information. This approach enables the model to adapt to the specific dataset, improving its ability to classify images accurately across diverse categories.
@@ -34,15 +34,33 @@ The architecture of this model is a combination of **Transfer Learning**, **Atte
 | numpy         | 1.26.4   |
 | ipywidgets    | 8.1.5    |
 
+## **Class Distribution Dataset**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/main/Machine-Learning/image-assets/distribution.png?raw=true" alt="Distribution">
+</div>
 
+## **Sample Train Dataset**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/main/Machine-Learning/image-assets/sample_train_dataset.png?raw=true" alt="Sample Train Dataset">
+</div>
 
+## **Sample Validation Dataset**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/main/Machine-Learning/image-assets/sample_validation_dataset.png?raw=true" alt="Sample Validation Dataset">
+</div>
 
+## **Metric Accuracy (Train Accuracy : 98%, Validation Accuracy : 94%)**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/main/Machine-Learning/image-assets/metric_accuracy.png?raw=true" alt="Metric Accuracy">
+</div>
 
+## **Metric Loss (Train Loss : 3%, Validation Loss : 20%)**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/main/Machine-Learning/image-assets/metric_loss.png?raw=true" alt="Metric Loss">
+</div>
 
-
-
-<h1>Sumber Dataset</h1>
-<h3>Sumber Dataset untuk Model Klasifikasi :</h3>
+<h1>Source Datasets</h1>
+<h3>Source Datasets for Classification Model :</h3>
 <br>
 <ol>
 <li>Gambar train/valid/test 01 - 09 : https://universe.roboflow.com/bangkit/indonesian-food-pedsx/dataset/1</li>
@@ -167,72 +185,8 @@ The architecture of this model is a combination of **Transfer Learning**, **Atte
 <li>lumpia-60 : https://asset.kompas.com/crops/KAAnJeC0ZnUudo-55P8169HOWbs=/0x0:1000x667/1200x800/data/photo/2023/08/12/64d7863019413.jpeg</li>
 </ol>
 
-<h3>Sumber Dataset untuk Model Rekomendasi :</h3>
+<h3>Other Datasets:</h3>
 <br>
 <ol>
   <li>Kalori : https://www.fatsecret.co.id/</li>
-  <li>Rendang : https://www.indonesia.travel/content/dam/indtravelrevamp/en/trip-ideas/lezatnya-rendang-minangkabau-yang-mendunia/i4.jpg</li>
-<li>Soto Betawi : https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsgwiuORY350faXh91qrSqhxOrmO-nWJBZ4ga48XnMbFM41Xjk1Nivsw_tn4JB8cVC_T5adUL4j3HFjWUNM1P7f8kvBDmWBS7EEpCb4fRF1mqKugFVZ3mJGbNOvhZJ_xbxoQ0tjcBKB0j775jtpDkwFaxvEBpHao4rnjjYJBrsk0mkLIMrXOd50Okh/s16000/soto%20betawi.jpg</li>
-<li>Gudeg : https://www.masakapahariini.com/wp-content/uploads/2021/08/Gudeg-Yogyakarta.jpg</li>
-<li>Pempek : https://s0.bukalapak.com/uploads/content_attachment/fd3107d582c4f80e5448ada5/original/foto_utama_pempek_2.jpg</li>
-<li>Mie Aceh : https://cdn-cas.orami.co.id/parenting/images/mie_aceh3.width-800.jpg</li>
-<li>Sate Padang : https://balitraveldiary.com/wp-content/uploads/2020/01/Sate-Padang-Syukur-1024x1024.jpg</li>
-<li>Nasi Uduk : https://img-global.cpcdn.com/recipes/8932d05b034619df/751x532cq70/nasi-uduk-rice-cooker-foto-resep-utama.jpg</li>
-<li>Kerak Telor : https://cdn.tasteatlas.com/images/dishes/2b405f37c3f24696bd216bdaf0b94604.jpg</li>
-<li>Ayam Taliwang : https://basfood.id/wp-content/uploads/2023/02/Ayam-Taliwang-Khas-Lombok.jpg</li>
-<li>Tahu Gejrot : https://ksmtour.com/media/images/articles10/tahu-gejrot-cirebon.jpg</li>
-<li>Bubur Manado : https://grosirmesin.com/wp-content/uploads/2019/12/resep-tinutuan-e1577418614529.jpg</li>
-<li>Tahu Sumedang : https://i.ytimg.com/vi/KRhMKPbwAa4/maxresdefault.jpg</li>
-<li>Lumpia : https://img.okezone.com/content/2022/08/13/298/2647221/resep-lumpia-khas-semarang-mudah-dibuat-dengan-bahan-dasar-sagu-Y6UVEectwX.jpg</li>
-<li>Coto Makassar : https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/02/17/2066471157.jpg</li>
-<li>Ketoprak : https://kwatjh.s3.ap-southeast-2.amazonaws.com/wp-content/uploads/sites/4/2021/09/16145853/Ketoprak.jpg</li>
-<li>Rawon : https://kabarbaru.co/wp-content/uploads/2022/02/Rawon.jpg</li>
-<li>Soto Banjar : https://www.resepistimewa.com/wp-content/uploads/resep-soto-banjar.jpg</li>
-<li>Papeda : https://cdn.idntimes.com/content-images/post/20171102/resep-papeda-ikan-kuah-kuning-sedap-asli-papua-3c512abc90d454233f9d0f1fdec1aa71.jpeg</li>
-<li>Ayam Goreng Kalasan : https://img-global.cpcdn.com/recipes/ff70ae9c035a4aba/1200x630cq70/photo.jpg</li>
-<li>Sate Lilit : https://bisniswisata.co.id/wp-content/uploads/2018/08/sate-lilit.jpg</li>
-<li>Nasi Liwet : https://blog.tokowahab.com/wp-content/uploads/2018/11/resep-nasi-liwet-khas-sunda.jpg</li>
-<li>Serabi : https://informazone.com/wp-content/uploads/2019/05/serabi-betawi-benuamesin.com_.jpg</li>
-<li>Tahu Tek : https://cdn.idntimes.com/content-images/post/20190817/tahu-tek-tek-surabaya-938a24f4af57b4908cd2e82a2d66a67f_600x400.jpg</li>
-<li>Sate Maranggi : https://awsimages.detik.net.id/community/media/visual/2020/07/24/sate-maranggi-2.jpeg?w=700&q=90</li>
-<li>Ayam Penyet : https://cdn.idntimes.com/content-images/post/20190626/foto-utama-ayam-penyet-78d36c30229c1894d4d5995542536d2c.jpg</li>
-<li>Sambal Matah : https://jajabakes.com/wp-content/uploads/2019/05/how-to-make-sambal-matah-2.jpg</li>
-<li>Asinan Betawi : https://img.inews.co.id/media/822/files/inews_new/2020/10/20/asinan_betawi.jpg</li>
-<li>Lontong Balap : https://www.resepistimewa.com/wp-content/uploads/resep-lontong-balap.jpg</li>
-<li>Ayam Betutu : https://www.resepistimewa.com/wp-content/uploads/ayam-betutu-bali.jpg</li>
-<li>Bika Ambon : https://cdn.idntimes.com/content-images/community/2021/01/fromandroid-bce44a3308ea3357c8f5754197c2fd16.jpg</li>
-<li>Gado-gado : https://www.wandercooks.com/wp-content/uploads/2020/11/gado-gado-salad-with-peanut-sauce-ft-1.jpg</li>
-<li>Rujak Buah : https://cdn.tasteatlas.com/images/dishes/0412400e1c654ac49710914fb5b6ca2a.jpg?mw=1300</li>
-<li>Lawar : https://cdn0-production-images-kly.akamaized.net/CMBGQyve_R36toJHJ0ILZEqFFLc=/680x383/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2483410/original/025776500_1543322020-resep-lawar-khas-bali.jpg</li>
-<li>Nasi Pecel : https://asset.kompas.com/crops/etxkCgz_0N5ZbdP6YGJScpobPVk=/60x23:959x622/750x500/data/photo/2020/11/05/5fa3f16d9c1cf.jpg</li>
-<li>Kue Cubit : https://www.topwisata.info/wp-content/uploads/2022/09/Resep-Kue-Cubit-1.jpg</li>
-<li>Otak-otak : https://www.rumahmesin.com/wp-content/uploads/2017/06/otak-otak.jpg</li>
-<li>Karedok : https://img.herstory.co.id/articles/archive_20220616/karedok-20220616-082423.jpg</li>
-<li>Arem-arem : https://1.bp.blogspot.com/-_H229mTbC7k/VL7-sZWVRjI/AAAAAAAALOU/Pb9wxsNRYmw/s1600/Arem-Arem.jpg</li>
-<li>Bubur Ayam : https://gastronomyaficionado.files.wordpress.com/2014/11/bubur-ayam-hi-4.jpg</li>
-<li>Es Pisang Ijo : https://1.bp.blogspot.com/-RjAA-cJ_DiU/VHMLV-nqX-I/AAAAAAAABS8/q13diVRj7QU/s1600/Cara-Membuat-Es-Pisang-Ijo.JPG</li>
-<li>Tempe Mendoan : https://www.rumahmesin.com/wp-content/uploads/2020/12/resep_mendoan_tempe.jpg</li>
-<li>Pecel Lele : https://thegorbalsla.com/wp-content/uploads/2019/10/Usaha-Pecel-Lele.jpg</li>
-<li>Gule Kambing : https://www.resepistimewa.com/wp-content/uploads/gule-kambing-1.jpg</li>
-<li>Wedang Ronde : https://cdn.idntimes.com/content-images/community/2021/04/fromandroid-8b2094bdc61959ec7d61a87d7bae228a.jpg</li>
-<li>Sayur Asem : https://thegorbalsla.com/wp-content/uploads/2019/04/Sayur-Asem-Betawi.jpg</li>
-<li>Nasi Kuning : https://www.resepistimewa.com/wp-content/uploads/nasi-kuning.jpg</li>
-<li>Pallubasa : https://turisian.com/wp-content/uploads/2022/12/Pallubasa-Makassar.jpg</li>
-<li>Bebek Goreng : https://img-global.cpcdn.com/recipes/3b8d62764ae92873/680x482cq70/bebek-goreng-jawa-foto-resep-utama.jpg</li>
-<li>Kue Lumpur : https://asset.kompas.com/crops/eOV_amH0dauqoG5XNIUHGHggELk=/78x52:702x468/750x500/data/photo/2020/10/05/5f7b07844f783.jpg</li>
-<li>Roti Canai : https://img-global.cpcdn.com/recipes/2430667_33527abff27283d9/1200x630cq70/photo.jpg</li>
-<li>Es Doger : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtMUf-wB_HPNPbYmS9cROLqL9Dyom4vDhoAg&s</li>
-<li>Kue Pukis : https://akcdn.detik.net.id/visual/2022/10/31/kue-pukis-19_43.jpeg?w=360&q=90</li>
-<li>Sambal Goreng Krecek : https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEnNTufYmF--PcEQpiW1aMteXNL1uvWZRBWw&s</li>
-<li>Combro : https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2023/08/04052625/Resep-Combro-Oncom-Pedas-Camilan-Sore-yang-Bikin-Nagih.jpg</li>
-<li>Sayur Lodeh : https://awsimages.detik.net.id/community/media/visual/2020/09/16/resep-sayur-lodeh-jawa.jpeg?w=600&q=90</li>
-<li>Plecing Kangkung : https://i.ytimg.com/vi/646q7vJHAfE/maxresdefault.jpg</li>
-<li>Nasi Jagung : https://awsimages.detik.net.id/community/media/visual/2017/07/12/16a69f8b-f7ed-4432-968a-c39c8d87605f_169.jpg?w=600&q=90</li>
-<li>Es Cendol : https://asset.kompas.com/crops/qn1n1XThik6uqJ8HRDVmH27uuvg=/0x0:1000x667/750x500/data/photo/2023/03/12/640d6eac51567.jpg</li>
-<li>Kue Rangi : https://asset.kompas.com/crops/zGgJMCarJvDmUF2vD2rWLxEHw6Q=/95x771:1550x1741/750x500/data/photo/2022/06/22/62b30ef74a334.jpg</li>
-<li>Tempoyak : https://www.apasih.web.id/wp-content/uploads/2018/08/patin-tempoyak-jambi-300x200.jpg</li>
-<li>Soto Padang : https://img-global.cpcdn.com/recipes/0f5620293b0c13a2/1502x1064cq70/soto-padang-foto-resep-utama.jpg</li>
-<li>Telur Balado : https://1.bp.blogspot.com/-XVBsKbCgbs8/US3Zv-s_G8I/AAAAAAAAEbM/O3_BHbGOrtY/s1600/Resep+telur+balado+pedas+manis.Jpeg</li>
-<li>Gethuk : https://bake.co.id/wp-content/uploads/2022/11/word-image-2988-2.png</li>
-<li>Empal Gentong : https://cdn.tasteatlas.com/images/dishes/628abf6c36f44b6d95f26f25aa4607fd.jpg</li>
 <ol>
