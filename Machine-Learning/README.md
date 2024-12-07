@@ -1,3 +1,46 @@
+# **RasaNusa: Fine-Tuned Deep Learning Architectures with ImageNetV2 for Image Classification, Attention Mechanism, and Residual Connections**
+<div align="center">
+  <img src="https://github.com/rizkifrtma11/Capstone-Project-Bangkit-2024-batch-2/blob/a3c85976ab9c8f3c0642e7d49b78130d39a1ea78/Machine-Learning/logo.jpg?raw=true" alt="Deskripsi gambar" width="400" height="400">
+</div>
+
+**RasaNusa** is an image classification project designed to classify various images into predefined categories. The model is built using advanced deep learning techniques, including **fine-tuning** of a pre-trained **MobileNetV2** model, to enhance the accuracy and performance of the classification process. Specifically, the project leverages an **Attention Mechanism** and **Residual Connections** integrated with MobileNetV2, allowing it to effectively extract features from images while addressing issues like overfitting and focusing on relevant visual information. This approach enables the model to adapt to the specific dataset, improving its ability to classify images accurately across diverse categories.
+
+## **Model Architecture Overview**
+
+The architecture of this model is a combination of **Transfer Learning**, **Attention Mechanisms**, **Residual Connections**, and **Fine-Tuning** on **ImageNetV2**, designed to enhance the model's ability to classify images accurately and efficiently while adapting to the specific dataset. Here's a of the architecture:
+
+1. **Base Model: MobileNetV2 (Pre-trained on ImageNetV2)**
+
+2. **Attention Mechanism**
+
+3. **Residual Connections**
+
+4. **Multi-Branch Architecture**  
+
+5. **Fully Connected Layers and Output**
+
+## **Package Installation**
+
+| Package       | Version  |
+|---------------|----------|
+| pydot         | 3.0.3    |
+| graphviz      | 0.20.3   |
+| tensorflow    | 2.15.0   |
+| scikit-learn  | 1.5.2    |
+| matplotlib    | 3.8.0    |
+| seaborn       | 0.13.2   |
+| Pillow        | 11.0.0   |
+| pandas        | 2.2.2    |
+| numpy         | 1.26.4   |
+| ipywidgets    | 8.1.5    |
+
+
+
+
+
+
+
+
 <h1>Sumber Dataset</h1>
 <h3>Sumber Dataset untuk Model Klasifikasi :</h3>
 <br>
