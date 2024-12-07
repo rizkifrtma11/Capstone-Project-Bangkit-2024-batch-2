@@ -191,7 +191,7 @@ The architecture of this model is a combination of **Transfer Learning**, **Atte
   <li>Kalori : https://www.fatsecret.co.id/</li>
 </ol>
 
-<h3>Import Datasets for Model:</h3>
+<h3>Source Import Datasets for Model:</h3>
 <br>
 <ol>
   <li>Train : https://drive.google.com/drive/folders/1u2u3vknyHSeQlCnvk8QbkIDVuKFJhQVN?usp=drive_link</li>
