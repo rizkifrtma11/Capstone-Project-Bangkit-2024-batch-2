@@ -10,10 +10,14 @@ RasaNusa is an Android-based application to recognize food using image scanning 
 
 ## Key Feature
 
-- **Scan Food**: Gunakan kamera untuk memindai makanan dan mendapatkan informasi terkait.
-- **History Food**: Rekomendasi makanan berdasarkan hasil pemindaian.
-- **Detail Food**: Fitur login/logout dan pengelolaan profil.
-- **Location and Notification**: Simpan makanan favorit untuk referensi di masa mendatang.
+- **Scan Food**: Utilize the camera to scan food and recognize it using machine learning, providing instant insights about the dish, including its name and relevant information.
+- **History Food**: Automatically logs all scanned food into a history section, allowing users to revisit their past scans and explore details anytime.
+- **Detail Food**: Offers comprehensive details about a scanned food, such as description, nutritional facts, ingredients, and cultural background.
+- **Location and Notification**: Sends notifications if there's any traditional food nearby.
+
+## Future Development
+- **Chatbot "Ranus.ai**: A smart assistant designed to answer users' food-related questions, provide cooking tips, and suggest personalized recipes or dishes.
+- **Subscription**:  Introduces premium features like ad-free usage, enhanced food recommendations, and access to exclusive content for subscribed users.
 
 ---
 
@@ -58,5 +62,3 @@ RasaNusa is an Android-based application to recognize food using image scanning 
 
 - **Kasamira Anindita Qairia (A128B4KX2149)** - **Mobile Development**   
   [LinkedIn](https://www.linkedin.com/in/kasamira-anindita-9aa88524b/) | [GitHub](https://github.com/kasanindit)
-
----
