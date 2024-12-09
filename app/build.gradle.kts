@@ -11,6 +11,8 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        val apiKey: String = project.findProperty("API_KEY") as String? ?: ""
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
         buildConfigField("String", "BASE_URL", "\"https://rasanusa-api-555896629878.asia-southeast2.run.app/\"")
         applicationId = "com.example.rasanusa"
         minSdk = 26
@@ -19,6 +21,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["API_KEY"] = apiKey
     }
 
     buildTypes {
