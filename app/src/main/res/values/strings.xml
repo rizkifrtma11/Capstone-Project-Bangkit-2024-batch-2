@@ -135,7 +135,6 @@
     <string name="feature_not_available">Fitur ini belum tersedia</string>
     <string name="confirm_logout">Apakah anda yakin ingin logout?</string>
 
-    <string name="my_location_api_key" translatable="false">AIzaSyAsmoAzzaAUWtLnZ38u37JzHpVfXqYyTBw</string>
     <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="location" translatable="false">Location</string>
     <string name="food_nearby">Makanan khas terdekat</string>
