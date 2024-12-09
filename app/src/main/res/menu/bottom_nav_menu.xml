@@ -11,6 +11,10 @@
         android:icon="@drawable/ic_scan"
         android:title="@string/title_scan" />
 
+    <item
+        android:id="@+id/navigation_chatbot"
+        android:icon="@drawable/ic_chatbot"
+        android:title="@string/chatbot" />
 
     <item
         android:id="@+id/navigation_profile"

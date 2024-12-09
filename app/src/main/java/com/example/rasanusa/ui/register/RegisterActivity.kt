@@ -1,6 +1,5 @@
 package com.example.rasanusa.ui.register
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +12,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.databinding.ActivityRegisterBinding
+import com.example.rasanusa.helper.AuthenticationHelper
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -46,13 +46,11 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.txtToLogin.setOnClickListener {
-            showLoading(true)
             val intentToLogin = Intent(this, LoginActivity::class.java)
             intentToLogin.putExtra("fromRegister", true)
             startActivity(intentToLogin)
             finish()
         }
-
     }
 
     private fun setupRegister() {
@@ -67,29 +65,19 @@ class RegisterActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
                     if (task.isSuccessful) {
-                        val sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-                        val editor = sharedPreferences.edit()
-                        editor.putString("USERNAME", username)
-                        editor.apply()
-
+                        showLoading(true)
+                        AuthenticationHelper.saveUsername(this, email, username)
                         Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
+
                         val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(
-                            this,
-                            "Gagal membuat akun: ${task.exception?.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(this, "Gagal membuat akun: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(
-                    this,
-                    "Username, email, dan password tidak boleh kosong",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this, "Semua field harus diisi", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -114,5 +102,10 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showLoading(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showLoading(false)
     }
 }

@@ -24,28 +24,26 @@ fun createCustomTempFile(context: Context): File {
 }
 
 fun String.withCurrencyFormat(): String {
-    val rupiahExchangeRate = 15898.69
     val usdExchangeRate = 0.000063
 
-    val priceOnDollar = this.toDoubleOrNull() ?: return "$0.00"
+    val priceValue = this.toDoubleOrNull() ?: return "Invalid price format"
 
-    var mCurrencyFormat: NumberFormat
-    val deviceLocale = Locale.getDefault().country
+    val mCurrencyFormat: NumberFormat
+    val locale = Locale.getDefault()
 
-    when {
-        deviceLocale.equals("US", ignoreCase = true) -> {
-            val priceInUSD = priceOnDollar * usdExchangeRate
-            mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-            return mCurrencyFormat.format(priceInUSD)
-        }
-        deviceLocale.equals("ID", ignoreCase = true) -> {
-            val priceInIDR = priceOnDollar * rupiahExchangeRate
+    return when (locale.language.lowercase()) {
+        "id" -> {
             mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-            return mCurrencyFormat.format(priceInIDR)
+            mCurrencyFormat.format(priceValue)
+        }
+        "en" -> {
+            val priceInUSD = priceValue * usdExchangeRate
+            mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
+            mCurrencyFormat.format(priceInUSD)
         }
         else -> {
-            mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-            return mCurrencyFormat.format(priceOnDollar)
+            mCurrencyFormat = NumberFormat.getCurrencyInstance(locale)
+            mCurrencyFormat.format(priceValue)
         }
     }
 }

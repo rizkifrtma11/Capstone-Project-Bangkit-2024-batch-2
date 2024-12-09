@@ -75,7 +75,7 @@ class ResultActivity : AppCompatActivity() {
     private fun showResultDetail(imageUrl: String?, predictedClass: String, confidence: String?) {
         Glide.with(this@ResultActivity)
             .load(imageUrl)
-            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(15)))
             .into(binding.imageResult)
 
         binding.txtPredictedClass.text = predictedClass
@@ -85,7 +85,7 @@ class ResultActivity : AppCompatActivity() {
     private fun resultUnknown(imageUrl: String?) {
         Glide.with(this@ResultActivity)
             .load(imageUrl)
-            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(15)))
             .into(binding.imageResult)
 
         binding.txtPredictedClass.text = getString(R.string.unknown_food)

@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:padding="8dp"
+        app:tint="?attr/colorOnSurface"
         android:src="@drawable/baseline_arrow_back_ios_24"
         app:layout_constraintTop_toTopOf="@id/tittle_history"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +79,7 @@
             android:gravity="center"
             android:minHeight="48dp"
             android:text="@string/delete_history"
+            app:tint="?attr/colorOnSurface"
             app:drawableEndCompat="@drawable/baseline_delete_outline_24" />
 
         <androidx.recyclerview.widget.RecyclerView

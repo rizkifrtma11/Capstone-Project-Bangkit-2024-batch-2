@@ -48,6 +48,7 @@
         android:src="@drawable/ic_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/colorOnSurface"
         tools:ignore="TouchTargetSizeCheck" />
 
     <ImageButton
@@ -83,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:padding="8dp"
+        app:tint="?attr/colorOnSurface"
         app:layout_constraintTop_toTopOf="@id/btnCapture"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_gallery"

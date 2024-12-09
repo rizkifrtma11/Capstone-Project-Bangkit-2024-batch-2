@@ -14,8 +14,14 @@
     <fragment
         android:id="@+id/navigation_scan"
         android:name="com.example.rasanusa.ui.scan.ScanFragment"
-        android:label="scan"
+        android:label="Scan"
         tools:layout="@layout/fragment_scan" />
+
+    <fragment
+        android:id="@+id/navigation_chatbot"
+        android:name="com.example.rasanusa.ui.chatbot.ChatbotFragment"
+        android:label="Chatbot"
+        tools:layout="@layout/fragment_chatbot" />
 
     <fragment
         android:id="@+id/navigation_profile"

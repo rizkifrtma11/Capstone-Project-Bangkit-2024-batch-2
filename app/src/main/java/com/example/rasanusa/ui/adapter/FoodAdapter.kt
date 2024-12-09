@@ -27,7 +27,7 @@ class FoodAdapter(
         val itemData = foodList[position]
         Glide.with(holder.itemView.context)
             .load(itemData.image)
-            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(10)))
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(15)))
             .into(holder.imgPhoto)
         holder.name.text = itemData.name
         holder.asal.text = itemData.asal

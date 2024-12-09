@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rasanusa.R
-import com.example.rasanusa.data.localdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
 import com.example.rasanusa.data.response.DataItem
 import com.example.rasanusa.databinding.FragmentHistoryBinding
 import com.example.rasanusa.ui.adapter.HistoryAdapter

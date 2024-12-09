@@ -6,9 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.rasanusa.data.localdatabase.FoodHistory
-import com.example.rasanusa.data.localdatabase.FoodHistoryDao
-import com.example.rasanusa.data.localdatabase.FoodHistoryRoomDatabase
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryDao
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

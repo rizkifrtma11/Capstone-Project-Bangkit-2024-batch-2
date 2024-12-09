@@ -20,7 +20,7 @@
     <string name="hint_username">Input your username</string>
     <string name="hint_password">Input your password</string>
     <string name="username">Username</string>
-    <string name="uid">Username id</string>
+    <string name="uid">User ID: -</string>
     <string name="password">Password</string>
     <string name="welcome">Welcome to RasaNusa!</string>
     <string name="to_register">Regist here.</string>
@@ -103,12 +103,12 @@
     <string name="unknown_food">unknown food</string>
     <string name="unknown_confidence">-</string>
 
+    <!-- History -->
     <string name="title_history_food">Food History</string>
     <string name="timestamp">timestamp</string>
     <string name="delete_history">Delete history</string>
     <string name="button_back">button back</string>
     <string name="rasanusa_poin">RasaNusa Points</string>
-
     <string name="delete_all_history">Delete all food history?</string>
     <string name="setuju">Yes</string>
     <string name="tidak">No</string>
@@ -117,7 +117,6 @@
     <string name="subscription">Subscribe now!</string>
     <string name="txt_choose_bundle">Choose the package that suits you</string>
     <string name="only">Only</string>
-
     <string name="per_tahun">/year</string>
     <string name="per_bulan">/month</string>
     <string name="per_minggu">/week</string>
@@ -132,7 +131,24 @@
     <string name="message_limit">You\'ve reached your 3 scan limit. Subscribe to continue!</string>
     <string name="title_limit">You\'ve hit the limit!</string>
     <string name="subscription_now_button">Subscribe</string>
-    <string name="feature_not_available">Feature not yet available</string>
 
+    <!-- notofication -->
+    <string name="feature_not_available">Feature not yet available</string>
+    <string name="confirm_logout">Are you sure want to logout?</string>
+    <string name="food_nearby">Traditional food nearby</string>
+    <string name="text_notification">You\'re in %1$s. Let\'s try %2$s!</string>
+    <string name="ask_chatbot">Ask here…</string>
+    <string name="user_bubble_chat">This is user bubble chat</string>
+    <string name="bot_bubble_chat">This is bot bubble chat</string>
+    <string name="ask_button">Ask</string>
+    <string name="title_ask">What do you want to ask to Ranus?</string>
+    <string name="txt_feature_coming_soon">Hold on! This feature will be developed when we get incubated!</string>
+    <string name="location_granted">Location granted</string>
+    <string name="location_needed">Requires location permits</string>
+    <string name="notification_granted">Notification granted</string>
+    <string name="notification_needed">Requires notification permits</string>
+    <string name="message_apk_need_permission">Requires location and notification permits</string>
+    <string name="title_need_location_permission">Location and Notification Permission</string>
+    <string name="user_location">Your location</string>
 
 </resources>

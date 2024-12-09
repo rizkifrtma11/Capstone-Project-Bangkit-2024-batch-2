@@ -13,7 +13,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.rasanusa.R
 import com.example.rasanusa.databinding.FragmentProfileBinding
+import com.example.rasanusa.helper.AuthenticationHelper
 import com.example.rasanusa.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -37,7 +39,7 @@ class ProfileFragment : Fragment() {
         fetchUsername()
 
         binding.apply {
-            layoutProfile.setOnClickListener{ navigateToProfileSettings() }
+            layoutEmailPass.setOnClickListener{ navigateToProfileSettings() }
             layoutBerlangganan.setOnClickListener{ navigateToMembership() }
             layoutHistory.setOnClickListener{ navigateToHistory() }
             layoutLogout.setOnClickListener { setupLogout() }
@@ -45,14 +47,22 @@ class ProfileFragment : Fragment() {
     }
 
     private fun fetchUsername() {
-        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString("USERNAME", "User")
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val email = currentUser.email
+            val uid = currentUser.uid
 
-        binding.txtUsernameProfile.text = getString(R.string.username_home, username)
+            if (email != null) {
+                val username = AuthenticationHelper.getUsername(requireContext(), email)
+                binding.txtUsernameProfile.text = getString(R.string.username_profile, username)
+            } else {
+                binding.txtUsernameProfile.text = getString(R.string.username_profile, "User")
+            }
+        }
     }
 
     private fun navigateToProfileSettings(){
-        Toast.makeText(requireContext(), "Fitur ini belum tersedia", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.feature_not_available), Toast.LENGTH_SHORT).show()
     }
 
     private fun navigateToMembership(){
@@ -66,8 +76,15 @@ class ProfileFragment : Fragment() {
     private fun setupLogout(){
         AlertDialog.Builder(requireContext())
             .setTitle("Logout")
-            .setMessage("Apakah anda yaking ingin Logout?")
+            .setMessage(getString(R.string.confirm_logout))
             .setPositiveButton("Logout"){_, _, ->
+                val sharedPreferences =
+                    requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+                with(sharedPreferences.edit()) {
+                    remove("CURRENT_USERNAME")
+                    apply()
+                }
+
                 Firebase.auth.signOut()
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 startActivity(intent)
@@ -75,7 +92,7 @@ class ProfileFragment : Fragment() {
                 Toast.makeText(requireContext(), "Anda berhasil keluar.", Toast.LENGTH_SHORT).show()
                 requireActivity().finish()
             }
-            .setNegativeButton("Batal"){dialog, _, ->
+            .setNegativeButton(getString(R.string.tidak)){dialog, _, ->
                 dialog.dismiss()
             }
             .show()

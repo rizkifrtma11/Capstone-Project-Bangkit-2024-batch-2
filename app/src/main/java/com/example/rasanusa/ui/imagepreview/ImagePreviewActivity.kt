@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.MainActivity
 import com.example.rasanusa.R
 import com.example.rasanusa.data.api.ApiConfig
-import com.example.rasanusa.data.localdatabase.FoodHistory
-import com.example.rasanusa.data.localdatabase.FoodHistoryRoomDatabase
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryRoomDatabase
 import com.example.rasanusa.data.response.PredictResponse
 import com.example.rasanusa.databinding.ActivityImagePreviewBinding
 import com.example.rasanusa.helper.ScanPreferences

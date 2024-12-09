@@ -25,6 +25,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackground"
+        app:tint="?attr/colorOnSurface"
         android:contentDescription="@string/close"
         android:padding="8dp"
         android:elevation="8dp"

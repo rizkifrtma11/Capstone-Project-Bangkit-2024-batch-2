@@ -13,10 +13,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rasanusa.MainActivity
 import com.example.rasanusa.databinding.ActivityLoginBinding
+import com.example.rasanusa.helper.AuthenticationHelper
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
+@Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -27,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         passwordEditText = binding.etLoginPassword
         passwordEditText.addTextChangedListener(object : TextWatcher {
@@ -43,8 +46,13 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        if (intent.getBooleanExtra("fromRegister", false)) {
+            showLoading(false)
+        } else {
+            checkLogin()
+        }
+
         setupLogin()
-        checkLogin()
         setupView()
 
     }
@@ -62,34 +70,40 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.txtToRegister.setOnClickListener {
-            showLoading(true)
             val intentToRegister = Intent(this, RegisterActivity::class.java)
+            intentToRegister.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intentToRegister)
         }
     }
 
     private fun setupLogin() {
-        showLoading(false)
+        auth = FirebaseAuth.getInstance()
         binding.btnLogin.setOnClickListener {
             val email = binding.etLoginEmail.text.toString()
             val password = binding.etLoginPassword.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 showLoading(true)
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
-                    if (it.isSuccessful) {
-                        showLoading(true)
+                    if (task.isSuccessful) {
+                        val username = AuthenticationHelper.getUsername(this, email)
+
                         Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, "Login gagal: ${it.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Gagal login: ${task.exception?.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
@@ -115,12 +129,15 @@ class LoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
-    @Suppress("DEPRECATION")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+    override fun onResume() {
+        super.onResume()
+        showLoading(false)
     }
 
+    @Deprecated("This method has been deprecated in favor of using the\n      {@link OnBackPressedDispatcher} via {@link #getOnBackPressedDispatcher()}.\n      The OnBackPressedDispatcher controls how back button events are dispatched\n      to one or more {@link OnBackPressedCallback} objects.")
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
 
 }

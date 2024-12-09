@@ -17,6 +17,7 @@
         android:contentDescription="@string/close"
         android:padding="8dp"
         android:src="@drawable/ic_close"
+        app:tint="?attr/colorOnSurface"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck" />

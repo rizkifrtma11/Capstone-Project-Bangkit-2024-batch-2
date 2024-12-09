@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.rasanusa.R
-import com.example.rasanusa.data.localdatabase.FoodHistory
+import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -31,7 +31,7 @@ class HistoryAdapter(private var historyList: List<FoodHistory>, private val onI
             .apply(
                 RequestOptions()
                 .placeholder(R.drawable.ic_place_holder)
-                .transform(CenterCrop(), RoundedCorners(10)))
+                .transform(CenterCrop(), RoundedCorners(15)))
             .into(holder.imgPhoto)
 
         holder.name.text = itemData.predictionResult.documentData?.name ?: "Unknown"

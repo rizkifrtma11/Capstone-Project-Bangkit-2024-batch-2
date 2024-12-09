@@ -5,7 +5,7 @@
     android:layout_width="250dp"
     android:layout_height="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="15dp"
     android:layout_margin="8dp">
     
     <FrameLayout
@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/iv_food"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="230dp"
             tools:srcCompat="@tools:sample/backgrounds/scenic"
             android:scaleType="centerCrop"
             android:layout_margin="8dp"
@@ -25,15 +25,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="8dp"
-            android:layout_gravity="bottom">
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="center_vertical|bottom">
 
             <TextView
                 android:id="@+id/txt_food_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/food_name"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:textStyle="bold"
                 android:textSize="18sp" />
@@ -43,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/asal_daerah"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:textSize="14sp" />
         </LinearLayout>

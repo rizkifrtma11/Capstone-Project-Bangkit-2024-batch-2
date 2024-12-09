@@ -44,8 +44,8 @@ class SubscriptionFragment : Fragment() {
     }
 
     private fun setupTextView() {
-        setFormattedPrice(binding.txtPriceDiscountAnnual, "149999")
-        setFormattedPrice(binding.txtPriceOri, "29999")
+        setFormattedPrice(binding.txtPriceDiscountAnnual, "29999")
+        setFormattedPrice(binding.txtPriceOri, "149999")
         setFormattedPrice(binding.txtPriceDiscountMonthly, "19999")
         setFormattedPrice(binding.txtPriceOriMonthly, "89999")
         setFormattedPrice(binding.txtPriceOriWeekly, "9999")

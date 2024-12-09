@@ -62,11 +62,6 @@
         <item name="android:windowBackground">@null</item>
     </style>
 
-    <style name="ThemeOverlay.RasaNusa.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
-    </style>
-
     <style name="border_input_uname" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/dark_yellow</item>
         <item name="boxStrokeErrorColor">@color/red_brown</item>
@@ -78,6 +73,7 @@
         <item name="android:layout_marginHorizontal">24dp</item>
         <item name="android:gravity">center</item>
     </style>
+
 
 
 </resources>

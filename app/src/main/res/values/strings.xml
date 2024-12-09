@@ -17,7 +17,7 @@
     <string name="email" translatable="false">Email</string>
     <string name="hint_email">Email anda</string>
     <string name="username">Username</string>
-    <string name="uid">username id</string>
+    <string name="uid">User ID: -</string>
     <string name="hint_username">Masukkan username anda</string>
     <string name="password">Password</string>
     <string name="hint_password">Password anda</string>
@@ -79,11 +79,11 @@
 
     <!-- result -->
     <string name="result">Hasil Klasifikasi</string>
-    <string name="predicted_class">Kelas yang diprediksi :</string>
+    <string name="predicted_class">Kelas yang diprediksi:</string>
     <string name="txt_predicted_class">Prediksi kelas</string>
     <string name="lihat_informasi_makanan">Lihat informasi makanan</string>
     <string name="success_predict">Makanan yang kamu cari adalah </string>
-    <string name="success_confidence">Makanan ini memiliki confidence score </string>
+    <string name="success_confidence">Makanan ini memiliki confidence score: </string>
     <string name="value_confidence" translatable="false">confidence score </string>
     <string name="detail_makanan">Detail Makanan</string>
     <string name="title_home">Beranda</string>
@@ -99,8 +99,9 @@
     <string name="keluar">Keluar</string>
     <string name="lihat_semua">Lihat semua</string>
     <string name="points">Poin</string>
-    <string name="unknown_food">Makanan tidak ditemukan</string>
-    <string name="unknown_confidence">Confidence score : -</string>
+    <string name="unknown_food">makanan tidak ditemukan</string>
+    <string name="unknown_confidence" translatable="false">-</string>
+    <string name="username_profile" translatable="false">%1$s</string>
 
     <!-- history -->
     <string name="title_history_food">Riwayat Makanan</string>
@@ -132,6 +133,30 @@
     <string name="title_limit">Batas Scan Tercapai!</string>
     <string name="subscription_now_button">Subscribe</string>
     <string name="feature_not_available">Fitur ini belum tersedia</string>
+    <string name="confirm_logout">Apakah anda yakin ingin logout?</string>
+
+    <string name="my_location_api_key" translatable="false">AIzaSyAsmoAzzaAUWtLnZ38u37JzHpVfXqYyTBw</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
+    <string name="location" translatable="false">Location</string>
+    <string name="food_nearby">Makanan khas terdekat</string>
+    <string name="text_notification">Anda sedang berada di %1$s. Cobain %2$s yuk!</string>
+    <string name="chatbot" translatable="false">Chatbot</string>
+    <string name="ask_chatbot">Tanya aja…</string>
+    <string name="bot_bubble_chat">Ini bubble chat Bot</string>
+    <string name="ask_button">Tanya</string>
+    <string name="title_ask">Mau nanya apa ke Ranus?</string>
+    <string name="txt_feature_coming_soon">Sabar ya! Fitur ini akan dikembangkan jika kami mendapat inkubasi!</string>
+    <string name="ranus_ai" translatable="false">Ranus.ai</string>
+
+    <string name="location_granted">Lokasi diizinkan</string>
+    <string name="location_needed">Aplikasi membutuhkan izin akses lokasi</string>
+    <string name="notification_granted">Notifikasi diizinkan</string>
+    <string name="notification_needed">Aplikasi membutuhkan izin untuk mengirim notifikasi</string>
+    <string name="message_apk_need_permission">Aplikasi ini membutuhkan izin lokasi untuk memberikan notifikasi makanan khas di daerah Anda.</string>
+    <string name="title_need_location_permission">Izin akses lokasi dan notifikasi</string>
+    <string name="user_location">Lokasi Anda</string>
+    <string name="user_bubble_chat">Ini bubble chat User</string>
+
 
 
     <!-- Lumpia (Jateng)
