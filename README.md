@@ -1,9 +1,14 @@
 # RasaNusa
 
 RasaNusa is an Android-based application to recognize food using image scanning and machine learning technology. The app is designed to raise awareness of local culinary heritage, helping users find out more information about the food they encounter.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/2ae8a85b-b7cf-4bf4-b028-fc5d2291d072" alt="RasaNusa_icon" width="400" height="400" >
+</div>
+
 ---
 
-## Main Feature
+## Key Feature
 
 - **Scan Food**: Gunakan kamera untuk memindai makanan dan mendapatkan informasi terkait.
 - **History Food**: Rekomendasi makanan berdasarkan hasil pemindaian.
@@ -12,33 +17,46 @@ RasaNusa is an Android-based application to recognize food using image scanning 
 
 ---
 
-## Teknologi yang Digunakan
+## Built with
 
-- **Kotlin**: Bahasa pemrograman utama untuk aplikasi Android.
-- **Android Studio**: Platform pengembangan utama.
-- **Firebase**: Autentikasi pengguna dan basis data.
-- **TensorFlow Lite**: Untuk implementasi model machine learning.
-- **CameraX**: Untuk menangkap gambar dari kamera perangkat.
+- **Kotlin**: Programing language for Android Development.
+- **Android Studio**: Main Development Platform.
+- **Firebase**: Authentication and database.
+- **TensorFlow Lite**: Model machine learning.
+- **CameraX**: Library for capturing images from device's camera
+- **Glide**: Library for image loading and caching.
+- **Retrofit**: Library For API communication.
+- **Room Database**: Library for local data storage.
+- **Ucrop**: Library for image cropping functionality.
 
 ---
 
-## 📸 Tangkapan Layar
+## Screenshoots
 
 **Beranda:**
-![Beranda](https://via.placeholder.com/600x400)
+
+![Untitled (540 x 1170 px) (4)](https://github.com/user-attachments/assets/e8e15b52-358d-4189-ae34-ed7b95be274c)
+
+
+**ScanFood:**
+
+![Untitled (540 x 1170 px) (1)](https://github.com/user-attachments/assets/242d2222-7222-4eeb-820f-b61bde9fa2a1)
+
 
 **Result:**
-![Screenshot_20241203_220029_RasaNusa](https://github.com/user-attachments/assets/b373854b-db83-413a-b9d0-13d204f658ae)
+
+![Untitled (540 x 1170 px) (2)](https://github.com/user-attachments/assets/3570c35b-1195-4eb3-80ed-7b1654a226b1)
 
 
 **Result with detail:**
-![Screenshot_20241203_220031_RasaNusa](https://github.com/user-attachments/assets/56efe86a-be3e-41dc-aace-32c4865950e9)
+
+![Untitled (540 x 1170 px) (3)](https://github.com/user-attachments/assets/85905b27-37c6-4784-9a6a-d073c3cd46ed)
 
 ---
 
-## 👥 Kontributor
+## Contributor
 
-- **Kasamira Anindita Qairia** - *Pengembang Utama*  
+- **Kasamira Anindita Qairia (A128B4KX2149)** - **Mobile Development**   
   [LinkedIn](https://www.linkedin.com/in/kasamira-anindita-9aa88524b/) | [GitHub](https://github.com/kasanindit)
 
 ---
