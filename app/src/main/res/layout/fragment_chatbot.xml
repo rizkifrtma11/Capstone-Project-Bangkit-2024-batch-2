@@ -38,6 +38,7 @@
             android:background="@drawable/style_box_corner"
             android:backgroundTint="@android:color/white"
             android:hint="@string/ask_chatbot"
+            android:textColorHint="@color/gray_overlay"
             android:importantForAutofill="no"
             android:inputType="textShortMessage"
             android:padding="10dp"

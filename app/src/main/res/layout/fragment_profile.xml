@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_opacity50"
+
     tools:context=".ui.profile.ProfileFragment">
 
     <LinearLayout
@@ -81,8 +82,8 @@
         android:layout_width="match_parent"
         android:layout_height="465dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
         app:cardCornerRadius="24dp"
+        android:theme="@style/profileLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_points">
@@ -108,7 +109,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_account_circle"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -117,7 +117,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:tint="@color/red_brown"
                     android:gravity="center_vertical"
                     android:text="@string/email_dan_password" />
 
@@ -127,7 +126,6 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -155,7 +153,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_subscription"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -165,7 +162,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    app:tint="@color/red_brown"
                     android:text="@string/keanggotaan" />
 
                 <ImageView
@@ -174,7 +170,6 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_arrow_right"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
             </LinearLayout>
@@ -202,7 +197,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_history"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -212,7 +206,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    app:tint="@color/red_brown"
                     android:text="@string/history_scan" />
 
                 <ImageView
@@ -220,7 +213,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="8dp"
-                    app:tint="@color/red_brown"
                     android:src="@drawable/ic_arrow_right"
                     tools:ignore="ContentDescription" />
 
@@ -249,7 +241,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_logout"
-                    app:tint="@color/red_brown"
                     tools:ignore="ContentDescription" />
 
                 <TextView
@@ -258,7 +249,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    app:tint="@color/red_brown"
                     android:text="@string/keluar" />
 
             </LinearLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/style_bottom_dialog_corner"
     android:orientation="vertical"
+    android:theme="@style/bottomSheetDialog"
     tools:context=".ui.result.BottomSheetDialogResultFragment">
 
     <View
