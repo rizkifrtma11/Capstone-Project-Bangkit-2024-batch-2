@@ -37,7 +37,7 @@ RasaNusa is an Android-based application to recognize food using image scanning 
 
 ## Screenshoots
 
-**Beranda:**
+**Home:**
 
 ![Untitled (540 x 1170 px) (4)](https://github.com/user-attachments/assets/e8e15b52-358d-4189-ae34-ed7b95be274c)
 
