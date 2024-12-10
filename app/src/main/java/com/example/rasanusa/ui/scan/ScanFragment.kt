@@ -13,8 +13,10 @@ import android.view.Surface
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -25,9 +27,12 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import com.example.rasanusa.R
 import com.example.rasanusa.createCustomTempFile
 import com.example.rasanusa.databinding.FragmentScanBinding
 import com.example.rasanusa.ui.imagepreview.ImagePreviewActivity
+import com.yalantis.ucrop.UCrop
+import java.io.File
 
 class ScanFragment : Fragment() {
     private var _binding: FragmentScanBinding? = null
@@ -83,6 +88,7 @@ class ScanFragment : Fragment() {
         previewView = binding.preview
 
         startCamera()
+        onBackPressed()
 
         binding.apply {
             btnCapture.setOnClickListener {
@@ -92,11 +98,10 @@ class ScanFragment : Fragment() {
                 startGallery()
             }
             btnExit.setOnClickListener {
-                findNavController().popBackStack()
+                findNavController().popBackStack(R.id.navigation_home, false)
             }
         }
     }
-
 
     private fun startCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -166,12 +171,58 @@ class ScanFragment : Fragment() {
             currentImagerUri = uri
             requireContext().contentResolver.takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
-            val intent = Intent(activity, ImagePreviewActivity::class.java)
-            intent.putExtra("imageUri", uri.toString())
-            startActivity(intent)
+            startCrop(uri)
+
         } else {
             Log.d("Photo Picker", "No media selected")
         }
+    }
+
+    private fun startCrop(sourceUri: Uri) {
+        val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "cropped_image.jpg"))
+
+        val options = UCrop.Options().apply {
+            setCompressionQuality(80)
+            setMaxBitmapSize(1024)
+            setHideBottomControls(true)
+            setFreeStyleCropEnabled(false)
+        }
+
+        UCrop.of(sourceUri, destinationUri)
+            .withOptions(options)
+            .withAspectRatio(1f, 1f)
+            .start(requireContext(), this)
+    }
+
+    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == AppCompatActivity.RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
+            val resultUri = UCrop.getOutput(data!!)
+            if (resultUri != null) {
+
+                val intent = Intent(activity, ImagePreviewActivity::class.java)
+                intent.putExtra("imageUri", resultUri.toString())
+                startActivity(intent)
+            }
+        } else if (resultCode == UCrop.RESULT_ERROR) {
+            val cropError = UCrop.getError(data!!)
+            Toast.makeText(requireContext(), "Crop error: ${cropError?.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun onBackPressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(requireActivity(), object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val navController = findNavController()
+                if (navController.currentDestination?.id != R.id.navigation_home) {
+                    navController.popBackStack(R.id.navigation_home, false)
+                } else {
+                    requireActivity().finish()
+                }
+            }
+        })
     }
 
 
