@@ -135,6 +135,7 @@
     <!-- notofication -->
     <string name="feature_not_available">Feature not yet available</string>
     <string name="confirm_logout">Are you sure want to logout?</string>
+    <string name="success_subscribe">You already subscribe!</string>
     <string name="food_nearby">Traditional food nearby</string>
     <string name="text_notification">You\'re in %1$s. Let\'s try %2$s!</string>
     <string name="ask_chatbot">Ask here…</string>

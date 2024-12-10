@@ -134,6 +134,8 @@
     <string name="subscription_now_button">Subscribe</string>
     <string name="feature_not_available">Fitur ini belum tersedia</string>
     <string name="confirm_logout">Apakah anda yakin ingin logout?</string>
+    <string name="success_subscribe">Anda telah berlangganan!</string>
+    <string name="message_success_subscribe">Anda dapat pindai makanan tanpa batas</string>
 
     <string name="title_activity_maps" translatable="false">MapsActivity</string>
     <string name="location" translatable="false">Location</string>

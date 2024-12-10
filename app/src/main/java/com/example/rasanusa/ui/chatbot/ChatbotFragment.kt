@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.rasanusa.R
 import com.example.rasanusa.databinding.FragmentChatbotBinding
@@ -28,9 +29,11 @@ class ChatbotFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        onBackPressed()
+
         binding.apply {
             btnExit.setOnClickListener {
-                findNavController().navigateUp()
+                findNavController().popBackStack(R.id.navigation_home, false)
             }
             btnAsk.setOnClickListener {
                 botBubbleChat.visibility = View.VISIBLE
@@ -40,5 +43,18 @@ class ChatbotFragment : Fragment() {
                 Toast.makeText(requireContext(), getString(R.string.feature_not_available), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun onBackPressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(requireActivity(), object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val navController = findNavController()
+                if (navController.currentDestination?.id != R.id.navigation_home) {
+                    navController.popBackStack(R.id.navigation_home, false)
+                } else {
+                    requireActivity().finish()
+                }
+            }
+        })
     }
 }

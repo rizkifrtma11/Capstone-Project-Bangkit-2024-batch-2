@@ -2,7 +2,6 @@
 
 package com.example.rasanusa.ui
 
-import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -11,19 +10,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.rasanusa.MainActivity
-import com.example.rasanusa.R
 import com.example.rasanusa.databinding.ActivitySplashScreenBinding
 import com.example.rasanusa.ui.login.LoginActivity
-import com.example.rasanusa.ui.register.RegisterActivity
 
 class SplashScreenActivity : AppCompatActivity() {
 

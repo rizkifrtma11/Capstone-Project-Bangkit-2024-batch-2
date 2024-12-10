@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.rasanusa.MainActivity
+import com.example.rasanusa.ui.mainactivity.MainActivity
 import com.example.rasanusa.R
 import com.example.rasanusa.data.api.ApiConfig
 import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistory
@@ -44,8 +44,10 @@ class ImagePreviewActivity : AppCompatActivity() {
 
         binding.apply {
             btnExit.setOnClickListener {
-                val intent = Intent(this@ImagePreviewActivity, MainActivity::class.java)
-                intent.putExtra("navigate_to", "ScanFragment")
+                val intent = Intent(this@ImagePreviewActivity, MainActivity::class.java).apply {
+                    putExtra("navigate_to", "ScanFragment")
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                }
                 startActivity(intent)
                 finish()
             }

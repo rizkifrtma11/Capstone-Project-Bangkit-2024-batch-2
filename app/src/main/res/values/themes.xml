@@ -32,4 +32,15 @@
     <style name="colorLineDetail" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="background">@color/red_brown</item>
     </style>
+
+    <style name="bottomSheetDialog" >
+        <item name="android:textColor">@color/red_brown</item>
+        <item name="background">@color/white</item>
+    </style>
+
+    <style name="profileLayout" >
+        <item name="android:textColor">@color/red_brown</item>
+        <item name="tint">@color/red_brown</item>
+        <item name="background">@color/white</item>
+    </style>
 </resources>

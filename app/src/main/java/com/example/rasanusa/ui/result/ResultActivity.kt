@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.example.rasanusa.MainActivity
+import com.example.rasanusa.ui.mainactivity.MainActivity
 import com.example.rasanusa.R
 import com.example.rasanusa.data.response.DocumentData
 import com.example.rasanusa.databinding.ActivityResultBinding
@@ -29,8 +29,10 @@ class ResultActivity : AppCompatActivity() {
 
         binding.apply {
             btnExit.setOnClickListener {
-                val intent = Intent(this@ResultActivity, MainActivity::class.java)
-                intent.putExtra("navigate_to", "ScanFragment")
+                val intent = Intent(this@ResultActivity, MainActivity::class.java).apply {
+                    putExtra("navigate_to", "ScanFragment")
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                }
                 startActivity(intent)
                 finish()
             }

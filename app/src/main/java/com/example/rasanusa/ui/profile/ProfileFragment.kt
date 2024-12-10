@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import com.example.rasanusa.R
@@ -37,6 +38,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fetchUsername()
+
+        onBackPressed()
 
         binding.apply {
             layoutEmailPass.setOnClickListener{ navigateToProfileSettings() }
@@ -96,6 +99,19 @@ class ProfileFragment : Fragment() {
                 dialog.dismiss()
             }
             .show()
+    }
+
+    private fun onBackPressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(requireActivity(), object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val navController = findNavController()
+                if (navController.currentDestination?.id != R.id.navigation_home) {
+                    navController.popBackStack(R.id.navigation_home, false)
+                } else {
+                    requireActivity().finish()
+                }
+            }
+        })
     }
 
 }

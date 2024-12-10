@@ -1,4 +1,4 @@
-package com.example.rasanusa
+package com.example.rasanusa.ui.mainactivity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.room.Room
+import com.example.rasanusa.R
 import com.example.rasanusa.data.localdatabase.repository.locationData
 import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryRoomDatabase
 import com.example.rasanusa.databinding.ActivityMainBinding
@@ -82,21 +83,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        //        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-//            AlertDialog.Builder(this)
-//                .setTitle(getString(R.string.title_need_location_permission))
-//                .setMessage(getString(R.string.message_apk_need_permission))
-//                .setPositiveButton("OK") { _, _ ->
-//                    ActivityCompat.requestPermissions(
-//                        this,
-//                        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                        REQUEST_LOCATION_PERMISSION
-//                    )
-//                }
-//                .setNegativeButton(R.string.tidak, null)
-//                .create()
-//                .show()
-//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -208,6 +194,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val navigateTo = intent.getStringExtra("navigate_to")
         when(navigateTo){
+            "HomeFragment" -> navController.navigate(R.id.navigation_home)
             "ProfileFragment" -> navController.navigate(R.id.navigation_profile)
             "ScanFragment" -> navController.navigate(R.id.navigation_scan)
             "SubscriptionFragment" -> navController.navigate(R.id.navigation_subscription)

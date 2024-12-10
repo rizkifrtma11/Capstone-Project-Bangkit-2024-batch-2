@@ -35,4 +35,15 @@
         <item name="background">@color/gray</item>
     </style>
 
+    <style name="bottomSheetDialog" >
+        <item name="android:textColor">@color/white</item>
+        <item name="background">@color/dark_grey</item>
+    </style>
+
+    <style name="profileLayout" >
+        <item name="android:textColor">@color/white</item>
+        <item name="tint">@color/white</item>
+        <item name="background">@color/dark_grey</item>
+    </style>
+
 </resources>
