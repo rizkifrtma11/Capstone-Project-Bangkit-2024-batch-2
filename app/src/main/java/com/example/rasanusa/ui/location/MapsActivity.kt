@@ -43,7 +43,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
+
+        addFoodMarkers()
         getUserLocation()
+
 
     }
 
@@ -53,22 +56,32 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
+
+            mMap.isMyLocationEnabled = true
+            mMap.uiSettings.isMyLocationButtonEnabled = true
+
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 if (location != null) {
                     val userLatLng = LatLng(location.latitude, location.longitude)
 
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
-                    mMap.addMarker(
-                        MarkerOptions().position(userLatLng)
-                            .title(getString(R.string.user_location))
-                            .title("Your marker")
-                            .icon(vectorToBitmap(this@MapsActivity, R.drawable.ic_marker_person_phone, Color.RED))
-                    )
+
                     checkNearbyFoods(userLatLng)
                 }
-
-
             }
+        }
+    }
+
+    private fun addFoodMarkers() {
+        for (location in locationData) {
+            val position = LatLng(location.latitude, location.longitude)
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(position)
+                    .title(location.foodName)
+                    .snippet("Asal: ${location.asal}")
+                    .icon(vectorToBitmap(this, R.drawable.ic_marker_person_phone, Color.RED))
+            )
         }
     }
 
