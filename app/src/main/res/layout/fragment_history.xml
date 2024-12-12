@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.history.HistoryFragment">
 
@@ -22,13 +23,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/button_back"
         android:padding="8dp"
-        app:tint="?attr/colorOnSurface"
         android:src="@drawable/baseline_arrow_back_ios_24"
-        app:layout_constraintTop_toTopOf="@id/tittle_history"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/tittle_history"
-        android:contentDescription="@string/button_back"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tittle_history"
+        app:tint="?attr/colorOnSurface"
+        tools:ignore="RedundantDescriptionCheck" />
 
     <TextView
         android:id="@+id/tittle_history"

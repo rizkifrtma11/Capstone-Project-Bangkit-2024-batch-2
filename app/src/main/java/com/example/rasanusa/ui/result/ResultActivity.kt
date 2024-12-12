@@ -31,6 +31,7 @@ class ResultActivity : AppCompatActivity() {
             btnExit.setOnClickListener {
                 val intent = Intent(this@ResultActivity, MainActivity::class.java).apply {
                     putExtra("navigate_to", "ScanFragment")
+                    putExtra("skip_location_notification", true)
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 }
                 startActivity(intent)

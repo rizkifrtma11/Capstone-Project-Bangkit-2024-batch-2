@@ -32,9 +32,6 @@
     <string name="error_password">Password cannot be less than 8 characters!</string>
     <string name="title_register">Register your account</string>
 
-    <!-- main -->
-    <string name="search">Search here…</string>
-    <string name="filter">filter</string>
 
     <!-- home -->
     <string name="explore">What Indonesian food you want to know today?</string>
@@ -61,6 +58,12 @@
     <string name="funfact">Funfact</string>
     <string name="category">Category</string>
     <string name="bahan_dasar">Main Ingredients :</string>
+    <string name="default_food_name">Unknown food</string>
+    <string name="default_bahan_dasar">Mystery ingredient alert!</string>
+    <string name="default_asal_daerah">Unknown? Let’s explore it together!</string>
+    <string name="default_deskripsi">Details not here yet.</string>
+    <string name="default_sejarah">This one’s a mystery—just like good food should be!</string>
+    <string name="default_funfact">Still searching for the missing details…</string>
 
     <!-- camera -->
     <string name="capture_image" translatable="false">Capture Image</string>
@@ -131,6 +134,7 @@
     <string name="message_limit">You\'ve reached your 3 scan limit. Subscribe to continue!</string>
     <string name="title_limit">You\'ve hit the limit!</string>
     <string name="subscription_now_button">Subscribe</string>
+    <string name="message_success_subscribe">Now you can scan unlimited food!</string>
 
     <!-- notofication -->
     <string name="feature_not_available">Feature not yet available</string>
@@ -144,6 +148,9 @@
     <string name="ask_button">Ask</string>
     <string name="title_ask">What do you want to ask to Ranus?</string>
     <string name="txt_feature_coming_soon">Hold on! This feature will be developed when we get incubated!</string>
+    <string name="txt_feature_on_development">Sorry, this feature is under development</string>
+    <string name="unknown_location_user">Hey, where are you?</string>
+    <string name="message_unknown_location_user">No local dishes found around here. Let’s go for a walk and uncover some!</string>
     <string name="location_granted">Location granted</string>
     <string name="location_needed">Requires location permits</string>
     <string name="notification_granted">Notification granted</string>
@@ -151,5 +158,31 @@
     <string name="message_apk_need_permission">Requires location and notification permits</string>
     <string name="title_need_location_permission">Location and Notification Permission</string>
     <string name="user_location">Your location</string>
+
+    <string name="new_email">New Email</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_pass">Change Password</string>
+    <string name="new_password">New Password</string>
+    <string name="title_ubah_email_dan_password">Change Email and Password</string>
+    <string name="titile_kata_sandi_lama">Last password</string>
+    <string name="title_kata_sandi_baru">New password</string>
+    <string name="title_confirm_kata_sandi_baru">Confirm new password</string>
+    <string name="title_confirm_kata_sandi">Confirm password</string>
+    <string name="title_current_email">Your current email :</string>
+    <string name="title_current_password">Your current password :</string>
+    <string name="current_email">User email</string>
+    <string name="current_password">current password</string>
+    <string name="fill_in_all_fields">Harap isi semua kolom yang tersedia</string>
+    <string name="empty">-</string>
+
+    <string name="password_salah">Wrong password!</string>
+    <string name="email_tidak_terdaftar">Email not registerd!</string>
+    <string name="format_email_tidak_valid">Invalid email format!</string>
+    <string name="password_terlalu_lemah_gunakan_minimal_6_karakter">Password to weak!</string>
+    <string name="email_sudah_terdaftar_gunakan_email_lain">Email already registered! Use another email.</string>
+    <string name="gagal_membuat_akun">Failed to create account: %1$s</string>
+    <string name="email_dan_password_tidak_boleh_kosong">Email and password cannot be empty</string>
+    <string name="semua_field_harus_diisi">All fields must be filled in</string>
+
 
 </resources>

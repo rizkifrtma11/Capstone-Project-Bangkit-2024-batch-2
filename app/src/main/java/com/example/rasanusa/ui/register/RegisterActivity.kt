@@ -11,11 +11,13 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.rasanusa.R
 import com.example.rasanusa.databinding.ActivityRegisterBinding
 import com.example.rasanusa.helper.AuthenticationHelper
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -65,7 +67,6 @@ class RegisterActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     showLoading(false)
                     if (task.isSuccessful) {
-                        showLoading(true)
                         AuthenticationHelper.saveUsername(this, email, username)
                         Toast.makeText(this, "Akun berhasil dibuat!", Toast.LENGTH_SHORT).show()
 
@@ -73,13 +74,41 @@ class RegisterActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, "Gagal membuat akun: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        val exception = task.exception
+                        if (exception is FirebaseAuthException) {
+                            when (exception.errorCode) {
+                                "ERROR_WEAK_PASSWORD" -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.password_terlalu_lemah_gunakan_minimal_6_karakter), Toast.LENGTH_SHORT).show()
+                                }
+
+                                "ERROR_EMAIL_ALREADY_IN_USE" -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.email_sudah_terdaftar_gunakan_email_lain), Toast.LENGTH_SHORT).show()
+                                }
+
+                                "ERROR_INVALID_EMAIL" -> {
+                                    Toast.makeText(this, getString(R.string.email_invalid), Toast.LENGTH_SHORT).show()
+                                }
+
+                                else -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.gagal_membuat_akun, exception.message), Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            if (exception != null) {
+                                Toast.makeText(this,
+                                    getString(R.string.gagal_membuat_akun, exception.message), Toast.LENGTH_SHORT).show()
+                            }
+                        }
                     }
                 }
             } else {
-                Toast.makeText(this, "Semua field harus diisi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.semua_field_harus_diisi), Toast.LENGTH_SHORT).show()
             }
         }
+
 
         passwordEditText = binding.etRegisterPassword
         passwordEditText.addTextChangedListener(object : TextWatcher {

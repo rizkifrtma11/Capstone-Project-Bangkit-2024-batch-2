@@ -2,9 +2,6 @@ package com.example.rasanusa.ui.mainactivity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -16,7 +13,6 @@ import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -26,6 +22,7 @@ import com.example.rasanusa.data.localdatabase.repository.locationData
 import com.example.rasanusa.data.localdatabase.roomdatabase.FoodHistoryRoomDatabase
 import com.example.rasanusa.databinding.ActivityMainBinding
 import com.example.rasanusa.ui.login.LoginActivity
+import com.example.rasanusa.ui.location.MyLocationReceiver
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
@@ -35,8 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var auth: FirebaseAuth
-    lateinit var database: FoodHistoryRoomDatabase
+    private lateinit var database: FoodHistoryRoomDatabase
     private lateinit var fusedLocationClient : FusedLocationProviderClient
+
 
     private fun permissionCheck() {
         if (ContextCompat.checkSelfPermission(
@@ -106,6 +104,11 @@ class MainActivity : AppCompatActivity() {
         setupBottomNavbar()
         setupRoomDB()
         setupIntent()
+
+        val skipNotification = intent.getBooleanExtra("skip_location_notification", false)
+        if (!skipNotification) {
+            setupLocationNotification()
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -123,6 +126,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkNearbyFoods(userLatLng: LatLng) {
+        var foundNearbyFood = false
+
         for (zone in locationData) {
             val distance = FloatArray(1)
             Location.distanceBetween(
@@ -131,27 +136,29 @@ class MainActivity : AppCompatActivity() {
             )
             if (distance[0] <= zone.radius) {
                 Log.d("Geofencing", "Berada di dalam zona ${zone.asal}")
-                showNotification(getString(R.string.food_nearby), getString(R.string.text_notification, zone.asal, zone.foodName) )
+                sendNotificationBroadcast(
+                    getString(R.string.food_nearby),
+                    getString(R.string.text_notification, zone.asal, zone.foodName)
+                )
+                foundNearbyFood = true
                 break
             }
         }
+
+        if (!foundNearbyFood) {
+            sendNotificationBroadcast(
+                getString(R.string.unknown_location_user),
+                getString(R.string.message_unknown_location_user)
+            )
+        }
     }
 
-    @SuppressLint("ObsoleteSdkInt")
-    private fun showNotification(title: String, message: String){
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val channel = NotificationChannel("GEOFENCE", "Geofence Notifications", NotificationManager.IMPORTANCE_HIGH)
-            notificationManager.createNotificationChannel(channel)
+    private fun sendNotificationBroadcast(title: String, message: String) {
+        val intent = Intent(this, MyLocationReceiver::class.java).apply {
+            putExtra("title", title)
+            putExtra("message", message)
         }
-
-        val notification = NotificationCompat.Builder(this, "GEOFENCE")
-            .setContentTitle(title)
-            .setContentText(message)
-            .setSmallIcon(R.mipmap.ic_rasanusa_launcher)
-            .build()
-
-        notificationManager.notify(1, notification)
+        sendBroadcast(intent)
     }
 
     private fun setupRoomDB() {
@@ -182,6 +189,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_chatbot -> {
                     navView.visibility = View.GONE
                 }
+                R.id.navigation_change_pass -> {
+                    navView.visibility = View.GONE
+                }
+                R.id.navigation_change_email -> {
+                    navView.visibility = View.GONE
+                }
                 else -> {
                     navView.visibility = View.VISIBLE
                 }
@@ -200,6 +213,7 @@ class MainActivity : AppCompatActivity() {
             "SubscriptionFragment" -> navController.navigate(R.id.navigation_subscription)
         }
     }
+
 
     companion object {
         private const val REQUEST_LOCATION_PERMISSION = 1

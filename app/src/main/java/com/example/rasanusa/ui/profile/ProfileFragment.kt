@@ -24,7 +24,7 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: ProfileViewModel by viewModels()
+    private val currentUser = FirebaseAuth.getInstance().currentUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,14 +38,16 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fetchUsername()
+        showCurrentEmail()
 
         onBackPressed()
 
         binding.apply {
-            layoutEmailPass.setOnClickListener{ navigateToProfileSettings() }
-            layoutBerlangganan.setOnClickListener{ navigateToMembership() }
-            layoutHistory.setOnClickListener{ navigateToHistory() }
-            layoutLogout.setOnClickListener { setupLogout() }
+            layoutChangeEmail.setOnClickListener{ findNavController().navigate(R.id.action_profile_to_change_email) }
+            layoutChangePass.setOnClickListener{ findNavController().navigate(R.id.action_profile_to_change_pass) }
+            layoutBerlangganan.setOnClickListener{ findNavController().navigate(R.id.action_profile_to_subscription) }
+            layoutHistory.setOnClickListener{ findNavController().navigate(R.id.action_profile_to_history) }
+            layoutLogout.setOnClickListener{ setupLogout() }
         }
     }
 
@@ -64,17 +66,16 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun navigateToProfileSettings(){
-        Toast.makeText(requireContext(), getString(R.string.feature_not_available), Toast.LENGTH_SHORT).show()
+    private fun showCurrentEmail(){
+        val email = currentUser?.email
+
+        if (email != null) {
+            binding.txtEmailUser.text = email
+        } else {
+            binding.txtEmailUser.text = getString(R.string.empty)
+        }
     }
 
-    private fun navigateToMembership(){
-        findNavController().navigate(R.id.action_profile_to_subscription)
-    }
-
-    private fun navigateToHistory(){
-        findNavController().navigate(R.id.action_profile_to_history)
-    }
 
     private fun setupLogout(){
         AlertDialog.Builder(requireContext())

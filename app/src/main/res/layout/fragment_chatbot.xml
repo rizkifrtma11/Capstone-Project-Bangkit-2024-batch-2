@@ -37,6 +37,7 @@
             android:layout_weight="0.5"
             android:background="@drawable/style_box_corner"
             android:backgroundTint="@android:color/white"
+            android:textColor="@color/black"
             android:hint="@string/ask_chatbot"
             android:textColorHint="@color/gray_overlay"
             android:importantForAutofill="no"

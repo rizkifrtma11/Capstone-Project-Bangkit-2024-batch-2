@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.rasanusa.R
 import com.example.rasanusa.data.response.DataItem
 import com.example.rasanusa.databinding.ActivityDetailBinding
 
@@ -37,18 +38,18 @@ class DetailActivity : AppCompatActivity() {
 
     private fun foodDetails(foodItem: DataItem) {
         Glide.with(this@DetailActivity)
-            .load(foodItem.image)
+            .load(foodItem.image ?: R.drawable.img_rasanusa)
             .into(binding.ivFood)
 
         // Data
-        binding.txtTitleFoodName.text = foodItem.name
-        binding.txtAsalDaerah.text = foodItem.asal
-        binding.txtBahanDasar.text = foodItem.bahanDasar
-        binding.txtFoodDesc.text = foodItem.desc
-        binding.txtFoodHistory.text = foodItem.history
+        binding.txtTitleFoodName.text = foodItem.name ?: getString(R.string.default_food_name)
+        binding.txtAsalDaerah.text = foodItem.asal ?: getString(R.string.default_asal_daerah)
+        binding.txtBahanDasar.text = foodItem.bahanDasar ?: getString(R.string.default_bahan_dasar)
+        binding.txtFoodDesc.text = foodItem.desc ?: getString(R.string.default_deskripsi)
+        binding.txtFoodHistory.text = foodItem.history ?: getString(R.string.default_sejarah)
 
         // Data.funfact
-        binding.txtFunfact.text = foodItem.funfact
+        binding.txtFunfact.text = foodItem.funfact ?: getString(R.string.default_funfact)
 
         // Gizi
         foodItem.gizi?.let {

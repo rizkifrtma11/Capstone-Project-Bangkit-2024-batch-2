@@ -46,6 +46,7 @@ class ImagePreviewActivity : AppCompatActivity() {
             btnExit.setOnClickListener {
                 val intent = Intent(this@ImagePreviewActivity, MainActivity::class.java).apply {
                     putExtra("navigate_to", "ScanFragment")
+                    putExtra("skip_location_notification", true)
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 }
                 startActivity(intent)
@@ -156,6 +157,7 @@ class ImagePreviewActivity : AppCompatActivity() {
             .setPositiveButton(getString(R.string.subscription_now_button)) { _, _ ->
                 val intent = Intent(this@ImagePreviewActivity, MainActivity::class.java)
                 intent.putExtra("navigate_to", "SubscriptionFragment")
+                intent.putExtra("skip_location_notification", true)
                 startActivity(intent)
                 finish()
             }

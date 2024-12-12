@@ -80,6 +80,7 @@ class SubscriptionFragment : Fragment() {
                 .setPositiveButton("OK") { _, _ ->
                     val intent = Intent(requireContext(), MainActivity::class.java)
                     intent.putExtra("navigate_to", "HomeFragment")
+                    intent.putExtra("skip_location_notification", true)
                     startActivity(intent)
                     requireActivity().finish()
                 }

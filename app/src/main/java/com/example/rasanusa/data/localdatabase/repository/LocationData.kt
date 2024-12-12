@@ -12,7 +12,7 @@ val locationData = listOf(
     LocationData("Sumatra Utara", 3.597043275463813, 98.65986456346242, 5000f, "Bika Ambon"),
     LocationData("Sulawesi Selatan", -5.1596984192163164, 119.43523927092097, 5000f, "Es Pisang Ijo"),
     LocationData("Jakarta", -6.193471068018878, 106.82555855240794, 5000f, "Kerak Telor"),
-    LocationData("Jawa Tengah", -6.983490567417972, 110.40676159243526, 5000f, "Lumpia Semarang"),
+    LocationData("Jawa Tengah", -7.021713763419635, 110.46179705550247, 5000f, "Lumpia Semarang"),
     LocationData("Aceh", 5.548159845829125, 95.32399415728443, 5000f, "Mie Aceh"),
     LocationData("Papua", -4.547083534827065, 136.88221662664787, 5000f, "Papeda"),
     LocationData("Sumatera Selatan", -2.9775944408580286, 104.77944009113432, 5000f, "Pempek"),

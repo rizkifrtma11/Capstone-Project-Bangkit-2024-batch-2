@@ -2,6 +2,7 @@ package com.example.rasanusa.ui.location
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.rasanusa.databinding.ActivityMapsBinding
+import com.example.rasanusa.vectorToBitmap
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -59,6 +61,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     mMap.addMarker(
                         MarkerOptions().position(userLatLng)
                             .title(getString(R.string.user_location))
+                            .title("Your marker")
+                            .icon(vectorToBitmap(this@MapsActivity, R.drawable.ic_marker_person_phone, Color.RED))
                     )
                     checkNearbyFoods(userLatLng)
                 }

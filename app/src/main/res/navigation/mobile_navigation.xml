@@ -49,6 +49,18 @@
         android:label="Subscription"
         tools:layout="@layout/fragment_subscription" />
 
+    <fragment
+        android:id="@+id/navigation_change_email"
+        android:name="com.example.rasanusa.ui.profile.changeemail.ChangeEmailFragment"
+        android:label="ChangeEmailPass"
+        tools:layout="@layout/fragment_change_email" />
+
+    <fragment
+        android:id="@+id/navigation_change_pass"
+        android:name="com.example.rasanusa.ui.profile.changepass.ChangePasswordFragment"
+        android:label="ChangeEmailPass"
+        tools:layout="@layout/fragment_change_password" />
+
     <action
         android:id="@+id/action_profile_to_subscription"
         app:destination="@id/navigation_subscription"
@@ -56,6 +68,23 @@
         app:exitAnim="@anim/fade_out"
         app:popEnterAnim="@anim/fade_in"
         app:popExitAnim="@anim/slide_out_right"  />
+
+    <action
+        android:id="@+id/action_profile_to_change_email"
+        app:destination="@id/navigation_change_email"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/slide_out_right"  />
+
+    <action
+        android:id="@+id/action_profile_to_change_pass"
+        app:destination="@id/navigation_change_pass"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/fade_out"
+        app:popEnterAnim="@anim/fade_in"
+        app:popExitAnim="@anim/slide_out_right"  />
+
 
     <action
         android:id="@+id/action_scan_to_subscription"

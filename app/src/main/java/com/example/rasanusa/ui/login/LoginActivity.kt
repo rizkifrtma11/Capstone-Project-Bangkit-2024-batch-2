@@ -5,18 +5,21 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.rasanusa.R
 import com.example.rasanusa.ui.mainactivity.MainActivity
 import com.example.rasanusa.databinding.ActivityLoginBinding
 import com.example.rasanusa.helper.AuthenticationHelper
 import com.example.rasanusa.ui.customview.EditPasswordCustom
 import com.example.rasanusa.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
@@ -94,16 +97,43 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(
-                            this,
-                            "Gagal login: ${task.exception?.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        val exception = task.exception
+                        if (exception is FirebaseAuthException) {
+                            Log.e("LoginError", "Error code: ${exception.errorCode}, Message: ${exception.message}")
+                            when (exception.errorCode) {
+                                "ERROR_WRONG_PASSWORD" -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.password_salah), Toast.LENGTH_SHORT).show()
+                                }
+                                "ERROR_USER_NOT_FOUND" -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.email_tidak_terdaftar), Toast.LENGTH_SHORT).show()
+                                }
+                                "ERROR_INVALID_EMAIL" -> {
+                                    Toast.makeText(this,
+                                        getString(R.string.format_email_tidak_valid), Toast.LENGTH_SHORT).show()
+                                }
+                                else -> {
+                                    Toast.makeText(
+                                        this,
+                                        "Gagal login: ${exception.message}",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+                        } else {
+                            Log.e("LoginError", "Non-FirebaseAuthException: ${exception?.message}")
+                            Toast.makeText(
+                                this,
+                                "Gagal login: ${exception?.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             } else {
-                Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this,
+                    getString(R.string.email_dan_password_tidak_boleh_kosong), Toast.LENGTH_SHORT).show()
             }
         }
     }

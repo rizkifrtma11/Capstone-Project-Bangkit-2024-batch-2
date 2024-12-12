@@ -179,7 +179,7 @@ class ScanFragment : Fragment() {
     }
 
     private fun startCrop(sourceUri: Uri) {
-        val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "cropped_image.jpg"))
+        val destinationUri = Uri.fromFile(File(requireContext().cacheDir, "cropped_image_${System.currentTimeMillis()}.jpg"))
 
         val options = UCrop.Options().apply {
             setCompressionQuality(80)
@@ -201,7 +201,7 @@ class ScanFragment : Fragment() {
         if (resultCode == AppCompatActivity.RESULT_OK && requestCode == UCrop.REQUEST_CROP) {
             val resultUri = UCrop.getOutput(data!!)
             if (resultUri != null) {
-
+                currentImagerUri = resultUri
                 val intent = Intent(activity, ImagePreviewActivity::class.java)
                 intent.putExtra("imageUri", resultUri.toString())
                 startActivity(intent)

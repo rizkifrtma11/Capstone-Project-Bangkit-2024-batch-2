@@ -32,8 +32,7 @@
     <string name="error_password">Password tidak boleh kurang dari 8 karakter!</string>
 
     <!-- main -->
-    <string name="search">Search here…</string>
-    <string name="filter">filter</string>
+
 
     <!-- home -->
     <string name="explore">Makanan Indonesia apa yang ingin kamu ketahui hari ini?</string>
@@ -60,6 +59,12 @@
     <string name="funfact">Fakta Menarik</string>
     <string name="category">Kategori</string>
     <string name="bahan_dasar">Bahan dasar :</string>
+    <string name="default_food_name">Nama makanan tidak tersedia</string>
+    <string name="default_bahan_dasar">Bahan dasar masih menjadi misteri!</string>
+    <string name="default_asal_daerah">Tidak diketahui? Kita cari bersama, yuk!</string>
+    <string name="default_deskripsi">Detail makanan belum ada</string>
+    <string name="default_sejarah">Masih mencari sejarah yang hilang…</string>
+    <string name="default_funfact">Hmm… kami nggak bisa nemuin yang ini.</string>
 
     <!-- camera -->
     <string name="capture_image" translatable="false">Capture Image</string>
@@ -147,7 +152,10 @@
     <string name="ask_button">Tanya</string>
     <string name="title_ask">Mau nanya apa ke Ranus?</string>
     <string name="txt_feature_coming_soon">Sabar ya! Fitur ini akan dikembangkan jika kami mendapat inkubasi!</string>
+    <string name="txt_feature_on_development">Maaf, fitur ini sedang dikembangkan</string>
     <string name="ranus_ai" translatable="false">Ranus.ai</string>
+    <string name="unknown_location_user">Waduh, kamu dimana?</string>
+    <string name="message_unknown_location_user">Kami tidak menemukan makanan khas disekitar kamu. Jalan-jalan lagi, yuk!</string>
 
     <string name="location_granted">Lokasi diizinkan</string>
     <string name="location_needed">Aplikasi membutuhkan izin akses lokasi</string>
@@ -158,6 +166,30 @@
     <string name="user_location">Lokasi Anda</string>
     <string name="user_bubble_chat">Ini bubble chat User</string>
 
+    <!-- Change email and password -->
+    <string name="new_email">Email baru</string>
+    <string name="change_email">Ubah Email</string>
+    <string name="change_pass">Ubah Password</string>
+    <string name="new_password">Password baru</string>
+    <string name="title_ubah_email_dan_password">Ubah Email dan Password</string>
+    <string name="titile_kata_sandi_lama">Kata sandi lama</string>
+    <string name="title_kata_sandi_baru">Kata sandi baru</string>
+    <string name="title_confirm_kata_sandi_baru">Konfimasi kata sandi baru</string>
+    <string name="title_confirm_kata_sandi">Konfimasi kata sandi</string>
+    <string name="title_current_email">Email anda sekarang</string>
+    <string name="title_current_password">Password anda sekarang</string>
+    <string name="current_email">User email</string>
+    <string name="current_password">current password</string>
+    <string name="fill_in_all_fields">Harap isi semua kolom yang tersedia</string>
+    <string name="empty">-</string>
+    <string name="password_salah">Password salah!</string>
+    <string name="email_tidak_terdaftar">Email tidak terdaftar!</string>
+    <string name="format_email_tidak_valid">Format email tidak valid!</string>
+    <string name="password_terlalu_lemah_gunakan_minimal_6_karakter">Password terlalu lemah! Gunakan minimal 6 karakter.</string>
+    <string name="email_sudah_terdaftar_gunakan_email_lain">Email sudah terdaftar! Gunakan email lain.</string>
+    <string name="gagal_membuat_akun">Gagal membuat akun: %1$s</string>
+    <string name="email_dan_password_tidak_boleh_kosong">Email dan password tidak boleh kosong</string>
+    <string name="semua_field_harus_diisi">Semua field harus diisi</string>
 
 
     <!-- Lumpia (Jateng)
