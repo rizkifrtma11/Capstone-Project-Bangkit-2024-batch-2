@@ -12,3 +12,7 @@ RasaNusa is an application that we developed to introduce culinary delights in I
 | M454B4KY2720    | Muhammad Alvaro Khikman  | Machine Learning    | Universitas Muhammadiyah Semarang | [LinkedIn](https://www.linkedin.com/in/muhammadalvarokhikman/)                               |
 | M454B4KX2281    | Lorenza Lennyta Dewi    | Machine Learning    | Universitas Muhammadiyah Semarang | [LinkedIn](https://www.linkedin.com/in/lorenza-lennyta-dewi-b09917291/)                       |
 | M454B4KX0712    | Atika Dwi Saputri        | Machine Learning    | Universitas Muhammadiyah Semarang | [LinkedIn](https://www.linkedin.com/in/atika-dwi-saputri-01894a2b0/)                         |
+
+
+# APK Downloadable Link
+https://www.dropbox.com/scl/fi/2cqu8j4n0x006c2t4jvj7/RasaNusa-v1.apk?rlkey=6mfczapxttd62h3kggkw55rlj&st=qmwqry10&dl=0
